@@ -1,5 +1,5 @@
 //
-//  NSResponder+XUIAdditions.m
+//  XUIResponder.m
 //  XUIKit
 //
 //  Created by Jovi on 6/11/17.
@@ -9,5 +9,13 @@
 #import "XUIResponder.h"
 
 @implementation NSResponder (XUIAdditions)
+
+-(XUIResponder *)defaultFirstResponder{
+    return self;
+}
+
+-(BOOL)acceptsFirstMouse:(NSEvent *)event{
+    return YES;
+}
 
 @end
