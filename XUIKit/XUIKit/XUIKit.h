@@ -17,3 +17,5 @@ FOUNDATION_EXPORT const unsigned char XUIKitVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <XUIKit/PublicHeader.h>
 
 
+#import<XUIKit/XUIResponder.h>
+#import<XUIKit/XUIView.h>

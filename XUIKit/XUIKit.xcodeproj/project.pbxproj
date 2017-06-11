@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */ = {isa = PBXBuildFile; fileRef = 9854CFBC1EED212C008A3454 /* XUIResponder.h */; };
+		9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */ = {isa = PBXBuildFile; fileRef = 9854CFBC1EED212C008A3454 /* XUIResponder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9854CFBF1EED212C008A3454 /* XUIResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854CFBD1EED212C008A3454 /* XUIResponder.m */; };
+		9854CFE01EED2EA4008A3454 /* XUIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9854CFDE1EED2EA4008A3454 /* XUIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9854CFE11EED2EA4008A3454 /* XUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854CFDF1EED2EA4008A3454 /* XUIView.m */; };
 		98D158461EEAB252005A0434 /* XUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 98D158441EEAB252005A0434 /* XUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9854CFBC1EED212C008A3454 /* XUIResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIResponder.h; sourceTree = "<group>"; };
 		9854CFBD1EED212C008A3454 /* XUIResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIResponder.m; sourceTree = "<group>"; };
+		9854CFDE1EED2EA4008A3454 /* XUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIView.h; sourceTree = "<group>"; };
+		9854CFDF1EED2EA4008A3454 /* XUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIView.m; sourceTree = "<group>"; };
 		98D158411EEAB252005A0434 /* XUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98D158441EEAB252005A0434 /* XUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XUIKit.h; sourceTree = "<group>"; };
 		98D158451EEAB252005A0434 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -40,6 +44,15 @@
 			name = XUIResponder;
 			sourceTree = "<group>";
 		};
+		9854CFDD1EED2E6D008A3454 /* XUIView */ = {
+			isa = PBXGroup;
+			children = (
+				9854CFDE1EED2EA4008A3454 /* XUIView.h */,
+				9854CFDF1EED2EA4008A3454 /* XUIView.m */,
+			);
+			name = XUIView;
+			sourceTree = "<group>";
+		};
 		98D158371EEAB252005A0434 = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +74,7 @@
 			children = (
 				98D158441EEAB252005A0434 /* XUIKit.h */,
 				9854CFBB1EED2069008A3454 /* XUIResponder */,
+				9854CFDD1EED2E6D008A3454 /* XUIView */,
 				98D158451EEAB252005A0434 /* Info.plist */,
 			);
 			path = XUIKit;
@@ -74,6 +88,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98D158461EEAB252005A0434 /* XUIKit.h in Headers */,
+				9854CFE01EED2EA4008A3454 /* XUIView.h in Headers */,
 				9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9854CFE11EED2EA4008A3454 /* XUIView.m in Sources */,
 				9854CFBF1EED212C008A3454 /* XUIResponder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
