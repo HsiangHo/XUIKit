@@ -8,29 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 
-typedef NSView XUIView;
+@class XUIView;
 typedef void(^XUIViewDrawRect)(XUIView *view, NSRect dirtyRect);
-typedef void(^XUIViewLayoutSubview)(XUIView *view);
 
-@interface NSView (XUIAdditions)
-
-/*
- Default is YES. if set to NO, user events (touch, keys) are ignored and removed from the event queue.
- */
-@property (nonatomic,getter=isUserInteractionEnabled) BOOL userInteractionEnabled;
-
-/*
- Default is 0
- */
-@property (nonatomic) NSInteger tag;
-
+@interface XUIView : NSView
 /*
 Subview control
  */
-- (void)removeFromSuperview;
 - (void)insertSubview:(XUIView *)view atIndex:(NSInteger)index;
-
-- (void)addSubview:(XUIView *)view;
 - (void)insertSubview:(XUIView *)view belowSubview:(XUIView *)siblingSubview;
 - (void)insertSubview:(XUIView *)view aboveSubview:(XUIView *)siblingSubview;
 
@@ -46,22 +31,6 @@ Subview control
 @property (nonatomic, copy) XUIViewDrawRect drawRect;
 
 /*
- Layout Subviews
- */
-- (void)setNeedsLayout;
-- (void)layoutSubviews;
-
-/*
- Supply a block as an alternative to overriding -layoutSubviews
- */
-@property (nonatomic, copy) XUIViewLayoutSubview layoutSubview;
-
-/*
- Recursive -setNeedsDisplay
- */
-- (void)setEverythingNeedsDisplay;
-
-/*
  default is nil.  Setting this with a color with <1.0 alpha will also set opaque=NO
  */
 @property (nonatomic,copy) NSColor *backgroundColor;
@@ -70,20 +39,5 @@ Subview control
  default is 0.
  */
 @property (nonatomic,assign) CGFloat cornerRadius;
-
-/*
-return the frame on screen.
- */
-@property (nonatomic, readonly) NSRect frameOnScreen;
-
-/*
- @returns whether mouse event occured within the bounds of reciever
- */
-- (BOOL)eventInside:(NSEvent *)event;
-
-/**
- Make this view the first responder. Returns NO if it fails.
- */
-- (BOOL)makeFirstResponder;
 
 @end
