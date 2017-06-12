@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		9813E11D1EED91BB009F1495 /* XUIProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 9813E11B1EED91BB009F1495 /* XUIProperty.h */; };
 		9813E11E1EED91BB009F1495 /* XUIProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9813E11C1EED91BB009F1495 /* XUIProperty.m */; };
-		98514C571EEEAA610001B8A6 /* NSView+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98514C551EEEAA610001B8A6 /* NSView+XUIAdditions.h */; };
+		98514C571EEEAA610001B8A6 /* NSView+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98514C551EEEAA610001B8A6 /* NSView+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98514C581EEEAA610001B8A6 /* NSView+XUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 98514C561EEEAA610001B8A6 /* NSView+XUIAdditions.m */; };
+		98514C5C1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98514C5A1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h */; };
+		98514C5D1EEEDCC20001B8A6 /* NSColor+XUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 98514C5B1EEEDCC20001B8A6 /* NSColor+XUIAdditions.m */; };
 		9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */ = {isa = PBXBuildFile; fileRef = 9854CFBC1EED212C008A3454 /* XUIResponder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9854CFBF1EED212C008A3454 /* XUIResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854CFBD1EED212C008A3454 /* XUIResponder.m */; };
 		9854CFE01EED2EA4008A3454 /* XUIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9854CFDE1EED2EA4008A3454 /* XUIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,6 +25,8 @@
 		9813E11C1EED91BB009F1495 /* XUIProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIProperty.m; sourceTree = "<group>"; };
 		98514C551EEEAA610001B8A6 /* NSView+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+XUIAdditions.h"; sourceTree = "<group>"; };
 		98514C561EEEAA610001B8A6 /* NSView+XUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+XUIAdditions.m"; sourceTree = "<group>"; };
+		98514C5A1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+XUIAdditions.h"; sourceTree = "<group>"; };
+		98514C5B1EEEDCC20001B8A6 /* NSColor+XUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+XUIAdditions.m"; sourceTree = "<group>"; };
 		9854CFBC1EED212C008A3454 /* XUIResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIResponder.h; sourceTree = "<group>"; };
 		9854CFBD1EED212C008A3454 /* XUIResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIResponder.m; sourceTree = "<group>"; };
 		9854CFDE1EED2EA4008A3454 /* XUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIView.h; sourceTree = "<group>"; };
@@ -50,6 +54,15 @@
 				9813E11C1EED91BB009F1495 /* XUIProperty.m */,
 			);
 			name = XUIProperty;
+			sourceTree = "<group>";
+		};
+		98514C591EEEDB8C0001B8A6 /* XUIColor */ = {
+			isa = PBXGroup;
+			children = (
+				98514C5A1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h */,
+				98514C5B1EEEDCC20001B8A6 /* NSColor+XUIAdditions.m */,
+			);
+			name = XUIColor;
 			sourceTree = "<group>";
 		};
 		9854CFBB1EED2069008A3454 /* XUIResponder */ = {
@@ -92,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				98D158441EEAB252005A0434 /* XUIKit.h */,
+				98514C591EEEDB8C0001B8A6 /* XUIColor */,
 				9813E11A1EED82F3009F1495 /* XUIProperty */,
 				9854CFBB1EED2069008A3454 /* XUIResponder */,
 				9854CFDD1EED2E6D008A3454 /* XUIView */,
@@ -111,6 +125,7 @@
 				9854CFE01EED2EA4008A3454 /* XUIView.h in Headers */,
 				98514C571EEEAA610001B8A6 /* NSView+XUIAdditions.h in Headers */,
 				9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */,
+				98514C5C1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h in Headers */,
 				9813E11D1EED91BB009F1495 /* XUIProperty.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,6 +201,7 @@
 				98514C581EEEAA610001B8A6 /* NSView+XUIAdditions.m in Sources */,
 				9813E11E1EED91BB009F1495 /* XUIProperty.m in Sources */,
 				9854CFE11EED2EA4008A3454 /* XUIView.m in Sources */,
+				98514C5D1EEEDCC20001B8A6 /* NSColor+XUIAdditions.m in Sources */,
 				9854CFBF1EED212C008A3454 /* XUIResponder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
