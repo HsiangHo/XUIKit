@@ -11,8 +11,8 @@
 void set_property(NSObject *parasitifer, id value, NSString *key);
 id get_property(NSObject *parasitifer, NSString *key);
 
-#define XUI_SET_PROPERTY(parasitifer,value,key)\
-set_property(parasitifer,value,key);
+#define XUI_SET_PROPERTY(value,key)\
+set_property(self,value,key);
 
-#define XUI_GET_PROPERTY(parasitifer,key)\
-get_property(parasitifer,key)
+#define XUI_GET_PROPERTY(key)\
+get_property(self,key)
