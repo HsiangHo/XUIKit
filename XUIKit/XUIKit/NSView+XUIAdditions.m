@@ -8,61 +8,74 @@
 
 #import "NSView+XUIAdditions.h"
 #import "XUIProperty.h"
+#import "XUIResponder.h"
 
 #define     kUserInteractionEnabled     @"userInteractionEnabled"   //NSNumber *
 #define     kTag                        @"tag"                      //NSNumber *
+#define     kNeedsLayout                @"needsLayout"              //NSNumber *
+#define     kLayoutSubview              @"layoutSubview"            //id
 
 @implementation NSView (XUIAdditions)
 
 -(void)setUserInteractionEnabled:(BOOL)userInteractionEnabled{
-    XUI_SET_PROPERTY(self, [NSNumber numberWithBool:userInteractionEnabled], kUserInteractionEnabled);
+    XUI_SET_PROPERTY([NSNumber numberWithBool:userInteractionEnabled], kUserInteractionEnabled);
 }
 
 -(BOOL)isUserInteractionEnabled{
-    return [(NSNumber *)XUI_GET_PROPERTY(self,kUserInteractionEnabled) boolValue];
+    return [(NSNumber *)XUI_GET_PROPERTY(kUserInteractionEnabled) boolValue];
 }
 
 -(void)setTag:(NSInteger)tag{
-    XUI_SET_PROPERTY(self, [NSNumber numberWithInteger:tag], kTag);
+    XUI_SET_PROPERTY([NSNumber numberWithInteger:tag], kTag);
 }
 
 -(NSInteger)tag{
-    return [(NSNumber *)XUI_GET_PROPERTY(self,kTag) integerValue];
+    return [(NSNumber *)XUI_GET_PROPERTY(kTag) integerValue];
 }
 
 - (void)setNeedsLayout{
-    
+    XUI_SET_PROPERTY([NSNumber numberWithBool:YES], kNeedsLayout);
 }
+
 - (void)layoutSubviews{
-    
+    XUIViewLayoutSubview block = XUI_GET_PROPERTY(kLayoutSubview);
+    if (nil != block) {
+        block(self);
+    }
 }
 
--(XUIViewLayoutSubview)layoutSubview{
-    return nil;
+-(void)setLayoutSubviewBlock:(XUIViewLayoutSubview)block{
+    XUI_SET_PROPERTY(block, kLayoutSubview);
 }
-
--(void)setLayoutSubview:(XUIViewLayoutSubview)layoutSubview{
-    
+-(XUIViewLayoutSubview)layoutSubviewBlock{
+    return [XUI_GET_PROPERTY(kLayoutSubview) copy];
 }
 
 - (void)setEverythingNeedsDisplay{
-    
-}
-
--(void)setFrameOnScreen:(NSRect)frameOnScreen{
-    
+    [self setNeedsDisplay:YES];
+    if ([self.superview respondsToSelector:@selector(setEverythingNeedsDisplay)]) {
+        [self.superview performSelector:@selector(setEverythingNeedsDisplay)];
+    }
 }
 
 -(NSRect)frameOnScreen{
-    return NSMakeRect(0, 0, 100, 100);
+    return [self __frameOnScreen];
 }
 
 - (BOOL)eventInside:(NSEvent *)event{
-    return NO;
+    return NSPointInRect([NSEvent mouseLocation], [self __frameOnScreen]);
 }
 
 - (BOOL)makeFirstResponder{
-    return NO;
+    return [self.window makeFirstResponder: [self defaultFirstResponder]];
+}
+
+#pragma mark - private functions
+
+-(NSRect)__frameOnScreen{
+    NSRect frameRelativeToWindow = [self convertRect:self.frame toView:nil];
+    NSRect frameRelativeToScreen = [self.window convertRectToScreen:frameRelativeToWindow];
+    return frameRelativeToScreen;
 }
 
 @end

@@ -31,7 +31,8 @@ typedef void(^XUIViewLayoutSubview)(NSView *view);
 /*
  Supply a block as an alternative to overriding -layoutSubviews
  */
-@property (nonatomic, copy) XUIViewLayoutSubview layoutSubview;
+-(void)setLayoutSubviewBlock:(XUIViewLayoutSubview)block;
+-(XUIViewLayoutSubview)layoutSubviewBlock;
 
 /*
  Recursive -setNeedsDisplay
