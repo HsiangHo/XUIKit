@@ -19,3 +19,5 @@ FOUNDATION_EXPORT const unsigned char XUIKitVersionString[];
 
 #import<XUIKit/XUIResponder.h>
 #import<XUIKit/XUIView.h>
+#import<XUIKit/NSColor+XUIAdditions.h>
+#import<XUIKit/NSView+XUIAdditions.h>

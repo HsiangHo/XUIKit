@@ -11,7 +11,7 @@
 		9813E11E1EED91BB009F1495 /* XUIProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9813E11C1EED91BB009F1495 /* XUIProperty.m */; };
 		98514C571EEEAA610001B8A6 /* NSView+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98514C551EEEAA610001B8A6 /* NSView+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98514C581EEEAA610001B8A6 /* NSView+XUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 98514C561EEEAA610001B8A6 /* NSView+XUIAdditions.m */; };
-		98514C5C1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98514C5A1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h */; };
+		98514C5C1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98514C5A1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98514C5D1EEEDCC20001B8A6 /* NSColor+XUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 98514C5B1EEEDCC20001B8A6 /* NSColor+XUIAdditions.m */; };
 		9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */ = {isa = PBXBuildFile; fileRef = 9854CFBC1EED212C008A3454 /* XUIResponder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9854CFBF1EED212C008A3454 /* XUIResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854CFBD1EED212C008A3454 /* XUIResponder.m */; };
@@ -124,8 +124,8 @@
 				98D158461EEAB252005A0434 /* XUIKit.h in Headers */,
 				9854CFE01EED2EA4008A3454 /* XUIView.h in Headers */,
 				98514C571EEEAA610001B8A6 /* NSView+XUIAdditions.h in Headers */,
-				9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */,
 				98514C5C1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h in Headers */,
+				9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */,
 				9813E11D1EED91BB009F1495 /* XUIProperty.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
