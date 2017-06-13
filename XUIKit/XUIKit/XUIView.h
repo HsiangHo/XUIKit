@@ -45,4 +45,10 @@ Subview control
 -(void)setCornerRadius:(CGFloat)cornerRadius;
 -(CGFloat)cornerRadius;
 
+/*
+ default is 1.
+ */
+- (void)setAlpha:(CGFloat)alpha;
+- (CGFloat)alpha;
+
 @end

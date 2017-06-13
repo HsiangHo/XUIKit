@@ -117,6 +117,14 @@
     return [self.layer cornerRadius];
 }
 
+- (void)setAlpha:(CGFloat)alpha{
+    [[self layer] setOpacity:alpha];
+}
+
+- (CGFloat)alpha{
+    return [[self layer] opacity];
+}
+
 #pragma mark - Private Functions
 
 - (NSView *)__topSubview
