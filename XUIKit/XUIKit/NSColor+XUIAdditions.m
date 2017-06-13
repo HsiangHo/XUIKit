@@ -76,4 +76,10 @@
     return [NSColor colorWithCalibratedRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:alpha];
 }
 
++ (NSColor *)colorWithCGColor:(CGColorRef)CGColor
+{
+    if (CGColor == NULL) return nil;
+    return [NSColor colorWithCIColor:[CIColor colorWithCGColor:CGColor]];
+}
+
 @end

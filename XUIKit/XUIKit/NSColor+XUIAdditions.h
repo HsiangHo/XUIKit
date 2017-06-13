@@ -14,6 +14,10 @@
 - (NSColor *)darkenColorByValue:(float)value;
 - (BOOL)isLightColor;
 + (NSColor *)colorWithHex:(NSString *)strHex alpha:(CGFloat)alpha;          //eg: #FFFFFF
+//
+// Converts a Quartz color reference to its NSColor equivalent.
+//
++ (NSColor *)colorWithCGColor:(CGColorRef)color;
 
 /*
  Before 10.8 CGColor was not supported
