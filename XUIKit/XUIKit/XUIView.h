@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "NSView+XUIAdditions.h"
 
 @class XUIView;
 typedef void(^XUIViewDrawRect)(XUIView *view, NSRect dirtyRect);
@@ -15,29 +16,32 @@ typedef void(^XUIViewDrawRect)(XUIView *view, NSRect dirtyRect);
 /*
 Subview control
  */
-- (void)insertSubview:(XUIView *)view atIndex:(NSInteger)index;
-- (void)insertSubview:(XUIView *)view belowSubview:(XUIView *)siblingSubview;
-- (void)insertSubview:(XUIView *)view aboveSubview:(XUIView *)siblingSubview;
+- (void)insertSubview:(NSView *)view atIndex:(NSUInteger)index;
+- (void)insertSubview:(NSView *)view belowSubview:(NSView *)siblingSubview;
+- (void)insertSubview:(NSView *)view aboveSubview:(NSView *)siblingSubview;
 
-- (void)bringSubviewToFront:(XUIView *)view;
-- (void)sendSubviewToBack:(XUIView *)view;
+- (void)bringSubviewToFront:(NSView *)view;
+- (void)sendSubviewToBack:(NSView *)view;
 
-- (void)didAddSubview:(XUIView *)subview;
-- (void)willRemoveSubview:(XUIView *)subview;
+- (void)didAddSubview:(NSView *)subview;
+- (void)willRemoveSubview:(NSView *)subview;
 
 /*
  Supply a block as an alternative to overriding -(void)drawRect
  */
-@property (nonatomic, copy) XUIViewDrawRect drawRect;
+- (void)setDrawRect:(XUIViewDrawRect)drawRect;
+- (XUIViewDrawRect)drawRect;
 
 /*
- default is nil.  Setting this with a color with <1.0 alpha will also set opaque=NO
+ default is nil.
  */
-@property (nonatomic,copy) NSColor *backgroundColor;
+-(void)setBackgroundColor:(NSColor *)backgroundColor;
+-(NSColor *)backgroundColor;
 
 /*
  default is 0.
  */
-@property (nonatomic,assign) CGFloat cornerRadius;
+-(void)setCornerRadius:(CGFloat)cornerRadius;
+-(CGFloat)cornerRadius;
 
 @end
