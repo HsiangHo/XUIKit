@@ -48,7 +48,9 @@
 @end
 
 #define kProperty       "parasiteKey"
+
 #pragma mark - Property Fuctions
+
 void set_parasiteObj(NSObject *parasitifer,XUIParasiteObject *obj){
     NSUInteger n = [parasitifer hash];
     objc_setAssociatedObject(parasitifer, kProperty, obj, OBJC_ASSOCIATION_RETAIN_NONATOMIC);

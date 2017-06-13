@@ -37,11 +37,6 @@
     [self.layer setBackgroundColor:_backgroundColor.CGColor];
 }
 
--(void)addSubview:(NSView *)view{
-    [super addSubview:view];
-    [self.superview didAddSubview:view];
-}
-
 - (void)insertSubview:(NSView *)view atIndex:(NSUInteger)index{
     NSArray *arraySubviews = [self subviews];
     NSUInteger nCount = [arraySubviews count];
@@ -93,12 +88,6 @@
     }
 }
 
--(void)removeFromSuperview{
-    [self.layer removeFromSuperlayer];
-    [self.superview willRemoveSubview:self];
-    [super removeFromSuperview];
-}
-
 - (void)didAddSubview:(NSView *)subview{ }
 
 - (void)willRemoveSubview:(NSView *)subview{ }
@@ -144,6 +133,17 @@
 }
 
 #pragma mark - Override
+
+-(void)addSubview:(NSView *)view{
+    [super addSubview:view];
+    [self.superview didAddSubview:view];
+}
+
+-(void)removeFromSuperview{
+    [self.layer removeFromSuperlayer];
+    [self.superview willRemoveSubview:self];
+    [super removeFromSuperview];
+}
 
 -(void)drawRect:(NSRect)dirtyRect{
     [super drawRect:dirtyRect];

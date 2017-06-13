@@ -16,12 +16,13 @@ typedef void(^XUIViewDrawRect)(XUIView *view, NSRect dirtyRect);
 /*
 Subview control
  */
+- (void)addSubview:(NSView *)view;
 - (void)insertSubview:(NSView *)view atIndex:(NSUInteger)index;
 - (void)insertSubview:(NSView *)view belowSubview:(NSView *)siblingSubview;
 - (void)insertSubview:(NSView *)view aboveSubview:(NSView *)siblingSubview;
-
 - (void)bringSubviewToFront:(NSView *)view;
 - (void)sendSubviewToBack:(NSView *)view;
+- (void)removeFromSuperview;
 
 - (void)didAddSubview:(NSView *)subview;
 - (void)willRemoveSubview:(NSView *)subview;
