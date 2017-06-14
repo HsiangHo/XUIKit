@@ -20,7 +20,27 @@
     return [_drawRectBlock copy];
 }
 
+#pragma mark - Private Methods
+
+-(void)__initializeXUIView{
+    _drawRectBlock = nil;
+}
+
 #pragma mark - Override Methods
+
+-(instancetype)init{
+    if (self = [super init]) {
+        [self __initializeXUIView];
+    }
+    return self;
+}
+
+-(instancetype)initWithFrame:(NSRect)frameRect{
+    if (self = [super initWithFrame:frameRect]) {
+        [self __initializeXUIView];
+    }
+    return self;
+}
 
 -(void)drawRect:(NSRect)dirtyRect{
     [super drawRect:dirtyRect];

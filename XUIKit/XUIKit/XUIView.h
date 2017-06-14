@@ -9,7 +9,8 @@
 #import <Cocoa/Cocoa.h>
 #import "NSView+XUIAdditions.h"
 
-typedef void(^XUIViewDrawRect)(NSView *view, NSRect dirtyRect);
+@class XUIView;
+typedef void(^XUIViewDrawRect)(XUIView *view, NSRect dirtyRect);
 
 @interface XUIView : NSView
 
