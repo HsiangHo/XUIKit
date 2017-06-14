@@ -9,28 +9,40 @@
 /* Begin PBXBuildFile section */
 		9813E11D1EED91BB009F1495 /* XUIProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 9813E11B1EED91BB009F1495 /* XUIProperty.h */; };
 		9813E11E1EED91BB009F1495 /* XUIProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9813E11C1EED91BB009F1495 /* XUIProperty.m */; };
-		98514C571EEEAA610001B8A6 /* NSView+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98514C551EEEAA610001B8A6 /* NSView+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		98514C581EEEAA610001B8A6 /* NSView+XUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 98514C561EEEAA610001B8A6 /* NSView+XUIAdditions.m */; };
 		98514C5C1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98514C5A1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		98514C5D1EEEDCC20001B8A6 /* NSColor+XUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 98514C5B1EEEDCC20001B8A6 /* NSColor+XUIAdditions.m */; };
 		9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */ = {isa = PBXBuildFile; fileRef = 9854CFBC1EED212C008A3454 /* XUIResponder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9854CFBF1EED212C008A3454 /* XUIResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854CFBD1EED212C008A3454 /* XUIResponder.m */; };
 		9854CFE01EED2EA4008A3454 /* XUIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9854CFDE1EED2EA4008A3454 /* XUIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9854CFE11EED2EA4008A3454 /* XUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854CFDF1EED2EA4008A3454 /* XUIView.m */; };
+		987923111EF1486400F2534A /* XUIMethodsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9879230F1EF1486400F2534A /* XUIMethodsHelper.h */; };
+		987923121EF1486400F2534A /* XUIMethodsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 987923101EF1486400F2534A /* XUIMethodsHelper.m */; };
+		987923131EF1550F00F2534A /* NSColor+XUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 98514C5B1EEEDCC20001B8A6 /* NSColor+XUIAdditions.m */; };
+		987923461EF1854100F2534A /* NSView+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 987923441EF1854100F2534A /* NSView+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		987923471EF1854100F2534A /* NSView+XUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 987923451EF1854100F2534A /* NSView+XUIAdditions.m */; };
+		987923481EF188DD00F2534A /* NSControl+XUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 98C409111EEFF9B300F0A4F6 /* NSControl+XUIAdditions.m */; };
+		987923491EF188E100F2534A /* NSControl+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 98C409151EF014FE00F0A4F6 /* NSControl+Private.m */; };
+		98C409121EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98C409101EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h */; };
+		98C409161EF014FE00F0A4F6 /* NSControl+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 98C409141EF014FE00F0A4F6 /* NSControl+Private.h */; };
 		98D158461EEAB252005A0434 /* XUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 98D158441EEAB252005A0434 /* XUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9813E11B1EED91BB009F1495 /* XUIProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIProperty.h; sourceTree = "<group>"; };
 		9813E11C1EED91BB009F1495 /* XUIProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIProperty.m; sourceTree = "<group>"; };
-		98514C551EEEAA610001B8A6 /* NSView+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+XUIAdditions.h"; sourceTree = "<group>"; };
-		98514C561EEEAA610001B8A6 /* NSView+XUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+XUIAdditions.m"; sourceTree = "<group>"; };
 		98514C5A1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+XUIAdditions.h"; sourceTree = "<group>"; };
 		98514C5B1EEEDCC20001B8A6 /* NSColor+XUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+XUIAdditions.m"; sourceTree = "<group>"; };
 		9854CFBC1EED212C008A3454 /* XUIResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIResponder.h; sourceTree = "<group>"; };
 		9854CFBD1EED212C008A3454 /* XUIResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIResponder.m; sourceTree = "<group>"; };
 		9854CFDE1EED2EA4008A3454 /* XUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIView.h; sourceTree = "<group>"; };
 		9854CFDF1EED2EA4008A3454 /* XUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIView.m; sourceTree = "<group>"; };
+		9879230F1EF1486400F2534A /* XUIMethodsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIMethodsHelper.h; sourceTree = "<group>"; };
+		987923101EF1486400F2534A /* XUIMethodsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIMethodsHelper.m; sourceTree = "<group>"; };
+		987923441EF1854100F2534A /* NSView+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+XUIAdditions.h"; sourceTree = "<group>"; };
+		987923451EF1854100F2534A /* NSView+XUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+XUIAdditions.m"; sourceTree = "<group>"; };
+		98C409101EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSControl+XUIAdditions.h"; sourceTree = "<group>"; };
+		98C409111EEFF9B300F0A4F6 /* NSControl+XUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSControl+XUIAdditions.m"; sourceTree = "<group>"; };
+		98C409141EF014FE00F0A4F6 /* NSControl+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSControl+Private.h"; sourceTree = "<group>"; };
+		98C409151EF014FE00F0A4F6 /* NSControl+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSControl+Private.m"; sourceTree = "<group>"; };
 		98D158411EEAB252005A0434 /* XUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98D158441EEAB252005A0434 /* XUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XUIKit.h; sourceTree = "<group>"; };
 		98D158451EEAB252005A0434 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -77,12 +89,32 @@
 		9854CFDD1EED2E6D008A3454 /* XUIView */ = {
 			isa = PBXGroup;
 			children = (
-				98514C551EEEAA610001B8A6 /* NSView+XUIAdditions.h */,
-				98514C561EEEAA610001B8A6 /* NSView+XUIAdditions.m */,
+				987923441EF1854100F2534A /* NSView+XUIAdditions.h */,
+				987923451EF1854100F2534A /* NSView+XUIAdditions.m */,
 				9854CFDE1EED2EA4008A3454 /* XUIView.h */,
 				9854CFDF1EED2EA4008A3454 /* XUIView.m */,
 			);
 			name = XUIView;
+			sourceTree = "<group>";
+		};
+		9879230E1EF1484C00F2534A /* XUIHelper */ = {
+			isa = PBXGroup;
+			children = (
+				9879230F1EF1486400F2534A /* XUIMethodsHelper.h */,
+				987923101EF1486400F2534A /* XUIMethodsHelper.m */,
+			);
+			name = XUIHelper;
+			sourceTree = "<group>";
+		};
+		98C4090F1EEFF5A900F0A4F6 /* XUIControl */ = {
+			isa = PBXGroup;
+			children = (
+				98C409101EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h */,
+				98C409111EEFF9B300F0A4F6 /* NSControl+XUIAdditions.m */,
+				98C409141EF014FE00F0A4F6 /* NSControl+Private.h */,
+				98C409151EF014FE00F0A4F6 /* NSControl+Private.m */,
+			);
+			name = XUIControl;
 			sourceTree = "<group>";
 		};
 		98D158371EEAB252005A0434 = {
@@ -105,6 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				98D158441EEAB252005A0434 /* XUIKit.h */,
+				9879230E1EF1484C00F2534A /* XUIHelper */,
+				98C4090F1EEFF5A900F0A4F6 /* XUIControl */,
 				98514C591EEEDB8C0001B8A6 /* XUIColor */,
 				9813E11A1EED82F3009F1495 /* XUIProperty */,
 				9854CFBB1EED2069008A3454 /* XUIResponder */,
@@ -122,10 +156,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				98D158461EEAB252005A0434 /* XUIKit.h in Headers */,
+				98C409161EF014FE00F0A4F6 /* NSControl+Private.h in Headers */,
+				987923461EF1854100F2534A /* NSView+XUIAdditions.h in Headers */,
 				9854CFE01EED2EA4008A3454 /* XUIView.h in Headers */,
-				98514C571EEEAA610001B8A6 /* NSView+XUIAdditions.h in Headers */,
 				98514C5C1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h in Headers */,
 				9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */,
+				987923111EF1486400F2534A /* XUIMethodsHelper.h in Headers */,
+				98C409121EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h in Headers */,
 				9813E11D1EED91BB009F1495 /* XUIProperty.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,11 +235,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98514C581EEEAA610001B8A6 /* NSView+XUIAdditions.m in Sources */,
+				987923491EF188E100F2534A /* NSControl+Private.m in Sources */,
+				987923481EF188DD00F2534A /* NSControl+XUIAdditions.m in Sources */,
+				987923131EF1550F00F2534A /* NSColor+XUIAdditions.m in Sources */,
 				9813E11E1EED91BB009F1495 /* XUIProperty.m in Sources */,
 				9854CFE11EED2EA4008A3454 /* XUIView.m in Sources */,
-				98514C5D1EEEDCC20001B8A6 /* NSColor+XUIAdditions.m in Sources */,
 				9854CFBF1EED212C008A3454 /* XUIResponder.m in Sources */,
+				987923471EF1854100F2534A /* NSView+XUIAdditions.m in Sources */,
+				987923121EF1486400F2534A /* XUIMethodsHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
