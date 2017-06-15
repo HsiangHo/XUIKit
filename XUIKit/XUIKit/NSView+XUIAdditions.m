@@ -16,12 +16,15 @@
 #define     kNeedsLayout                @"needsLayout"              //NSNumber *
 #define     kLayoutSubview              @"layoutSubview"            //id
 
+#define     INIT_METHOD_FAMILY          __attribute__((objc_method_family(init)))
+
 @implementation NSView (XUIAdditions)
 
 +(void)load{
     Class cls = [NSView class];
     XUISwizzleMethod(cls, '-', @selector(xui_addSubview:),@selector(addSubview:));
     XUISwizzleMethod(cls, '-', @selector(xui_removeFromSuperview),@selector(removeFromSuperview));
+    XUISwizzleMethod(cls, '-', @selector(xui_initWithFrame:),@selector(initWithFrame:));
 }
 
 -(void)setUserInteractionEnabled:(BOOL)userInteractionEnabled{
@@ -129,7 +132,6 @@
 }
 
 -(void)setBackgroundColor:(NSColor *)backgroundColor{
-    [self setWantsLayer:YES];
     [self.layer setBackgroundColor:backgroundColor.CGColor];
     [self setNeedsDisplay:YES];
 }
@@ -139,7 +141,6 @@
 }
 
 -(void)setCornerRadius:(CGFloat)cornerRadius{
-    [self setWantsLayer:YES];
     [self.layer setCornerRadius:cornerRadius];
     [self setNeedsDisplay:YES];
 }
@@ -149,7 +150,6 @@
 }
 
 - (void)setAlpha:(CGFloat)alpha{
-    [self setWantsLayer:YES];
     [[self layer] setOpacity:alpha];
     [self setNeedsDisplay:YES];
 }
@@ -159,6 +159,10 @@
 }
 
 #pragma mark - Private Functions
+
+- (void)__initializeNSView_XUIAdditions{
+    [self setWantsLayer:YES];
+}
 
 - (NSView *)__topSubview
 {
@@ -180,6 +184,20 @@
 }
 
 #pragma mark - Swizzle Functions
+
+-(instancetype)init{
+    if (self = [super init]){
+        [self __initializeNSView_XUIAdditions];
+    }
+    return self;
+}
+
+-(instancetype)xui_initWithFrame:(NSRect)frameRect INIT_METHOD_FAMILY{
+    if (self = [self xui_initWithFrame:frameRect]){
+        [self __initializeNSView_XUIAdditions];
+    }
+    return self;
+}
 
 -(void)xui_addSubview:(NSView *)view{
     [self xui_addSubview:view];
