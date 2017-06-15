@@ -9,11 +9,20 @@
 #import "NSControl+XUIAdditions.h"
 #import "XUIProperty.h"
 #import "XUIView.h"
+#import "XUIControlTargetAction.h"
 #import "NSControl+Private.h"
+#import "XUIMethodsHelper.h"
 
 #define kAcceptsFirstMouse          @"acceptsFirstMouse"
+#define kTargetActions              @"targetActions"
 
 @implementation NSControl (XUIAdditions)
+
++(void)load{
+    Class cls = [NSControl class];
+    XUISwizzleMethod(cls, '-', @selector(xui_mouseDown:),@selector(mouseDown:));
+    XUISwizzleMethod(cls, '-', @selector(xui_mouseUp:),@selector(mouseUp:));
+}
 
 - (BOOL)acceptsFirstMouse
 {
@@ -37,8 +46,10 @@
     return [self acceptsFirstMouse];
 }
 
-- (void)mouseDown:(NSEvent *)event{
-    [super mouseDown:event];
+#pragma mark - Swizzle Functions
+
+- (void)xui_mouseDown:(NSEvent *)event{
+    [self xui_mouseDown:event];
     
     [self __stateWillChange];
     
@@ -53,8 +64,8 @@
     [self setNeedsDisplay];
 }
 
-- (void)mouseUp:(NSEvent *)event{
-    [super mouseUp:event];
+- (void)xui_mouseUp:(NSEvent *)event{
+    [self xui_mouseUp:event];
     
     [self __stateWillChange];
     
@@ -68,5 +79,112 @@
     
     [self setNeedsDisplay];
 }
+
+#pragma mark - Private Action
+
+-(NSMutableArray *)__targetActions{
+    NSMutableArray *arrayTargetActions = XUI_GET_PROPERTY(kTargetActions);
+    if (nil == arrayTargetActions) {
+        arrayTargetActions = [[NSMutableArray alloc] init];
+        XUI_SET_PROPERTY(arrayTargetActions, kTargetActions);
+    }
+    return arrayTargetActions;
+}
+
+#pragma mark - Actions
+
+- (void)addTarget:(nullable id)target action:(SEL)action forControlEvents:(XUIControlEvents)controlEvents{
+    if(action) {
+        XUIControlTargetAction *cta = [[XUIControlTargetAction alloc] init];
+        cta.target = target;
+        cta.action = action;
+        cta.controlEvents = controlEvents;
+        [[self __targetActions] addObject:cta];
+    }
+}
+
+- (void)addActionForControlEvents:(XUIControlEvents)controlEvents block:(void(^)(void))action{
+    if(nil != action) {
+        XUIControlTargetAction *cta = [[XUIControlTargetAction alloc] init];
+        cta.block = action;
+        cta.controlEvents = controlEvents;
+        [[self __targetActions] addObject:cta];
+    }
+}
+
+- (void)removeTarget:(nullable id)target action:(nullable SEL)action forControlEvents:(XUIControlEvents)controlEvents{
+    NSMutableArray *targetActionsToRemove = [[NSMutableArray alloc] init];
+    NSMutableArray *targetActions = [self __targetActions];
+    if (XUIControlEventAllEvents == controlEvents) {
+        [targetActions removeAllObjects];
+        return;
+    }
+    for(XUIControlTargetAction *cta in targetActions) {
+        BOOL targetMatches = ([target isEqual:cta.target]);
+        BOOL eventMatches = (controlEvents == cta.controlEvents);
+        if (eventMatches) {
+            if (targetMatches || nil == target) {
+                [targetActionsToRemove addObject:cta];
+            }
+        }
+    }
+    [targetActions removeObjectsInArray:targetActionsToRemove];
+}
+
+- (void)removeAllTargets{
+    for (id target in [self allTargets]) {
+        [self removeTarget:target action:NULL forControlEvents:XUIControlEventAllEvents];
+    }
+}
+
+- (NSSet *)allTargets{
+    NSMutableSet *targets = [NSMutableSet set];
+    NSMutableArray *targetActions = [self __targetActions];
+    for(XUIControlTargetAction *cta in targetActions) {
+        id target = cta.target;
+        [targets addObject: target ? target : [NSNull null]];
+    }
+    return targets;
+}
+
+- (XUIControlEvents)allControlEvents{
+    XUIControlEvents events = 0;
+    for(XUIControlTargetAction *cta in [self __targetActions]) {
+        events |= cta.controlEvents;
+    }
+    return events;
+}
+
+- (NSArray *)actionsForTarget:(id)target forControlEvent:(XUIControlEvents)controlEvent{
+    NSMutableArray *actions = [[NSMutableArray alloc] init];
+    NSMutableArray *targetActions = [self __targetActions];
+    for(XUIControlTargetAction *cta in targetActions) {
+        if([target isEqual:cta.target] && controlEvent == cta.controlEvents) {
+            [actions addObject:NSStringFromSelector(cta.action)];
+        }
+    }
+    
+    if([actions count])
+        return actions;
+    return nil;
+}
+
+- (void)sendAction:(SEL)action to:(id)target forEvent:(NSEvent *)event{
+    [NSApp sendAction:action to:target from:self];
+}
+
+- (void)sendActionsForControlEvents:(XUIControlEvents)controlEvents{
+    NSMutableArray *targetActions = [self __targetActions];
+    for(XUIControlTargetAction *cta in targetActions) {
+        if(cta.controlEvents == controlEvents) {
+            if(cta.action) {
+                [self sendAction:cta.action to:cta.target forEvent:nil];
+            }else if(cta.block) {
+                cta.block();
+            }
+        }
+    }
+}
+
 
 @end
