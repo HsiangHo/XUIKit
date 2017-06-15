@@ -14,7 +14,7 @@ enum {
     XUIControlEventTouchDownRepeat      = 1 <<  1,
     XUIControlEventTouchUpInside        = 1 <<  2,
     XUIControlEventTouchUpOutside       = 1 <<  3,
-    XUIControlEventAllEvents            = 1 <<  11,
+    XUIControlEventAllEvents            = 0xFFFFFFFF,
 };
 typedef NSUInteger XUIControlEvents;
 
