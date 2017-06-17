@@ -15,6 +15,7 @@
 
 #define kAcceptsFirstMouse          @"acceptsFirstMouse"
 #define kTargetActions              @"targetActions"
+#define kCurrentState               @"currentState"
 
 @implementation NSControl (XUIAdditions)
 
@@ -22,6 +23,9 @@
     Class cls = [NSControl class];
     XUISwizzleMethod(cls, '-', @selector(xui_mouseDown:),@selector(mouseDown:));
     XUISwizzleMethod(cls, '-', @selector(xui_mouseUp:),@selector(mouseUp:));
+    XUISwizzleMethod(cls, '-', @selector(xui_mouseEntered:),@selector(mouseEntered:));
+    XUISwizzleMethod(cls, '-', @selector(xui_mouseExited:),@selector(mouseExited:));
+    XUISwizzleMethod(cls, '-', @selector(xui_mouseMoved:),@selector(mouseMoved:));
 }
 
 - (BOOL)acceptsFirstMouse
@@ -36,8 +40,7 @@
 
 - (XUIControlState)state
 {
-    XUIControlState actual = XUIControlStateNormal;
-    return actual;
+    return [self __currentState];
 }
 
 #pragma mark - Override
@@ -46,13 +49,23 @@
     return [self acceptsFirstMouse];
 }
 
+#pragma mark - Private Functions
+
+-(XUIControlState)__currentState{
+    return [(NSNumber *)XUI_GET_PROPERTY(kCurrentState) unsignedIntegerValue];
+}
+
+-(void)__setCurrentState:(XUIControlState)state{
+    XUI_SET_PROPERTY([NSNumber numberWithUnsignedInteger:state], kCurrentState);
+}
+
 #pragma mark - Swizzle Functions
 
 - (void)xui_mouseDown:(NSEvent *)event{
     [self xui_mouseDown:event];
     
     [self __stateWillChange];
-    
+    [self __setCurrentState:XUIControlStateDown];
     [self __stateDidChange];
     
     if([event clickCount] < 2) {
@@ -66,9 +79,9 @@
 
 - (void)xui_mouseUp:(NSEvent *)event{
     [self xui_mouseUp:event];
-    
+
     [self __stateWillChange];
-    
+    [self __setCurrentState:XUIControlStateUp];
     [self __stateDidChange];
     
     if([self eventInside:event]) {
@@ -76,6 +89,36 @@
     } else {
         [self sendActionsForControlEvents:XUIControlEventTouchUpOutside];
     }
+    
+    [self setNeedsDisplay];
+}
+
+-(void)xui_mouseMoved:(NSEvent *)event{
+    [self xui_mouseMoved:event];
+    
+    [self __stateWillChange];
+    [self __setCurrentState:XUIControlStateHovered];
+    [self __stateDidChange];
+    
+    [self setNeedsDisplay];
+}
+
+- (void)xui_mouseEntered:(NSEvent *)event{
+    [self xui_mouseEntered:event];
+    
+    [self __stateWillChange];
+    [self __setCurrentState:XUIControlStateHovered];
+    [self __stateDidChange];
+    
+    [self setNeedsDisplay];
+}
+
+- (void)xui_mouseExited:(NSEvent *)event{
+    [self xui_mouseExited:event];
+    
+    [self __stateWillChange];
+    [self __setCurrentState:XUIControlStateNormal];
+    [self __stateDidChange];
     
     [self setNeedsDisplay];
 }
@@ -159,7 +202,7 @@
     NSMutableArray *actions = [[NSMutableArray alloc] init];
     NSMutableArray *targetActions = [self __targetActions];
     for(XUIControlTargetAction *cta in targetActions) {
-        if([target isEqual:cta.target] && controlEvent == cta.controlEvents) {
+        if([target isEqual:cta.target] &&(XUIControlEventAllEvents == cta.controlEvents || controlEvent == cta.controlEvents)) {
             [actions addObject:NSStringFromSelector(cta.action)];
         }
     }
@@ -176,7 +219,7 @@
 - (void)sendActionsForControlEvents:(XUIControlEvents)controlEvents{
     NSMutableArray *targetActions = [self __targetActions];
     for(XUIControlTargetAction *cta in targetActions) {
-        if(cta.controlEvents == controlEvents) {
+        if(cta.controlEvents == controlEvents || XUIControlEventAllEvents == cta.controlEvents) {
             if(cta.action) {
                 [self sendAction:cta.action to:cta.target forEvent:nil];
             }else if(cta.block) {
@@ -185,6 +228,5 @@
         }
     }
 }
-
 
 @end

@@ -15,6 +15,7 @@
 #define     kTag                        @"tag"                      //NSNumber *
 #define     kNeedsLayout                @"needsLayout"              //NSNumber *
 #define     kLayoutSubview              @"layoutSubview"            //id
+#define     kTrackingArea               @"trackingArea"             //NSTrackingArea *
 
 #define     INIT_METHOD_FAMILY          __attribute__((objc_method_family(init)))
 
@@ -25,6 +26,7 @@
     XUISwizzleMethod(cls, '-', @selector(xui_addSubview:),@selector(addSubview:));
     XUISwizzleMethod(cls, '-', @selector(xui_removeFromSuperview),@selector(removeFromSuperview));
     XUISwizzleMethod(cls, '-', @selector(xui_initWithFrame:),@selector(initWithFrame:));
+    XUISwizzleMethod(cls, '-', @selector(xui_updateTrackingAreas),@selector(updateTrackingAreas));
 }
 
 -(void)setUserInteractionEnabled:(BOOL)userInteractionEnabled{
@@ -178,9 +180,16 @@
 }
 
 -(NSRect)__frameOnScreen{
-    NSRect frameRelativeToWindow = [self convertRect:self.frame toView:nil];
-    NSRect frameRelativeToScreen = [self.window convertRectToScreen:frameRelativeToWindow];
+    NSRect frameRelativeToScreen = [self.window convertRectToScreen:self.frame];
     return frameRelativeToScreen;
+}
+
+-(NSTrackingArea *)__trackingArea{
+    return XUI_GET_PROPERTY(kTrackingArea);
+}
+
+-(void)__setTrackingArea:(NSTrackingArea *)ta{
+    XUI_SET_PROPERTY(ta, kTrackingArea);
 }
 
 #pragma mark - Swizzle Functions
@@ -211,4 +220,37 @@
     [self xui_removeFromSuperview];
 }
 
+- (void)xui_updateTrackingAreas{
+    [self xui_updateTrackingAreas];
+    NSTrackingArea *ta = [self __trackingArea];
+    if(nil != ta) {
+        [self removeTrackingArea:ta];
+    }
+    
+    ta = [[NSTrackingArea alloc] initWithRect:[self bounds] options:NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingActiveAlways owner:self userInfo:nil];
+    [self __setTrackingArea:ta];
+    [self addTrackingArea:ta];
+}
+
+#pragma mark - Redirect function
+//Because of the NSControl swizzle, it will redirect mouseUp with the SEL, we can add the SEL to redirect to the right action
+- (void)xui_mouseDown:(NSEvent *)event{
+    [self mouseDown:event];
+}
+
+- (void)xui_mouseUp:(NSEvent *)event{
+    [self mouseUp:event];
+}
+
+-(void)xui_mouseMoved:(NSEvent *)event{
+    [self mouseMoved:event];
+}
+
+- (void)xui_mouseEntered:(NSEvent *)event{
+    [self mouseEntered:event];
+}
+
+- (void)xui_mouseExited:(NSEvent *)event{
+    [self mouseExited:event];
+}
 @end

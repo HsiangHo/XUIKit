@@ -14,7 +14,7 @@ enum {
     XUIControlEventTouchDownRepeat      = 1 <<  1,
     XUIControlEventTouchUpInside        = 1 <<  2,
     XUIControlEventTouchUpOutside       = 1 <<  3,
-    XUIControlEventAllEvents            = 0xFFFFFFFF,
+    XUIControlEventAllEvents            = 0xFFFFFFFF
 };
 typedef NSUInteger XUIControlEvents;
 
@@ -25,7 +25,7 @@ enum {
     XUIControlStateUp           = 1 << 2,
     XUIControlStateDisabled     = 1 << 3,
     XUIControlStateFocused      = 1 << 4,
-    XUIControlStateNotKey       = 1 << 11,
+    XUIControlStateNotKey       = 1 << 11
 };
 typedef NSUInteger XUIControlState;
 
