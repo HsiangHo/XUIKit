@@ -86,7 +86,7 @@
     
     if([self eventInside:event]) {
             [self sendActionsForControlEvents:XUIControlEventTouchUpInside];
-    } else {
+    }else{
         [self sendActionsForControlEvents:XUIControlEventTouchUpOutside];
     }
     
