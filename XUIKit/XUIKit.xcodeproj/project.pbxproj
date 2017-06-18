@@ -29,6 +29,10 @@
 		98C409161EF014FE00F0A4F6 /* NSControl+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 98C409141EF014FE00F0A4F6 /* NSControl+Private.h */; };
 		98D158461EEAB252005A0434 /* XUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 98D158441EEAB252005A0434 /* XUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98ED22141EF44B7D004BD87D /* XUIType.h in Headers */ = {isa = PBXBuildFile; fileRef = 987923781EF2A88C00F2534A /* XUIType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		98ED222E1EF639E6004BD87D /* XUILabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 98ED222C1EF639E6004BD87D /* XUILabel.h */; };
+		98ED222F1EF639E6004BD87D /* XUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 98ED222D1EF639E6004BD87D /* XUILabel.m */; };
+		98ED22331EF64056004BD87D /* NSTextField+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98ED22311EF64056004BD87D /* NSTextField+XUIAdditions.h */; };
+		98ED22341EF64056004BD87D /* NSTextField+XUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 98ED22321EF64056004BD87D /* NSTextField+XUIAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +60,10 @@
 		98D158411EEAB252005A0434 /* XUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98D158441EEAB252005A0434 /* XUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XUIKit.h; sourceTree = "<group>"; };
 		98D158451EEAB252005A0434 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98ED222C1EF639E6004BD87D /* XUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUILabel.h; sourceTree = "<group>"; };
+		98ED222D1EF639E6004BD87D /* XUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUILabel.m; sourceTree = "<group>"; };
+		98ED22311EF64056004BD87D /* NSTextField+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextField+XUIAdditions.h"; sourceTree = "<group>"; };
+		98ED22321EF64056004BD87D /* NSTextField+XUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextField+XUIAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +176,8 @@
 				98D158441EEAB252005A0434 /* XUIKit.h */,
 				987923791EF2B68200F2534A /* XUIBase */,
 				9879230E1EF1484C00F2534A /* XUIHelper */,
+				98ED22301EF63FE4004BD87D /* XUITextfield */,
+				98ED222B1EF63961004BD87D /* XUILabel */,
 				98C4090F1EEFF5A900F0A4F6 /* XUIControl */,
 				98514C591EEEDB8C0001B8A6 /* XUIColor */,
 				9813E11A1EED82F3009F1495 /* XUIProperty */,
@@ -179,6 +189,24 @@
 			path = XUIKit;
 			sourceTree = "<group>";
 		};
+		98ED222B1EF63961004BD87D /* XUILabel */ = {
+			isa = PBXGroup;
+			children = (
+				98ED222C1EF639E6004BD87D /* XUILabel.h */,
+				98ED222D1EF639E6004BD87D /* XUILabel.m */,
+			);
+			name = XUILabel;
+			sourceTree = "<group>";
+		};
+		98ED22301EF63FE4004BD87D /* XUITextfield */ = {
+			isa = PBXGroup;
+			children = (
+				98ED22311EF64056004BD87D /* NSTextField+XUIAdditions.h */,
+				98ED22321EF64056004BD87D /* NSTextField+XUIAdditions.m */,
+			);
+			name = XUITextfield;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -187,6 +215,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				98D158461EEAB252005A0434 /* XUIKit.h in Headers */,
+				98ED222E1EF639E6004BD87D /* XUILabel.h in Headers */,
+				98ED22331EF64056004BD87D /* NSTextField+XUIAdditions.h in Headers */,
 				98C409161EF014FE00F0A4F6 /* NSControl+Private.h in Headers */,
 				987923461EF1854100F2534A /* NSView+XUIAdditions.h in Headers */,
 				98C409121EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h in Headers */,
@@ -276,9 +306,11 @@
 				987923771EF2A53E00F2534A /* XUIControlTargetAction.m in Sources */,
 				9854CFE11EED2EA4008A3454 /* XUIView.m in Sources */,
 				9854CFBF1EED212C008A3454 /* XUIResponder.m in Sources */,
+				98ED22341EF64056004BD87D /* NSTextField+XUIAdditions.m in Sources */,
 				987923471EF1854100F2534A /* NSView+XUIAdditions.m in Sources */,
 				987923121EF1486400F2534A /* XUIMethodsHelper.m in Sources */,
 				9879237E1EF2B6D100F2534A /* NSButton+XUIAdditions.m in Sources */,
+				98ED222F1EF639E6004BD87D /* XUILabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
