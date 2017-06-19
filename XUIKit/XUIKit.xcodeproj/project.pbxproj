@@ -33,6 +33,8 @@
 		98ED222F1EF639E6004BD87D /* XUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 98ED222D1EF639E6004BD87D /* XUILabel.m */; };
 		98ED22331EF64056004BD87D /* NSTextField+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98ED22311EF64056004BD87D /* NSTextField+XUIAdditions.h */; };
 		98ED22341EF64056004BD87D /* NSTextField+XUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 98ED22321EF64056004BD87D /* NSTextField+XUIAdditions.m */; };
+		98ED223A1EF6506D004BD87D /* XUITextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 98ED22381EF6506D004BD87D /* XUITextField.h */; };
+		98ED223B1EF6506D004BD87D /* XUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 98ED22391EF6506D004BD87D /* XUITextField.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,8 @@
 		98ED222D1EF639E6004BD87D /* XUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUILabel.m; sourceTree = "<group>"; };
 		98ED22311EF64056004BD87D /* NSTextField+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextField+XUIAdditions.h"; sourceTree = "<group>"; };
 		98ED22321EF64056004BD87D /* NSTextField+XUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextField+XUIAdditions.m"; sourceTree = "<group>"; };
+		98ED22381EF6506D004BD87D /* XUITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUITextField.h; sourceTree = "<group>"; };
+		98ED22391EF6506D004BD87D /* XUITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUITextField.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +207,8 @@
 			children = (
 				98ED22311EF64056004BD87D /* NSTextField+XUIAdditions.h */,
 				98ED22321EF64056004BD87D /* NSTextField+XUIAdditions.m */,
+				98ED22381EF6506D004BD87D /* XUITextField.h */,
+				98ED22391EF6506D004BD87D /* XUITextField.m */,
 			);
 			name = XUITextfield;
 			sourceTree = "<group>";
@@ -226,6 +232,7 @@
 				98514C5C1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h in Headers */,
 				9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */,
 				987923111EF1486400F2534A /* XUIMethodsHelper.h in Headers */,
+				98ED223A1EF6506D004BD87D /* XUITextField.h in Headers */,
 				987923761EF2A53E00F2534A /* XUIControlTargetAction.h in Headers */,
 				9813E11D1EED91BB009F1495 /* XUIProperty.h in Headers */,
 			);
@@ -302,6 +309,7 @@
 				987923491EF188E100F2534A /* NSControl+Private.m in Sources */,
 				987923481EF188DD00F2534A /* NSControl+XUIAdditions.m in Sources */,
 				987923131EF1550F00F2534A /* NSColor+XUIAdditions.m in Sources */,
+				98ED223B1EF6506D004BD87D /* XUITextField.m in Sources */,
 				9813E11E1EED91BB009F1495 /* XUIProperty.m in Sources */,
 				987923771EF2A53E00F2534A /* XUIControlTargetAction.m in Sources */,
 				9854CFE11EED2EA4008A3454 /* XUIView.m in Sources */,
