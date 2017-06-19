@@ -28,6 +28,8 @@
 		98C409121EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98C409101EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98C409161EF014FE00F0A4F6 /* NSControl+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 98C409141EF014FE00F0A4F6 /* NSControl+Private.h */; };
 		98D158461EEAB252005A0434 /* XUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 98D158441EEAB252005A0434 /* XUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		98D358D81EF7EEB5004D4218 /* XUIImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 98D358D61EF7EEB5004D4218 /* XUIImageView.h */; };
+		98D358D91EF7EEB5004D4218 /* XUIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98D358D71EF7EEB5004D4218 /* XUIImageView.m */; };
 		98ED22141EF44B7D004BD87D /* XUIType.h in Headers */ = {isa = PBXBuildFile; fileRef = 987923781EF2A88C00F2534A /* XUIType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98ED222E1EF639E6004BD87D /* XUILabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 98ED222C1EF639E6004BD87D /* XUILabel.h */; };
 		98ED222F1EF639E6004BD87D /* XUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 98ED222D1EF639E6004BD87D /* XUILabel.m */; };
@@ -62,6 +64,8 @@
 		98D158411EEAB252005A0434 /* XUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98D158441EEAB252005A0434 /* XUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XUIKit.h; sourceTree = "<group>"; };
 		98D158451EEAB252005A0434 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98D358D61EF7EEB5004D4218 /* XUIImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIImageView.h; sourceTree = "<group>"; };
+		98D358D71EF7EEB5004D4218 /* XUIImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIImageView.m; sourceTree = "<group>"; };
 		98ED222C1EF639E6004BD87D /* XUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUILabel.h; sourceTree = "<group>"; };
 		98ED222D1EF639E6004BD87D /* XUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUILabel.m; sourceTree = "<group>"; };
 		98ED22311EF64056004BD87D /* NSTextField+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextField+XUIAdditions.h"; sourceTree = "<group>"; };
@@ -178,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				98D158441EEAB252005A0434 /* XUIKit.h */,
+				98D358D51EF7EE6B004D4218 /* XUIImageView */,
 				987923791EF2B68200F2534A /* XUIBase */,
 				9879230E1EF1484C00F2534A /* XUIHelper */,
 				98ED22301EF63FE4004BD87D /* XUITextfield */,
@@ -191,6 +196,15 @@
 				98D158451EEAB252005A0434 /* Info.plist */,
 			);
 			path = XUIKit;
+			sourceTree = "<group>";
+		};
+		98D358D51EF7EE6B004D4218 /* XUIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				98D358D61EF7EEB5004D4218 /* XUIImageView.h */,
+				98D358D71EF7EEB5004D4218 /* XUIImageView.m */,
+			);
+			name = XUIImageView;
 			sourceTree = "<group>";
 		};
 		98ED222B1EF63961004BD87D /* XUILabel */ = {
@@ -228,6 +242,7 @@
 				98C409121EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h in Headers */,
 				9854CFE01EED2EA4008A3454 /* XUIView.h in Headers */,
 				98ED22141EF44B7D004BD87D /* XUIType.h in Headers */,
+				98D358D81EF7EEB5004D4218 /* XUIImageView.h in Headers */,
 				9879237D1EF2B6D100F2534A /* NSButton+XUIAdditions.h in Headers */,
 				98514C5C1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h in Headers */,
 				9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */,
@@ -319,6 +334,7 @@
 				987923121EF1486400F2534A /* XUIMethodsHelper.m in Sources */,
 				9879237E1EF2B6D100F2534A /* NSButton+XUIAdditions.m in Sources */,
 				98ED222F1EF639E6004BD87D /* XUILabel.m in Sources */,
+				98D358D91EF7EEB5004D4218 /* XUIImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
