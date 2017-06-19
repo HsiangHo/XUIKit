@@ -14,5 +14,4 @@
 @property(nullable, nonatomic,copy)     NSAttributedString     *attributedText;
 @property(nonatomic, assign)            NSLineBreakMode         lineBreakMode;
 
-
 @end
