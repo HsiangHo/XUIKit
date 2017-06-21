@@ -9,6 +9,8 @@
 #ifndef XUIType_h
 #define XUIType_h
 
+#define XUI_UNAVAILABLE __attribute__((unavailable("unavailable for XUIKit")))
+
 enum {
     XUIControlEventTouchDown            = 1 <<  0,
     XUIControlEventTouchDownRepeat      = 1 <<  1,
