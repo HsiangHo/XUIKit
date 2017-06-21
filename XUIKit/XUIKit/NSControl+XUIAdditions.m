@@ -38,7 +38,7 @@
     XUI_SET_PROPERTY([NSNumber numberWithBool:acceptsFirstMouse], kAcceptsFirstMouse);
 }
 
-- (XUIControlState)state
+- (XUIControlState)controlState
 {
     return [self __currentState];
 }

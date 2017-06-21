@@ -11,7 +11,7 @@
 
 @interface NSControl (XUIAdditions)
 
-@property(nonatomic,readonly) XUIControlState state;
+@property(nonatomic,readonly) XUIControlState controlState;
 
 @property (nonatomic, assign) BOOL acceptsFirstMouse;
 
