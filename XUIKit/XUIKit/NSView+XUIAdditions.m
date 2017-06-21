@@ -164,6 +164,7 @@
 
 - (void)__initializeNSView_XUIAdditions{
     [self setWantsLayer:YES];
+    [self setUserInteractionEnabled:YES];
 }
 
 - (NSView *)__topSubview
