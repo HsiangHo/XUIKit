@@ -26,6 +26,7 @@
     XUISwizzleMethod(cls, '-', @selector(xui_mouseEntered:),@selector(mouseEntered:));
     XUISwizzleMethod(cls, '-', @selector(xui_mouseExited:),@selector(mouseExited:));
     XUISwizzleMethod(cls, '-', @selector(xui_mouseMoved:),@selector(mouseMoved:));
+    XUISwizzleMethod(cls, '-', @selector(xui_hitTest:),@selector(hitTest:));
 }
 
 - (BOOL)acceptsFirstMouse
@@ -62,8 +63,6 @@
 #pragma mark - Swizzle Functions
 
 - (void)xui_mouseDown:(NSEvent *)event{
-    [self xui_mouseDown:event];
-    
     [self __stateWillChange];
     [self __setCurrentState:XUIControlStateDown];
     [self __stateDidChange];
@@ -73,13 +72,17 @@
     } else {
         [self sendActionsForControlEvents:XUIControlEventTouchDownRepeat];
     }
-    
     [self setNeedsDisplay];
+    
+    if(!self.enabled){
+        [self xui_mouseDown:event];
+    }else{
+        [self xui_mouseDown:event];
+        [self mouseUp:event];
+    }
 }
 
 - (void)xui_mouseUp:(NSEvent *)event{
-    [self xui_mouseUp:event];
-
     [self __stateWillChange];
     [self __setCurrentState:XUIControlStateUp];
     [self __stateDidChange];
@@ -89,8 +92,9 @@
     }else{
         [self sendActionsForControlEvents:XUIControlEventTouchUpOutside];
     }
-    
     [self setNeedsDisplay];
+    
+    [self xui_mouseUp:event];
 }
 
 -(void)xui_mouseMoved:(NSEvent *)event{
@@ -121,6 +125,14 @@
     [self __stateDidChange];
     
     [self setNeedsDisplay];
+}
+
+-(NSView *)xui_hitTest:(NSPoint)point{
+    NSView *view = nil;
+    if ([self isUserInteractionEnabled]) {
+        view = [self xui_hitTest:point];
+    }
+    return view;
 }
 
 #pragma mark - Private Action
