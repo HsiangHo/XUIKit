@@ -27,6 +27,11 @@ typedef enum : NSUInteger {
 @property(nonatomic,readonly,strong)    XUILabel                    *titleLabel;
 @property(nonatomic,readonly,strong)    XUIImageView                *imageView;
 
+-(void)setTitle:(NSString *)title   XUI_UNAVAILABLE;
+-(void)setAttributedStringValue:(NSAttributedString *)attributedStringValue XUI_UNAVAILABLE;
+-(void)setImage:(NSImage *)image XUI_UNAVAILABLE;
+-(void)setFont:(NSFont *)font XUI_UNAVAILABLE;
+
 - (NSRect)backgroundRectForBounds:(NSRect)bounds;
 - (NSRect)contentRectForBounds:(NSRect)bounds;
 - (NSRect)titleRectForContentRect:(NSRect)contentRect;
@@ -58,5 +63,7 @@ typedef enum : NSUInteger {
 @property(nonatomic,readonly,strong) NSFont                 *currentFont;
 @property(nonatomic,readonly,assign) BOOL                   currentUnderLined;
 @property(nonatomic,readonly,strong) NSColor                *currentBackgroundColor;
+
+
 
 @end

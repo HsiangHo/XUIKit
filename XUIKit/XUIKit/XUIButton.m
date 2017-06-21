@@ -11,7 +11,10 @@
 #import "XUILabel.h"
 #import "XUIImageView.h"
 #import "NSView+XUIAdditions.h"
+#import "NSControl+XUIAdditions.h"
 
+#define INSETS_TO_FRAME(EdgeInsets,Frame)\
+NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),NSWidth(Frame)*(1 - EdgeInsets.right - EdgeInsets.left) ,NSHeight(Frame)*(1 - EdgeInsets.top - EdgeInsets.bottom))
 
 @interface XUIButtonContent : NSObject
 
@@ -42,13 +45,14 @@
 
 @implementation XUIButton{
     NSMutableDictionary		*_contentLookup;
-    NSEdgeInsets           _titleEdgeInsets;
-    NSEdgeInsets           _imageEdgeInsets;
+    NSEdgeInsets            _titleEdgeInsets;
+    NSEdgeInsets            _imageEdgeInsets;
     
-    XUIImageView           *_imageView;
-    XUILabel               *_titleView;
+    XUIImageView            *_imageView;
+    XUILabel                *_titleView;
     
     struct {
+        unsigned int isNormalStringValue:1;
         unsigned int dimsInBackground:1;
         unsigned int buttonType:8;
     } _buttonFlags;
@@ -78,9 +82,7 @@
 -(XUILabel *)titleLabel{
     if(nil == _titleView) {
         _titleView = [[XUILabel alloc] initWithFrame:NSZeroRect];
-        _titleView.userInteractionEnabled = NO;
         _titleView.backgroundColor = [NSColor clearColor];
-        _titleView.hidden = YES;
         [self addSubview:_titleView];
     }
     return _titleView;
@@ -90,7 +92,7 @@
     if(nil == _imageView) {
         _imageView = [[XUIImageView alloc] initWithFrame:NSZeroRect];
         _imageView.backgroundColor = [NSColor clearColor];
-        _imageView.hidden = YES;
+        [self addSubview:_imageView];
     }
     return _imageView;
 }
@@ -115,7 +117,46 @@
 #pragma mark - Private method
 
 -(void)__initializeXUIButton{
+    _contentLookup = [[NSMutableDictionary alloc] init];
+    _buttonFlags.buttonType = XUIButtonTypeCustom;
+    _buttonFlags.dimsInBackground = YES;
+    _buttonFlags.isNormalStringValue = YES;
+    XUIButtonContent *content = [self __contentForState:XUIControlStateNormal];
+    [content setTitle:@""];
+    [content setTitleColor:[NSColor blackColor]];
+    [content setBackgroundImage:nil];
+    [content setImage:nil];
+    [content setAttributedTitle:nil];
+    [content setUnderLined:NO];
+    [content setFont:[NSFont fontWithName:@"Helvetica Neue Light" size:15]];
+    [content setBackgroundColor:[NSColor whiteColor]];
     
+    _imageEdgeInsets = NSEdgeInsetsMake(0, 0.05, 0, 0.65);
+    _titleEdgeInsets = NSEdgeInsetsMake(0, 0.35, 0, 0.1);
+    
+    [super setTitle:@""];
+    [self setBezelStyle:NSRegularSquareBezelStyle];
+    [self setButtonType:NSMomentaryChangeButton];
+    [self setImagePosition:NSImageOnly];
+    [(NSButtonCell *)[self cell] setImageScaling:NSImageScaleProportionallyUpOrDown];
+    [self setFocusRingType:NSFocusRingTypeNone];
+    
+    [self.imageView setUserInteractionEnabled:NO];
+    [self.titleLabel setUserInteractionEnabled:NO];
+    [self __updateLookup];
+}
+
+-(void)__updateLookup{
+    [self.imageView setFrame:INSETS_TO_FRAME(_imageEdgeInsets,self.frame)];
+    [self.titleLabel setFrame:INSETS_TO_FRAME(_titleEdgeInsets,self.frame)];
+    [super setImage:[self currentBackgroundImage]];
+    [_imageView setImage:[self currentImage]];
+    if (_buttonFlags.isNormalStringValue) {
+        [_titleView setStringValue:[self currentTitle]];
+        [_titleView setFont:[self currentFont]];
+        [_titleView setBackgroundColor:[self currentBackgroundColor]];
+        [_titleView setTextColor:[self currentTitleColor]];
+    }
 }
 
 #pragma mark - Override method
@@ -142,7 +183,7 @@
 }
 
 - (void)__stateDidChange{
-    
+    [self __updateLookup];
 }
 
 #pragma mark - Content Lookup
@@ -246,7 +287,7 @@
 }
 
 - (NSString *)currentTitle{
-    NSString *title = [self titleForState:self.state];
+    NSString *title = [self titleForState:self.controlState];
     if(nil == title) {
         title = [self titleForState:XUIControlStateNormal];
     }
@@ -254,7 +295,7 @@
 }
 
 -(NSAttributedString *)currentAttributedTitle{
-    NSAttributedString *attributedTitle = [self attributedTitleForState:self.state];
+    NSAttributedString *attributedTitle = [self attributedTitleForState:self.controlState];
     if(nil == attributedTitle) {
         attributedTitle = [self attributedTitleForState:XUIControlStateNormal];
     }
@@ -262,7 +303,7 @@
 }
 
 -(NSColor *)currentTitleColor{
-    NSColor *titleColor = [self titleColorForState:self.state];
+    NSColor *titleColor = [self titleColorForState:self.controlState];
     if(nil == titleColor) {
         titleColor = [self titleColorForState:XUIControlStateNormal];
     }
@@ -270,7 +311,7 @@
 }
 
 -(NSImage *)currentBackgroundImage{
-    NSImage *backgroundImage = [self backgroundImageForState:self.state];
+    NSImage *backgroundImage = [self backgroundImageForState:self.controlState];
     if(nil == backgroundImage) {
         backgroundImage = [self backgroundImageForState:XUIControlStateNormal];
     }
@@ -278,7 +319,7 @@
 }
 
 -(NSImage *)currentImage{
-    NSImage *image = [self imageForState:self.state];
+    NSImage *image = [self imageForState:self.controlState];
     if(nil == image) {
         image = [self imageForState:XUIControlStateNormal];
     }
@@ -286,7 +327,7 @@
 }
 
 -(NSFont *)currentFont{
-    NSColor *font = [self FontForState:self.state];
+    NSColor *font = [self FontForState:self.controlState];
     if(nil == font) {
         font = [self FontForState:XUIControlStateNormal];
     }
@@ -294,11 +335,11 @@
 }
 
 -(BOOL)currentUnderLined{
-    return [self isUnderlinedForState:self.state];
+    return [self isUnderlinedForState:self.controlState];
 }
 
 -(NSColor *)currentBackgroundColor{
-    NSColor *backgroundColor = [self backgroundColorForState:self.state];
+    NSColor *backgroundColor = [self backgroundColorForState:self.controlState];
     if(nil == backgroundColor) {
         backgroundColor = [self backgroundColorForState:XUIControlStateNormal];
     }
