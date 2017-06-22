@@ -14,6 +14,7 @@ typedef NSResponder XUIResponder;
 
 @property (strong, nonatomic, readonly) XUIResponder *defaultFirstResponder;
 
++ (NSResponder *)currentFirstResponder;
 - (BOOL)acceptsFirstMouse:(NSEvent *)event;
 
 @end
