@@ -25,6 +25,8 @@
 		987923771EF2A53E00F2534A /* XUIControlTargetAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 987923751EF2A53E00F2534A /* XUIControlTargetAction.m */; };
 		98C409121EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98C409101EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98C409161EF014FE00F0A4F6 /* NSControl+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 98C409141EF014FE00F0A4F6 /* NSControl+Private.h */; };
+		98CDB03C1EFC2291008C0C6C /* NSResponder+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 98CDB03A1EFC2291008C0C6C /* NSResponder+Private.h */; };
+		98CDB03D1EFC2291008C0C6C /* NSResponder+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDB03B1EFC2291008C0C6C /* NSResponder+Private.m */; };
 		98D158461EEAB252005A0434 /* XUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 98D158441EEAB252005A0434 /* XUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98D358D81EF7EEB5004D4218 /* XUIImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 98D358D61EF7EEB5004D4218 /* XUIImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98D358D91EF7EEB5004D4218 /* XUIImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98D358D71EF7EEB5004D4218 /* XUIImageView.m */; };
@@ -59,6 +61,8 @@
 		98C409111EEFF9B300F0A4F6 /* NSControl+XUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSControl+XUIAdditions.m"; sourceTree = "<group>"; };
 		98C409141EF014FE00F0A4F6 /* NSControl+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSControl+Private.h"; sourceTree = "<group>"; };
 		98C409151EF014FE00F0A4F6 /* NSControl+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSControl+Private.m"; sourceTree = "<group>"; };
+		98CDB03A1EFC2291008C0C6C /* NSResponder+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSResponder+Private.h"; sourceTree = "<group>"; };
+		98CDB03B1EFC2291008C0C6C /* NSResponder+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSResponder+Private.m"; sourceTree = "<group>"; };
 		98D158411EEAB252005A0434 /* XUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98D158441EEAB252005A0434 /* XUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XUIKit.h; sourceTree = "<group>"; };
 		98D158451EEAB252005A0434 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 			children = (
 				9854CFBC1EED212C008A3454 /* XUIResponder.h */,
 				9854CFBD1EED212C008A3454 /* XUIResponder.m */,
+				98CDB03A1EFC2291008C0C6C /* NSResponder+Private.h */,
+				98CDB03B1EFC2291008C0C6C /* NSResponder+Private.m */,
 			);
 			name = XUIResponder;
 			sourceTree = "<group>";
@@ -249,6 +255,7 @@
 				9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */,
 				987923111EF1486400F2534A /* XUIMethodsHelper.h in Headers */,
 				987923761EF2A53E00F2534A /* XUIControlTargetAction.h in Headers */,
+				98CDB03C1EFC2291008C0C6C /* NSResponder+Private.h in Headers */,
 				9813E11D1EED91BB009F1495 /* XUIProperty.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,6 +342,7 @@
 				987923121EF1486400F2534A /* XUIMethodsHelper.m in Sources */,
 				98ED222F1EF639E6004BD87D /* XUILabel.m in Sources */,
 				98D358D91EF7EEB5004D4218 /* XUIImageView.m in Sources */,
+				98CDB03D1EFC2291008C0C6C /* NSResponder+Private.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
