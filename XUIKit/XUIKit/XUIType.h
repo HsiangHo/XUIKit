@@ -26,8 +26,7 @@ enum {
     XUIControlStateDown         = 1 << 1,
     XUIControlStateUp           = 1 << 2,
     XUIControlStateDisabled     = 1 << 3,
-    XUIControlStateFocused      = 1 << 4,
-    XUIControlStateNotKey       = 1 << 11
+    XUIControlStateFocused      = 1 << 4
 };
 typedef NSUInteger XUIControlState;
 

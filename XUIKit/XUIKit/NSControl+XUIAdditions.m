@@ -15,7 +15,13 @@
 
 #define kAcceptsFirstMouse          @"acceptsFirstMouse"
 #define kTargetActions              @"targetActions"
-#define kCurrentState               @"currentState"
+#define kCurrentStateFlags          @"currentStateFlag"
+
+typedef struct _xui_stateFlags{
+    unsigned char down;
+    unsigned char tracking;
+    unsigned char inside;
+}xui_stateFlags;
 
 @implementation NSControl (XUIAdditions)
 
@@ -27,6 +33,7 @@
     XUISwizzleMethod(cls, '-', @selector(xui_mouseExited:),@selector(mouseExited:));
     XUISwizzleMethod(cls, '-', @selector(xui_mouseMoved:),@selector(mouseMoved:));
     XUISwizzleMethod(cls, '-', @selector(xui_hitTest:),@selector(hitTest:));
+    XUISwizzleMethod(cls, '-', @selector(xui_setEnabled:),@selector(setEnabled:));
 }
 
 - (BOOL)acceptsFirstMouse
@@ -41,7 +48,26 @@
 
 - (XUIControlState)controlState
 {
-    return [self __currentState];
+    XUIControlState state = XUIControlStateNormal;
+    xui_stateFlags flags = [self __currentStateFlags];
+    if(self.enabled){
+        if(flags.tracking && flags.inside){
+            state = XUIControlStateHovered;
+        }else if(!flags.tracking && flags.inside){
+            if(flags.down){
+                state = XUIControlStateDown;
+            }else{
+                state = XUIControlStateUp;
+            }
+        }else{
+            if(self == [[self window] firstResponder]){
+                state = XUIControlStateFocused;
+            }
+        }
+    }else{
+        state = XUIControlStateDisabled;
+    }
+    return state;
 }
 
 #pragma mark - Override
@@ -52,31 +78,37 @@
 
 #pragma mark - Private Functions
 
--(XUIControlState)__currentState{
-    return [(NSNumber *)XUI_GET_PROPERTY(kCurrentState) unsignedIntegerValue];
+-(xui_stateFlags)__currentStateFlags{
+    xui_stateFlags flags = { 0 };
+    [(NSValue *)XUI_GET_PROPERTY(kCurrentStateFlags) getValue:&flags];
+    return flags;
 }
 
--(void)__setCurrentState:(XUIControlState)state{
-    XUI_SET_PROPERTY([NSNumber numberWithUnsignedInteger:state], kCurrentState);
+-(void)__setCurrentStateFlags:(xui_stateFlags)flags{
+    NSValue *value = [NSValue valueWithBytes:&flags objCType:@encode(xui_stateFlags)];
+    XUI_SET_PROPERTY(value, kCurrentStateFlags);
 }
 
 #pragma mark - Swizzle Functions
 
 - (void)xui_mouseDown:(NSEvent *)event{
     [self __stateWillChange];
-    [self __setCurrentState:XUIControlStateDown];
+    xui_stateFlags flags = [self __currentStateFlags];
+    flags.down = 1;
+    flags.inside = 1;
+    flags.tracking = 0;
+    [self __setCurrentStateFlags:flags];
     [self __stateDidChange];
-    
-    if([event clickCount] < 2) {
-        [self sendActionsForControlEvents:XUIControlEventTouchDown];
-    } else {
-        [self sendActionsForControlEvents:XUIControlEventTouchDownRepeat];
-    }
     [self setNeedsDisplay];
     
     if(!self.enabled){
         [self xui_mouseDown:event];
     }else{
+        if([event clickCount] < 2) {
+            [self sendActionsForControlEvents:XUIControlEventTouchDown];
+        } else {
+            [self sendActionsForControlEvents:XUIControlEventTouchDownRepeat];
+        }
         [self xui_mouseDown:event];
         [self mouseUp:event];
     }
@@ -84,16 +116,20 @@
 
 - (void)xui_mouseUp:(NSEvent *)event{
     [self __stateWillChange];
-    [self __setCurrentState:XUIControlStateUp];
+    xui_stateFlags flags = [self __currentStateFlags];
+    flags.down = 0;
+    flags.tracking = 0;
+    [self __setCurrentStateFlags:flags];
     [self __stateDidChange];
-    
-    if([self eventInside:event]) {
-            [self sendActionsForControlEvents:XUIControlEventTouchUpInside];
-    }else{
-        [self sendActionsForControlEvents:XUIControlEventTouchUpOutside];
-    }
     [self setNeedsDisplay];
     
+    if(self.enabled){
+        if([self eventInside:event]) {
+            [self sendActionsForControlEvents:XUIControlEventTouchUpInside];
+        }else{
+            [self sendActionsForControlEvents:XUIControlEventTouchUpOutside];
+        }
+    }
     [self xui_mouseUp:event];
 }
 
@@ -101,7 +137,10 @@
     [self xui_mouseMoved:event];
     
     [self __stateWillChange];
-    [self __setCurrentState:XUIControlStateHovered];
+    xui_stateFlags flags = [self __currentStateFlags];
+    flags.tracking = 1;
+    flags.inside = 1;
+    [self __setCurrentStateFlags:flags];
     [self __stateDidChange];
     
     [self setNeedsDisplay];
@@ -111,7 +150,10 @@
     [self xui_mouseEntered:event];
     
     [self __stateWillChange];
-    [self __setCurrentState:XUIControlStateHovered];
+    xui_stateFlags flags = [self __currentStateFlags];
+    flags.tracking = 1;
+    flags.inside = 1;
+    [self __setCurrentStateFlags:flags];
     [self __stateDidChange];
     
     [self setNeedsDisplay];
@@ -121,7 +163,10 @@
     [self xui_mouseExited:event];
     
     [self __stateWillChange];
-    [self __setCurrentState:XUIControlStateNormal];
+    xui_stateFlags flags = [self __currentStateFlags];
+    flags.tracking = 0;
+    flags.inside = 0;
+    [self __setCurrentStateFlags:flags];
     [self __stateDidChange];
     
     [self setNeedsDisplay];
@@ -133,6 +178,16 @@
         view = [self xui_hitTest:point];
     }
     return view;
+}
+
+-(void)xui_setEnabled:(BOOL)enabled{
+    if (enabled != [self isEnabled]) {
+        [self __stateWillChange];
+        [self xui_setEnabled:enabled];
+        [self __stateDidChange];
+    }else{
+        [self xui_setEnabled:enabled];
+    }
 }
 
 #pragma mark - Private Action
