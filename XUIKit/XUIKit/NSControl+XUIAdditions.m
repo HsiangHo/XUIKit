@@ -7,6 +7,7 @@
 //
 
 #import "NSControl+XUIAdditions.h"
+#import "NSResponder+Private.h"
 #import "XUIProperty.h"
 #import "XUIView.h"
 #import "XUIControlTargetAction.h"
@@ -74,6 +75,16 @@ typedef struct _xui_stateFlags{
 
 - (BOOL)acceptsFirstMouse:(NSEvent *)event{
     return [self acceptsFirstMouse];
+}
+
+-(BOOL)becomeFirstResponder{
+    return [super becomeFirstResponder];
+}
+
+-(void)__firstResponderChanged:(NSResponder *)oldFirstResponder withNewResponder:(NSResponder *)newFirstResponder{
+    if(oldFirstResponder == self || newFirstResponder == self){
+        [self __stateDidChange];
+    }
 }
 
 #pragma mark - Private Functions
