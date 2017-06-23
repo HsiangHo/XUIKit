@@ -35,6 +35,7 @@ typedef struct _xui_stateFlags{
     XUISwizzleMethod(cls, '-', @selector(xui_mouseMoved:),@selector(mouseMoved:));
     XUISwizzleMethod(cls, '-', @selector(xui_hitTest:),@selector(hitTest:));
     XUISwizzleMethod(cls, '-', @selector(xui_setEnabled:),@selector(setEnabled:));
+    XUISwizzleMethod(cls, '-', @selector(xui_becomeFirstResponder),@selector(becomeFirstResponder));
 }
 
 - (BOOL)acceptsFirstMouse
@@ -77,10 +78,6 @@ typedef struct _xui_stateFlags{
     return [self acceptsFirstMouse];
 }
 
--(BOOL)becomeFirstResponder{
-    return [super becomeFirstResponder];
-}
-
 -(void)__firstResponderChanged:(NSResponder *)oldFirstResponder withNewResponder:(NSResponder *)newFirstResponder{
     if(oldFirstResponder == self || newFirstResponder == self){
         [self __stateDidChange];
@@ -101,6 +98,12 @@ typedef struct _xui_stateFlags{
 }
 
 #pragma mark - Swizzle Functions
+
+-(BOOL)xui_becomeFirstResponder{
+    BOOL bRtn = [self xui_becomeFirstResponder];
+    [super becomeFirstResponder];
+    return bRtn;
+}
 
 - (void)xui_mouseDown:(NSEvent *)event{
     [self __stateWillChange];
