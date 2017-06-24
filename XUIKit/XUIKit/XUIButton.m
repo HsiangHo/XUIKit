@@ -26,6 +26,7 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
 @property (nonatomic,strong) NSFont                 *font;
 @property (nonatomic,assign) BOOL                   underLined;
 @property (nonatomic,strong) NSColor                *backgroundColor;
+@property (nonatomic,assign) CGFloat                cornerRadius;
 
 @end
 
@@ -38,6 +39,7 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
     NSFont                 *_font;
     BOOL                   _underLined;
     NSColor                *_backgroundColor;
+    CGFloat                _cornerRadius;
 }
 
 @end
@@ -129,7 +131,7 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
     [content setAttributedTitle:nil];
     [content setUnderLined:NO];
     [content setFont:[NSFont fontWithName:@"Helvetica Neue Light" size:15]];
-    [content setBackgroundColor:[NSColor whiteColor]];
+//    [content setBackgroundColor:[NSColor whiteColor]];
     
     _imageEdgeInsets = NSEdgeInsetsMake(0, 0.05, 0, 0.65);
     _titleEdgeInsets = NSEdgeInsetsMake(0, 0.35, 0, 0.1);
@@ -151,10 +153,11 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
     [self.titleLabel setFrame:INSETS_TO_FRAME(_titleEdgeInsets,self.frame)];
     [super setImage:[self currentBackgroundImage]];
     [_imageView setImage:[self currentImage]];
+    [self setBackgroundColor:[self currentBackgroundColor]];
+    [self setCornerRadius:[self currentcornerRadius]];
     if (_buttonFlags.isNormalStringValue) {
         [_titleView setStringValue:[self currentTitle]];
         [_titleView setFont:[self currentFont]];
-        [_titleView setBackgroundColor:[self currentBackgroundColor]];
         [_titleView setTextColor:[self currentTitleColor]];
     }
 }
@@ -167,7 +170,6 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
         [self __initializeXUIButton];
     }
     return self;
-
 }
 
 -(instancetype)initWithFrame:(NSRect)frameRect{
@@ -184,6 +186,10 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
 
 - (void)__stateDidChange{
     [self __updateLookup];
+}
+
+-(void)drawRect:(NSRect)dirtyRect{
+    
 }
 
 #pragma mark - Content Lookup
@@ -254,6 +260,13 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
     [self __stateDidChange];
 }
 
+-(void)setCornerRadius:(CGFloat)radius forState:(XUIControlState)state{
+    [self __stateWillChange];
+    [[self __contentForState:state] setCornerRadius:radius];
+    [self setNeedsDisplay];
+    [self __stateDidChange];
+}
+
 - (NSString *)titleForState:(XUIControlState)state{
     return [[self __contentForState:state] title];
 }
@@ -284,6 +297,10 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
 
 - (NSColor *)backgroundColorForState:(XUIControlState)state{
     return [[self __contentForState:state] backgroundColor];
+}
+
+-(CGFloat)cornerRadiusForState:(XUIControlState)state{
+    return [[self __contentForState:state] cornerRadius];
 }
 
 - (NSString *)currentTitle{
@@ -344,6 +361,10 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
         backgroundColor = [self backgroundColorForState:XUIControlStateNormal];
     }
     return backgroundColor;
+}
+
+-(CGFloat)currentcornerRadius{
+    return [self cornerRadiusForState:self.controlState];
 }
 
 @end

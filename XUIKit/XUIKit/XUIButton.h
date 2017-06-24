@@ -45,6 +45,7 @@ typedef enum : NSUInteger {
 - (void)setFont:(NSFont *)font forState:(XUIControlState)state;
 - (void)setUnderLined:(BOOL)bUnderlined forState:(XUIControlState)state;
 - (void)setBackgroundColor:(NSColor *)color forState:(XUIControlState)state;
+- (void)setCornerRadius:(CGFloat)radius forState:(XUIControlState)state;
 
 - (NSString *)titleForState:(XUIControlState)state;
 - (NSAttributedString *)attributedTitleForState:(XUIControlState)state;
@@ -54,6 +55,7 @@ typedef enum : NSUInteger {
 - (NSFont *)FontForState:(XUIControlState)state;
 - (BOOL)isUnderlinedForState:(XUIControlState)state;
 - (NSColor *)backgroundColorForState:(XUIControlState)state;
+- (CGFloat)cornerRadiusForState:(XUIControlState)state;
 
 @property(nonatomic,readonly,strong) NSString               *currentTitle;
 @property(nonatomic,readonly,strong) NSAttributedString     *currentAttributedTitle;
@@ -63,7 +65,6 @@ typedef enum : NSUInteger {
 @property(nonatomic,readonly,strong) NSFont                 *currentFont;
 @property(nonatomic,readonly,assign) BOOL                   currentUnderLined;
 @property(nonatomic,readonly,strong) NSColor                *currentBackgroundColor;
-
-
+@property(nonatomic,readonly,assign) CGFloat                currentcornerRadius;
 
 @end
