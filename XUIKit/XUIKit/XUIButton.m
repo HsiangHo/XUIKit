@@ -151,7 +151,6 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
 -(void)__updateLookup{
     [self.imageView setFrame:INSETS_TO_FRAME(_imageEdgeInsets,self.frame)];
     [self.titleLabel setFrame:INSETS_TO_FRAME(_titleEdgeInsets,self.frame)];
-    [super setImage:[self currentBackgroundImage]];
     [_imageView setImage:[self currentImage]];
     [self setBackgroundColor:[self currentBackgroundColor]];
     [self setCornerRadius:[self currentcornerRadius]];
@@ -160,6 +159,7 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
         [_titleView setFont:[self currentFont]];
         [_titleView setTextColor:[self currentTitleColor]];
     }
+    [self setNeedsDisplay];
 }
 
 #pragma mark - Override method
@@ -189,7 +189,11 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
 }
 
 -(void)drawRect:(NSRect)dirtyRect{
-    
+    NSImage *img = [self currentBackgroundImage];
+    if (nil != img) {
+        NSRect rctImage = NSMakeRect((int)((NSWidth(self.bounds) - img.size.width) / 2), ((int)(NSHeight(self.bounds) - img.size.height) / 2), img.size.width, img.size.height);
+        [img drawInRect:rctImage];
+    }
 }
 
 #pragma mark - Content Lookup
@@ -207,63 +211,54 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
 - (void)setTitle:(NSString *)title forState:(XUIControlState)state{
     [self __stateWillChange];
     [[self __contentForState:state] setTitle:title];
-    [self setNeedsDisplay];
     [self __stateDidChange];
 }
 
 - (void)setAttributedTitle:(NSAttributedString *)attributedTitle forState:(XUIControlState)state{
     [self __stateWillChange];
     [[self __contentForState:state] setAttributedTitle:attributedTitle];
-    [self setNeedsDisplay];
     [self __stateDidChange];
 }
 
 - (void)setTitleColor:(NSColor *)color forState:(XUIControlState)state{
     [self __stateWillChange];
     [[self __contentForState:state] setTitleColor:color];
-    [self setNeedsDisplay];
     [self __stateDidChange];
 }
 
 - (void)setBackgroundImage:(NSImage *)image forState:(XUIControlState)state{
     [self __stateWillChange];
     [[self __contentForState:state] setBackgroundImage:image];
-    [self setNeedsDisplay];
     [self __stateDidChange];
 }
 
 - (void)setImage:(NSImage *)image forState:(XUIControlState)state{
     [self __stateWillChange];
     [[self __contentForState:state] setImage:image];
-    [self setNeedsDisplay];
     [self __stateDidChange];
 }
 
 - (void)setFont:(NSFont *)font forState:(XUIControlState)state{
     [self __stateWillChange];
     [[self __contentForState:state] setFont:font];
-    [self setNeedsDisplay];
     [self __stateDidChange];
 }
 
 - (void)setUnderLined:(BOOL)bUnderlined forState:(XUIControlState)state{
     [self __stateWillChange];
     [[self __contentForState:state] setUnderLined:bUnderlined];
-    [self setNeedsDisplay];
     [self __stateDidChange];
 }
 
 - (void)setBackgroundColor:(NSColor *)color forState:(XUIControlState)state{
     [self __stateWillChange];
     [[self __contentForState:state] setBackgroundColor:color];
-    [self setNeedsDisplay];
     [self __stateDidChange];
 }
 
 -(void)setCornerRadius:(CGFloat)radius forState:(XUIControlState)state{
     [self __stateWillChange];
     [[self __contentForState:state] setCornerRadius:radius];
-    [self setNeedsDisplay];
     [self __stateDidChange];
 }
 
