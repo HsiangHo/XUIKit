@@ -131,7 +131,8 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
     [content setAttributedTitle:nil];
     [content setUnderLined:NO];
     [content setFont:[NSFont fontWithName:@"Helvetica Neue Light" size:15]];
-//    [content setBackgroundColor:[NSColor whiteColor]];
+    [content setBackgroundColor:[NSColor whiteColor]];
+    [content setCornerRadius:0.0f];
     
     _imageEdgeInsets = NSEdgeInsetsMake(0, 0.05, 0, 0.65);
     _titleEdgeInsets = NSEdgeInsetsMake(0, 0.35, 0, 0.1);
@@ -158,6 +159,7 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
         [_titleView setStringValue:[self currentTitle]];
         [_titleView setFont:[self currentFont]];
         [_titleView setTextColor:[self currentTitleColor]];
+        [_titleView setUnderlined:[self currentUnderLined]];
     }
     [self setNeedsDisplay];
 }
