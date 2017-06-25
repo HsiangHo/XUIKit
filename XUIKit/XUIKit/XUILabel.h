@@ -7,7 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "XUIType.h"
 
 @interface XUILabel : NSTextField
+
+-(void)setStringValue:(NSString *)stringValue XUI_UNAVAILABLE;
+-(NSString *)stringValue XUI_UNAVAILABLE;
+
+@property (nonatomic,copy)                          NSString            *text;
+@property (nonatomic,assign,getter=isUnderLined)    BOOL                underlined;
+@property (nonatomic,assign)                        NSLineBreakMode     lineBreakMode;
 
 @end
