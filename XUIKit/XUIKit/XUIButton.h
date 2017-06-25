@@ -20,12 +20,13 @@ typedef enum : NSUInteger {
 + (id)buttonWithType:(XUIButtonType)buttonType;
 + (id)button; // custom
 
-@property(nonatomic,assign)             NSEdgeInsets                titleEdgeInsets;
-@property(nonatomic,assign)             NSEdgeInsets                imageEdgeInsets;
-@property(nonatomic,assign)             BOOL                        dimsInBackground;
-@property(nonatomic,readonly)           XUIButtonType               buttonType;
-@property(nonatomic,readonly,strong)    XUILabel                    *titleLabel;
-@property(nonatomic,readonly,strong)    XUIImageView                *imageView;
+@property(nonatomic,assign)                             NSEdgeInsets                titleEdgeInsets;
+@property(nonatomic,assign)                             NSEdgeInsets                imageEdgeInsets;
+@property(nonatomic,assign)                             BOOL                        dimsInBackground;
+@property(nonatomic,assign,getter=isNormalText)         BOOL                        normalTextMode;
+@property(nonatomic,readonly)                           XUIButtonType               buttonType;
+@property(nonatomic,readonly,strong)                    XUILabel                    *titleLabel;
+@property(nonatomic,readonly,strong)                    XUIImageView                *imageView;
 
 -(void)setTitle:(NSString *)title   XUI_UNAVAILABLE;
 -(void)setAttributedStringValue:(NSAttributedString *)attributedStringValue XUI_UNAVAILABLE;

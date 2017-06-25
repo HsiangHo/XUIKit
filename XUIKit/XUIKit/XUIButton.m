@@ -69,6 +69,15 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
     return button;
 }
 
+-(BOOL)isNormalTextMode{
+    return _buttonFlags.isNormalStringValue;
+}
+
+-(void)setNormalTextMode:(BOOL)normalText{
+    _buttonFlags.isNormalStringValue = normalText;
+    [self __updateLookup];
+}
+
 - (BOOL)dimsInBackground{
     return _buttonFlags.dimsInBackground;
 }
@@ -84,6 +93,8 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
 -(XUILabel *)titleLabel{
     if(nil == _titleView) {
         _titleView = [[XUILabel alloc] initWithFrame:NSZeroRect];
+        [_titleView setLineBreakMode:NSLineBreakByTruncatingTail];
+        [_titleView setAlignment:NSCenterTextAlignment];
         _titleView.backgroundColor = [NSColor clearColor];
         [self addSubview:_titleView];
     }
@@ -156,10 +167,12 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
     [self setBackgroundColor:[self currentBackgroundColor]];
     [self setCornerRadius:[self currentcornerRadius]];
     if (_buttonFlags.isNormalStringValue) {
-        [_titleView setStringValue:[self currentTitle]];
+        [_titleView setText:[self currentTitle]];
         [_titleView setFont:[self currentFont]];
         [_titleView setTextColor:[self currentTitleColor]];
         [_titleView setUnderlined:[self currentUnderLined]];
+    }else{
+        [_titleView setAttributedStringValue:[self currentAttributedTitle]];
     }
     [self setNeedsDisplay];
 }
