@@ -42,12 +42,21 @@
 }
 
 -(void)setText:(NSString *)text{
-    [super setStringValue:text];
+    [super setText:text];
     [super setAttributedStringValue:[self __createLookUpAttributeString]];
 }
 
 -(NSString *)text{
-    return [super stringValue];
+    return [super text];
+}
+
+-(void)setAttributedText:(NSAttributedString *)attributedText{
+    _attributedString = attributedText;
+    [super setAttributedText:_attributedString];
+}
+
+-(NSAttributedString *)attributedText{
+    return _attributedString;
 }
 
 -(void)setUnderlined:(BOOL)underlined{
@@ -69,15 +78,6 @@
 }
 
 #pragma - mark Override Method
-
--(void)setAttributedStringValue:(NSAttributedString *)attributedStringValue{
-    _attributedString = attributedStringValue;
-    [super setAttributedStringValue:_attributedString];
-}
-
--(NSAttributedString *)attributedStringValue{
-    return _attributedString;
-}
 
 -(void)setFont:(NSFont *)font{
     [super setFont:font];
