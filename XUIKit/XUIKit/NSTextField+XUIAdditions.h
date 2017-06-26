@@ -10,8 +10,8 @@
 
 @interface NSTextField (XUIAdditions)
 
-@property(nullable, nonatomic,copy)     NSString               *text;
-@property(nullable, nonatomic,copy)     NSAttributedString     *attributedText;
+@property(nullable, nonatomic,copy)     NSString                *text;
+@property(nullable, nonatomic,copy)     NSAttributedString      *attributedText;
 @property(nonatomic, assign)            NSLineBreakMode         lineBreakMode;
 
 @end
