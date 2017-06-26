@@ -172,7 +172,7 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
         [_titleView setTextColor:[self currentTitleColor]];
         [_titleView setUnderlined:[self currentUnderLined]];
     }else{
-        [_titleView setAttributedStringValue:[self currentAttributedTitle]];
+        [_titleView setAttributedText:[self currentAttributedTitle]];
     }
     [self setNeedsDisplay];
 }
