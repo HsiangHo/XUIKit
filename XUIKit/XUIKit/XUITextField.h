@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "NSTextField+XUIAdditions.h"
 
 @interface XUITextField : NSTextField
 
