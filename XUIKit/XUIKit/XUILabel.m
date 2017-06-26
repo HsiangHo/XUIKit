@@ -54,6 +54,14 @@
     [(XUILabelCell *)self.cell stopMoving];
 }
 
+-(void)setMovingSpeed:(CGFloat)movingSpeed{
+    [(XUILabelCell *)self.cell setMovingSpeed:movingSpeed];
+}
+
+-(CGFloat)movingSpeed{
+    return [(XUILabelCell *)self.cell movingSpeed];
+}
+
 -(void)setUnderlined:(BOOL)underlined{
     _underlined = underlined;
     [super setAttributedStringValue:[self __createLookUpAttributeString]];

@@ -18,7 +18,7 @@
 -(NSAttributedString *)attributedStringValue XUI_UNAVAILABLE;
 
 @property (nonatomic,assign,getter=isUnderLined)    BOOL                underlined;
-
+@property (nonatomic,assign)                        CGFloat             movingSpeed;
 -(void)startMoving;
 -(void)stopMoving;
 
