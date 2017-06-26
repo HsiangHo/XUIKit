@@ -19,4 +19,7 @@
 
 @property (nonatomic,assign,getter=isUnderLined)    BOOL                underlined;
 
+-(void)startMoving;
+-(void)stopMoving;
+
 @end

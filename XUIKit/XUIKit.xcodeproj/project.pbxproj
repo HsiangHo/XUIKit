@@ -23,6 +23,8 @@
 		987923491EF188E100F2534A /* NSControl+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 98C409151EF014FE00F0A4F6 /* NSControl+Private.m */; };
 		987923761EF2A53E00F2534A /* XUIControlTargetAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 987923741EF2A53E00F2534A /* XUIControlTargetAction.h */; };
 		987923771EF2A53E00F2534A /* XUIControlTargetAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 987923751EF2A53E00F2534A /* XUIControlTargetAction.m */; };
+		98BB7B011F0133240089E4D0 /* XUILabelCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 98BB7AFF1F0133240089E4D0 /* XUILabelCell.h */; };
+		98BB7B021F0133240089E4D0 /* XUILabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BB7B001F0133240089E4D0 /* XUILabelCell.m */; };
 		98C409121EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98C409101EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98C409161EF014FE00F0A4F6 /* NSControl+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 98C409141EF014FE00F0A4F6 /* NSControl+Private.h */; };
 		98CDB03C1EFC2291008C0C6C /* NSResponder+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 98CDB03A1EFC2291008C0C6C /* NSResponder+Private.h */; };
@@ -57,6 +59,8 @@
 		987923741EF2A53E00F2534A /* XUIControlTargetAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIControlTargetAction.h; sourceTree = "<group>"; };
 		987923751EF2A53E00F2534A /* XUIControlTargetAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIControlTargetAction.m; sourceTree = "<group>"; };
 		987923781EF2A88C00F2534A /* XUIType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XUIType.h; sourceTree = "<group>"; };
+		98BB7AFF1F0133240089E4D0 /* XUILabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUILabelCell.h; sourceTree = "<group>"; };
+		98BB7B001F0133240089E4D0 /* XUILabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUILabelCell.m; sourceTree = "<group>"; };
 		98C409101EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSControl+XUIAdditions.h"; sourceTree = "<group>"; };
 		98C409111EEFF9B300F0A4F6 /* NSControl+XUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSControl+XUIAdditions.m"; sourceTree = "<group>"; };
 		98C409141EF014FE00F0A4F6 /* NSControl+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSControl+Private.h"; sourceTree = "<group>"; };
@@ -218,6 +222,8 @@
 			children = (
 				98ED222C1EF639E6004BD87D /* XUILabel.h */,
 				98ED222D1EF639E6004BD87D /* XUILabel.m */,
+				98BB7AFF1F0133240089E4D0 /* XUILabelCell.h */,
+				98BB7B001F0133240089E4D0 /* XUILabelCell.m */,
 			);
 			name = XUILabel;
 			sourceTree = "<group>";
@@ -248,6 +254,7 @@
 				98C409121EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h in Headers */,
 				98ED223A1EF6506D004BD87D /* XUITextField.h in Headers */,
 				98D358D81EF7EEB5004D4218 /* XUIImageView.h in Headers */,
+				98BB7B011F0133240089E4D0 /* XUILabelCell.h in Headers */,
 				98ED22331EF64056004BD87D /* NSTextField+XUIAdditions.h in Headers */,
 				9854CFE01EED2EA4008A3454 /* XUIView.h in Headers */,
 				98ED22141EF44B7D004BD87D /* XUIType.h in Headers */,
@@ -337,6 +344,7 @@
 				9854CFE11EED2EA4008A3454 /* XUIView.m in Sources */,
 				9854CFBF1EED212C008A3454 /* XUIResponder.m in Sources */,
 				98ED22341EF64056004BD87D /* NSTextField+XUIAdditions.m in Sources */,
+				98BB7B021F0133240089E4D0 /* XUILabelCell.m in Sources */,
 				987923471EF1854100F2534A /* NSView+XUIAdditions.m in Sources */,
 				98D358DD1EF7F105004D4218 /* XUIButton.m in Sources */,
 				987923121EF1486400F2534A /* XUIMethodsHelper.m in Sources */,

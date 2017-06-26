@@ -8,11 +8,16 @@
 
 #import "XUILabel.h"
 #import "NSView+XUIAdditions.h"
+#import "XUILabelCell.h"
 
 
 @implementation XUILabel{
     NSAttributedString              *_attributedString;
     BOOL                            _underlined;
+}
+
++(Class)cellClass{
+    return [XUILabelCell class];
 }
 
 -(instancetype)init{
@@ -41,6 +46,25 @@
     _underlined = NO;
 }
 
+-(void)startMoving{
+    [(XUILabelCell *)self.cell startMoving];
+}
+
+-(void)stopMoving{
+    [(XUILabelCell *)self.cell stopMoving];
+}
+
+-(void)setUnderlined:(BOOL)underlined{
+    _underlined = underlined;
+    [super setAttributedStringValue:[self __createLookUpAttributeString]];
+}
+
+-(BOOL)isUnderLined{
+    return _underlined;
+}
+
+#pragma - mark Override Method
+
 -(void)setText:(NSString *)text{
     [super setText:text];
     [super setAttributedStringValue:[self __createLookUpAttributeString]];
@@ -59,15 +83,6 @@
     return _attributedString;
 }
 
--(void)setUnderlined:(BOOL)underlined{
-    _underlined = underlined;
-    [super setAttributedStringValue:[self __createLookUpAttributeString]];
-}
-
--(BOOL)isUnderLined{
-    return _underlined;
-}
-
 -(void)setLineBreakMode:(NSLineBreakMode)lineBreakMode{
     [[self cell] setLineBreakMode:lineBreakMode];
     [super setAttributedStringValue:[self __createLookUpAttributeString]];
@@ -76,8 +91,6 @@
 -(NSLineBreakMode)lineBreakMode{
     return [[self cell] lineBreakMode];
 }
-
-#pragma - mark Override Method
 
 -(void)setFont:(NSFont *)font{
     [super setFont:font];
