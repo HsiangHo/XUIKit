@@ -35,7 +35,7 @@
 		98ED22141EF44B7D004BD87D /* XUIType.h in Headers */ = {isa = PBXBuildFile; fileRef = 987923781EF2A88C00F2534A /* XUIType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98ED222E1EF639E6004BD87D /* XUILabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 98ED222C1EF639E6004BD87D /* XUILabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98ED222F1EF639E6004BD87D /* XUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 98ED222D1EF639E6004BD87D /* XUILabel.m */; };
-		98ED22331EF64056004BD87D /* NSTextField+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98ED22311EF64056004BD87D /* NSTextField+XUIAdditions.h */; };
+		98ED22331EF64056004BD87D /* NSTextField+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98ED22311EF64056004BD87D /* NSTextField+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98ED22341EF64056004BD87D /* NSTextField+XUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 98ED22321EF64056004BD87D /* NSTextField+XUIAdditions.m */; };
 		98ED223A1EF6506D004BD87D /* XUITextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 98ED22381EF6506D004BD87D /* XUITextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98ED223B1EF6506D004BD87D /* XUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 98ED22391EF6506D004BD87D /* XUITextField.m */; };
@@ -241,7 +241,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				98D158461EEAB252005A0434 /* XUIKit.h in Headers */,
-				98ED22331EF64056004BD87D /* NSTextField+XUIAdditions.h in Headers */,
 				98C409161EF014FE00F0A4F6 /* NSControl+Private.h in Headers */,
 				987923461EF1854100F2534A /* NSView+XUIAdditions.h in Headers */,
 				98ED222E1EF639E6004BD87D /* XUILabel.h in Headers */,
@@ -249,6 +248,7 @@
 				98C409121EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h in Headers */,
 				98ED223A1EF6506D004BD87D /* XUITextField.h in Headers */,
 				98D358D81EF7EEB5004D4218 /* XUIImageView.h in Headers */,
+				98ED22331EF64056004BD87D /* NSTextField+XUIAdditions.h in Headers */,
 				9854CFE01EED2EA4008A3454 /* XUIView.h in Headers */,
 				98ED22141EF44B7D004BD87D /* XUIType.h in Headers */,
 				98514C5C1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h in Headers */,

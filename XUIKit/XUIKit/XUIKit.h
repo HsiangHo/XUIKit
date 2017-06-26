@@ -26,3 +26,4 @@ FOUNDATION_EXPORT const unsigned char XUIKitVersionString[];
 #import<XUIKit/XUIImageView.h>
 #import<XUIKit/XUILabel.h>
 #import<XUIKit/XUITextField.h>
+#import<XUIKit/NSTextField+XUIAdditions.h>
