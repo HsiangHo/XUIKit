@@ -38,18 +38,15 @@ typedef struct _xui_stateFlags{
     XUISwizzleMethod(cls, '-', @selector(xui_becomeFirstResponder),@selector(becomeFirstResponder));
 }
 
-- (BOOL)acceptsFirstMouse
-{
-    return [(NSNumber *)XUI_GET_PROPERTY(kAcceptsFirstMouse) boolValue];
+- (BOOL)acceptsFirstMouse{
+    return ![(NSNumber *)XUI_GET_PROPERTY(kAcceptsFirstMouse) boolValue];
 }
 
-- (void)setAcceptsFirstMouse:(BOOL)acceptsFirstMouse
-{
-    XUI_SET_PROPERTY([NSNumber numberWithBool:acceptsFirstMouse], kAcceptsFirstMouse);
+- (void)setAcceptsFirstMouse:(BOOL)acceptsFirstMouse{
+    XUI_SET_PROPERTY([NSNumber numberWithBool:!acceptsFirstMouse], kAcceptsFirstMouse);
 }
 
-- (XUIControlState)controlState
-{
+- (XUIControlState)controlState{
     XUIControlState state = XUIControlStateNormal;
     xui_stateFlags flags = [self __currentStateFlags];
     if(self.enabled){
@@ -73,10 +70,6 @@ typedef struct _xui_stateFlags{
 }
 
 #pragma mark - Override
-
-- (BOOL)acceptsFirstMouse:(NSEvent *)event{
-    return [self acceptsFirstMouse];
-}
 
 -(void)__firstResponderChanged:(NSResponder *)oldFirstResponder withNewResponder:(NSResponder *)newFirstResponder{
     if(oldFirstResponder == self || newFirstResponder == self){

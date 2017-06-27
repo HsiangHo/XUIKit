@@ -126,7 +126,6 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
     return contentRect;
 }
 
-
 #pragma mark - Private method
 
 -(void)__initializeXUIButton{
@@ -193,6 +192,10 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
         [self __initializeXUIButton];
     }
     return self;
+}
+
+- (BOOL)acceptsFirstMouse:(NSEvent *)event{
+    return [self acceptsFirstMouse];
 }
 
 - (void)__stateWillChange{
