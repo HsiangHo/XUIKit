@@ -48,7 +48,10 @@
 }
 
 -(void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView{
-    cellFrame.origin.x += _deltaX;
+    if (_isMoving) {
+        cellFrame.origin.x += _deltaX;
+        cellFrame.size.width = _fontSize.width * 1.5;
+    }
     [super drawWithFrame:cellFrame inView:controlView];
 }
 
@@ -65,15 +68,38 @@
     }
     
     NSRect bounds = [[self controlView] bounds];
+    NSInteger nRange = bounds.size.width - _fontSize.width;
+
     if(_leftToRight){
-        if (_deltaX + _fontSize.width > bounds.size.width) {
-            _leftToRight = NO;
+        if (nRange >= 0) {
+            if(_deltaX >= nRange){
+                _leftToRight = NO;
+            }else{
+                _leftToRight = YES;
+            }
+        }else{
+            if(_deltaX >= 0){
+                _leftToRight = NO;
+            }else{
+                _leftToRight = YES;
+            }
         }
     }else{
-        if (_deltaX < 0) {
-            _leftToRight = YES;
+        if (nRange >= 0) {
+            if(_deltaX <= 0){
+                _leftToRight = YES;
+            }else{
+                _leftToRight = NO;
+            }
+        }else{
+            if(_deltaX <= nRange){
+                _leftToRight = YES;
+            }else{
+                _leftToRight = NO;
+            }
         }
     }
+    
     if(_leftToRight){
         _deltaX += 1;
     }else{
