@@ -30,4 +30,11 @@ enum {
 };
 typedef NSUInteger XUIControlState;
 
+typedef NS_ENUM(NSInteger, XUITextFieldViewMode) {
+    XUITextFieldViewModeNever,
+    XUITextFieldViewModeWhileEditing,
+    XUITextFieldViewModeUnlessEditing,
+    XUITextFieldViewModeAlways
+};
+
 #endif /* XUIType_h */
