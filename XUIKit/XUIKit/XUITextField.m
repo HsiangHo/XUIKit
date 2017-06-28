@@ -8,7 +8,19 @@
 
 #import "XUITextField.h"
 
-@implementation XUITextField
+@implementation XUITextField{
+    NSImage                                 *_background;
+    NSImage                                 *_disabledBackground;
+    NSView                                  *_leftView;
+    NSView                                  *_rightView;
+    struct{
+        unsigned int clearButtonMode:8;
+        unsigned int leftViewMode:8;
+        unsigned int rightViewMode:8;
+    }_textfieldFlags
+}
+
+#pragma mark - Override Methods
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
@@ -31,6 +43,18 @@
         }
     }
     return [super performKeyEquivalent:event];
+}
+
+#pragma mark - Private Methods
+
+- (void)__initializeXUITextField{
+    _background = nil;
+    _disabledBackground = nil;
+    _leftView = nil;
+    _rightView = nil;
+    _textfieldFlags.clearButtonMode = XUITextFieldViewModeNever;
+    _textfieldFlags.leftViewMode = XUITextFieldViewModeNever;
+    _textfieldFlags.rightViewMode = XUITextFieldViewModeNever;
 }
 
 @end
