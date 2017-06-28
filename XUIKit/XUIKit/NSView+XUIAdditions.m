@@ -26,6 +26,7 @@
     XUISwizzleMethod(cls, '-', @selector(xui_addSubview:),@selector(addSubview:));
     XUISwizzleMethod(cls, '-', @selector(xui_removeFromSuperview),@selector(removeFromSuperview));
     XUISwizzleMethod(cls, '-', @selector(xui_initWithFrame:),@selector(initWithFrame:));
+    XUISwizzleMethod(cls, '-', @selector(xui_init),@selector(init));
     XUISwizzleMethod(cls, '-', @selector(xui_updateTrackingAreas),@selector(updateTrackingAreas));
 }
 
@@ -195,8 +196,8 @@
 
 #pragma mark - Swizzle Functions
 
--(instancetype)init{
-    if (self = [super init]){
+-(instancetype)xui_init INIT_METHOD_FAMILY{
+    if (self = [self xui_init]){
         [self __initializeNSView_XUIAdditions];
     }
     return self;
