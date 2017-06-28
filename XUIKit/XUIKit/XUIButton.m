@@ -176,7 +176,7 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
     [self setNeedsDisplay];
 }
 
-#pragma mark - Override method
+#pragma mark - Override Methods
 
 -(instancetype)init{
     self = [super init];
