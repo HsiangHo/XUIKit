@@ -13,5 +13,7 @@
 @property(nullable, nonatomic,copy)     NSString                *text;
 @property(nullable, nonatomic,copy)     NSAttributedString      *attributedText;
 @property(nonatomic, assign)            NSLineBreakMode         lineBreakMode;
+@property(nullable, nonatomic, copy)    NSString                *placeholder;
+@property(nullable, nonatomic, copy)    NSAttributedString      *attributedPlaceholder;
 
 @end

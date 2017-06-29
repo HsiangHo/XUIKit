@@ -34,4 +34,20 @@
     return self.attributedStringValue;
 }
 
+-(void)setPlaceholder:(NSString *)placeholder{
+    [[self cell] setPlaceholderString:placeholder];
+}
+
+-(NSString *)placeholder{
+    return [[self cell] placeholderString];
+}
+
+-(void)setAttributedPlaceholder:(NSAttributedString *)attributedPlaceholder{
+    [[self cell] setPlaceholderAttributedString:attributedPlaceholder];
+}
+
+-(NSAttributedString *)attributedPlaceholder{
+    return [[self cell] placeholderAttributedString];
+}
+
 @end
