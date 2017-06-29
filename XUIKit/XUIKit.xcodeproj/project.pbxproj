@@ -14,6 +14,8 @@
 		9854CFBF1EED212C008A3454 /* XUIResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854CFBD1EED212C008A3454 /* XUIResponder.m */; };
 		9854CFE01EED2EA4008A3454 /* XUIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9854CFDE1EED2EA4008A3454 /* XUIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9854CFE11EED2EA4008A3454 /* XUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854CFDF1EED2EA4008A3454 /* XUIView.m */; };
+		987521EE1F0407B800A6D890 /* XUITextFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 987521EC1F0407B800A6D890 /* XUITextFieldCell.h */; };
+		987521EF1F0407B800A6D890 /* XUITextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 987521ED1F0407B800A6D890 /* XUITextFieldCell.m */; };
 		987923111EF1486400F2534A /* XUIMethodsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9879230F1EF1486400F2534A /* XUIMethodsHelper.h */; };
 		987923121EF1486400F2534A /* XUIMethodsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 987923101EF1486400F2534A /* XUIMethodsHelper.m */; };
 		987923131EF1550F00F2534A /* NSColor+XUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 98514C5B1EEEDCC20001B8A6 /* NSColor+XUIAdditions.m */; };
@@ -52,6 +54,8 @@
 		9854CFBD1EED212C008A3454 /* XUIResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIResponder.m; sourceTree = "<group>"; };
 		9854CFDE1EED2EA4008A3454 /* XUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIView.h; sourceTree = "<group>"; };
 		9854CFDF1EED2EA4008A3454 /* XUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIView.m; sourceTree = "<group>"; };
+		987521EC1F0407B800A6D890 /* XUITextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUITextFieldCell.h; sourceTree = "<group>"; };
+		987521ED1F0407B800A6D890 /* XUITextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUITextFieldCell.m; sourceTree = "<group>"; };
 		9879230F1EF1486400F2534A /* XUIMethodsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIMethodsHelper.h; sourceTree = "<group>"; };
 		987923101EF1486400F2534A /* XUIMethodsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIMethodsHelper.m; sourceTree = "<group>"; };
 		987923441EF1854100F2534A /* NSView+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+XUIAdditions.h"; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 				98ED22321EF64056004BD87D /* NSTextField+XUIAdditions.m */,
 				98ED22381EF6506D004BD87D /* XUITextField.h */,
 				98ED22391EF6506D004BD87D /* XUITextField.m */,
+				987521EC1F0407B800A6D890 /* XUITextFieldCell.h */,
+				987521ED1F0407B800A6D890 /* XUITextFieldCell.m */,
 			);
 			name = XUITextfield;
 			sourceTree = "<group>";
@@ -252,6 +258,7 @@
 				98ED222E1EF639E6004BD87D /* XUILabel.h in Headers */,
 				98D358DC1EF7F105004D4218 /* XUIButton.h in Headers */,
 				98C409121EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h in Headers */,
+				987521EE1F0407B800A6D890 /* XUITextFieldCell.h in Headers */,
 				98ED223A1EF6506D004BD87D /* XUITextField.h in Headers */,
 				98D358D81EF7EEB5004D4218 /* XUIImageView.h in Headers */,
 				98BB7B011F0133240089E4D0 /* XUILabelCell.h in Headers */,
@@ -351,6 +358,7 @@
 				98ED222F1EF639E6004BD87D /* XUILabel.m in Sources */,
 				98D358D91EF7EEB5004D4218 /* XUIImageView.m in Sources */,
 				98CDB03D1EFC2291008C0C6C /* NSResponder+Private.m in Sources */,
+				987521EF1F0407B800A6D890 /* XUITextFieldCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
