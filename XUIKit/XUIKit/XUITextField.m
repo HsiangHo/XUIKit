@@ -7,25 +7,140 @@
 //
 
 #import "XUITextField.h"
+#import "XUIButton.h"
+#import "XUITextFieldCell.h"
+
+static NSImage *clearButtonImageNormal = nil;
+static NSImage *clearButtonImageDown = nil;
 
 @implementation XUITextField{
     NSImage                                 *_background;
     NSImage                                 *_disabledBackground;
     NSView                                  *_leftView;
     NSView                                  *_rightView;
+    XUIButton                               *_clearButton;
     struct{
         unsigned int clearButtonMode:8;
         unsigned int leftViewMode:8;
         unsigned int rightViewMode:8;
-    }_textfieldFlags
+    }_textfieldFlags;
+}
+
+#pragma mark - Public Methods
+
+-(XUIButton *)clearButton{
+    return _clearButton;
+}
+
+- (void)setLeftView:(NSView *)leftView{
+    if(nil != _leftView){
+        [_leftView removeFromSuperview];
+    }
+    if(nil != leftView){
+        [self addSubview:leftView];
+    }
+    _leftView = leftView;
+    [self setNeedsDisplay:YES];
+}
+
+- (NSView *)leftView{
+    return _leftView;
+}
+
+- (void)setRightView:(NSView *)rightView{
+    if(nil != _rightView){
+        [_rightView removeFromSuperview];
+    }
+    if(nil != rightView){
+        [self addSubview:rightView];
+    }
+    _rightView = rightView;
+    [self setNeedsDisplay:YES];
+}
+
+- (NSView *)rightView{
+    return _rightView;
+}
+
+- (void)setLeftViewMode:(XUITextFieldViewMode)leftViewMode{
+    _textfieldFlags.leftViewMode = leftViewMode;
+    [self setNeedsDisplay:YES];
+}
+
+- (XUITextFieldViewMode)leftViewMode{
+    return _textfieldFlags.leftViewMode;
+}
+
+- (void)setRightViewMode:(XUITextFieldViewMode)rightViewMode{
+    _textfieldFlags.rightViewMode = rightViewMode;
+    [self setNeedsDisplay:YES];
+}
+
+- (XUITextFieldViewMode)rightViewMode{
+    return _textfieldFlags.rightViewMode;
+}
+
+- (void)setClearButtonMode:(XUITextFieldViewMode)clearButtonMode{
+    _textfieldFlags.clearButtonMode = clearButtonMode;
+    [self setNeedsDisplay:YES];
+}
+
+- (XUITextFieldViewMode)clearButtonMode{
+    return _textfieldFlags.clearButtonMode;
+}
+
+- (void)setBackground:(NSImage *)background{
+    _background = background;
+    [self setDrawsBackground:NO];
+    [self setNeedsDisplay:YES];
+}
+
+- (NSImage *)background{
+    return _background;
+}
+
+- (void)setDisabledBackground:(NSImage *)disabledBackground{
+    _disabledBackground = disabledBackground;
+    [self setDrawsBackground:NO];
+    [self setNeedsDisplay:YES];
+}
+
+- (NSImage *)disabledBackground{
+    return _disabledBackground;
+}
+
+-(BOOL)isEditing{
+    return [[self cell] isEditing];
 }
 
 #pragma mark - Override Methods
 
++ (Class)cellClass{
+    return [XUITextFieldCell class];
+}
+
+- (instancetype)init{
+    if(self = [super init]){
+        [self __initializeXUITextField];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(NSRect)frameRect{
+    if (self = [super initWithFrame:frameRect]) {
+        [self __initializeXUITextField];
+    }
+    return self;
+}
+
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    
-    // Drawing code here.
+    [self __updateLookup];
+}
+
+- (void)setBackgroundColor:(NSColor *)backgroundColor{
+    [self setDrawsBackground:YES];
+    [super setBackgroundColor:backgroundColor];
 }
 
 //Respond to shortcut key
@@ -52,9 +167,110 @@
     _disabledBackground = nil;
     _leftView = nil;
     _rightView = nil;
+    [self setDrawsBackground:NO];
     _textfieldFlags.clearButtonMode = XUITextFieldViewModeNever;
     _textfieldFlags.leftViewMode = XUITextFieldViewModeNever;
     _textfieldFlags.rightViewMode = XUITextFieldViewModeNever;
+    _clearButton = [[XUIButton alloc] initWithFrame:NSZeroRect];
+    [_clearButton setBackgroundImage:[XUITextField __clearButtonImageNormal] forState:XUIControlStateNormal];
+    [_clearButton setBackgroundImage:[XUITextField __clearButtonImageDown] forState:XUIControlStateDown];
+    [_clearButton setAction:@selector(clearText_click:)];
+    [_clearButton setTarget:self];
+    [self addSubview:_clearButton];
+}
+
+- (void)__updateLookup{
+    //Draw background
+    if(self.enabled){
+        if(nil != _background){
+            [_background drawInRect:self.bounds];
+        }
+    }else{
+        if(nil != _disabledBackground){
+            [_disabledBackground drawInRect:self.bounds];
+        }
+    }
+    
+    NSRect rectLeftView = NSZeroRect;
+    NSRect rectRightView = NSZeroRect;
+    NSRect rectClearButton = NSZeroRect;
+    
+    //leftView
+    if(nil != _leftView){
+        rectLeftView = [_leftView frame];
+        rectLeftView.origin = NSMakePoint(0, 0);
+        rectLeftView.size.height = NSHeight(self.frame);
+        [_leftView setFrame:rectLeftView];
+    }
+    //rightView
+    if (nil != _rightView) {
+        rectRightView = [_rightView frame];
+        rectRightView.origin = NSMakePoint(NSWidth(self.frame) - NSWidth(rectRightView), 0);
+        rectRightView.size.height = NSHeight(self.frame);
+        [_rightView setFrame:rectRightView];
+    }
+    //clearButton
+    rectClearButton = [_clearButton frame];
+    rectClearButton.size = NSMakeSize(16, 16);
+    rectClearButton.origin = NSMakePoint(NSWidth(self.frame) - NSWidth(rectRightView) - NSWidth(rectClearButton) - 2,(int)((NSHeight(self.frame) - NSHeight(rectClearButton))/2));
+    [_clearButton setFrame:rectClearButton];
+    [[self cell] setTextEdgeInsets:NSEdgeInsetsMake(0, NSMaxX(rectLeftView), 0, NSWidth(self.frame) - NSMinX(rectClearButton))];
+}
+
+#pragma mark - Actions
+- (IBAction)clearText_click:(id)sender{
+    [self setStringValue:@""];
+}
+
+#pragma mark - Private method
+
+
+#pragma mark - ClearButton image method
++(NSImage *)__drawClearButton:(NSColor *)backgroundColor{
+    NSImage *image = [[NSImage alloc] initWithSize: NSMakeSize(16, 16)];
+    
+    [image lockFocus];
+    
+    // Color Declarations
+    NSColor* color = [NSColor colorWithCalibratedRed: 1 green: 1 blue: 1 alpha: 1];
+    
+    // Oval Drawing
+    NSBezierPath* ovalPath = [NSBezierPath bezierPathWithOvalInRect: NSMakeRect(0, 0, 16, 16)];
+    [backgroundColor setFill];
+    [ovalPath fill];
+    
+    // Bezier Drawing
+    NSBezierPath* bezierPath = [NSBezierPath bezierPath];
+    [bezierPath moveToPoint: NSMakePoint(11.5, 11.5)];
+    [bezierPath lineToPoint: NSMakePoint(4.5, 4.5)];
+    [color setStroke];
+    bezierPath.lineWidth = 2;
+    [bezierPath stroke];
+    
+    // Bezier 2 Drawing
+    NSBezierPath* bezier2Path = [NSBezierPath bezierPath];
+    [bezier2Path moveToPoint: NSMakePoint(4.5, 11.5)];
+    [bezier2Path lineToPoint: NSMakePoint(11.5, 4.5)];
+    [color setStroke];
+    bezier2Path.lineWidth = 2;
+    [bezier2Path stroke];
+    
+    [image unlockFocus];
+    return image;
+}
+
++(NSImage *)__clearButtonImageDown{
+    if (nil == clearButtonImageDown){
+       clearButtonImageDown = [XUITextField __drawClearButton:[NSColor colorWithCalibratedRed: 0 green: 0.42 blue: 0.898 alpha: 1]];
+    }
+    return clearButtonImageDown;
+}
+
++(NSImage *)__clearButtonImageNormal{
+    if (nil == clearButtonImageNormal){
+        clearButtonImageNormal = [XUITextField __drawClearButton:[NSColor colorWithCalibratedRed: 0.8 green: 0.8 blue: 0.8 alpha: 1]];
+    }
+    return clearButtonImageNormal;
 }
 
 @end

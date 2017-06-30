@@ -9,10 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import "XUIType.h"
 
+@class XUIButton;
 @interface XUITextField : NSTextField
 
 @property(nullable, nonatomic,strong) NSImage               *background;           // default is nil. draw in border rect. image should be stretchable
 @property(nullable, nonatomic,strong) NSImage               *disabledBackground;   // default is nil. ignored if background not set. image should be stretchable
+
+@property(nonnull, nonatomic, strong, readonly)  XUIButton  *clearButton;
 @property(nonatomic)        XUITextFieldViewMode            clearButtonMode; // sets when the clear button shows up. default is XUITextFieldViewModeNever
 
 @property(nullable, nonatomic,strong) NSView                *leftView;        // e.g. magnifying glass
@@ -20,5 +23,7 @@
 
 @property(nullable, nonatomic,strong) NSView                *rightView;       // e.g. bookmarks button
 @property(nonatomic)        XUITextFieldViewMode            rightViewMode;   // sets when the right view shows up. default is XUITextFieldViewModeNever
+
+@property(nonatomic,readonly,getter=isEditing) BOOL         editing;
 
 @end
