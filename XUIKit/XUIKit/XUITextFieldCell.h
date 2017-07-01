@@ -11,6 +11,5 @@
 @interface XUITextFieldCell : NSTextFieldCell
 
 @property(nonatomic,readonly,getter=isEditing)  BOOL            editing;
-@property(nonatomic,assign)                     NSEdgeInsets    textEdgeInsets;
 
 @end

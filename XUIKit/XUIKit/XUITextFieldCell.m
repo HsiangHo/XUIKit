@@ -7,6 +7,7 @@
 //
 
 #import "XUITextFieldCell.h"
+#import "XUITextField.h"
 
 NSRect Rect4Text(NSRect rect,NSEdgeInsets textEdgeInsets){
     rect.origin.x = textEdgeInsets.left;
@@ -20,29 +21,28 @@ NSRect Rect4Text(NSRect rect,NSEdgeInsets textEdgeInsets){
     struct{
         unsigned int editing:1;
     }_textfieldFlags;
-    NSEdgeInsets                      _textEdgeInsets;
 }
 
 -(BOOL)isEditing{
     return _textfieldFlags.editing;
 }
 
--(void)setTextEdgeInsets:(NSEdgeInsets)textEdgeInsets{
-    _textEdgeInsets = textEdgeInsets;
-}
-
--(NSEdgeInsets)textEdgeInsets{
-    return _textEdgeInsets;
-}
-
 -(void)editWithFrame:(NSRect)rect inView:(NSView *)controlView editor:(NSText *)textObj delegate:(id)delegate event:(NSEvent *)event{
     _textfieldFlags.editing = YES;
-    return [super editWithFrame:Rect4Text(rect,_textEdgeInsets) inView:controlView editor:textObj delegate:delegate event:event];
+    if ([controlView isKindOfClass:[XUITextField class]]) {
+        XUITextField *tf = (XUITextField *)controlView;
+        rect = Rect4Text(rect,[tf textEdgeInsets]);
+    }
+    return [super editWithFrame:rect inView:controlView editor:textObj delegate:delegate event:event];
 }
 
 - (void)selectWithFrame:(NSRect)aRect inView:(NSView *)controlView editor:(NSText *)textObj delegate:(id)anObject start:(NSInteger)selStart length:(NSInteger)selLength{
     _textfieldFlags.editing = YES;
-    [super selectWithFrame:Rect4Text(aRect,_textEdgeInsets) inView:controlView editor:textObj delegate:anObject start:selStart length:selLength];
+    if ([controlView isKindOfClass:[XUITextField class]]) {
+        XUITextField *tf = (XUITextField *)controlView;
+        aRect = Rect4Text(aRect,[tf textEdgeInsets]);
+    }
+    [super selectWithFrame:aRect inView:controlView editor:textObj delegate:anObject start:selStart length:selLength];
 }
 
 - (void)endEditing:(NSText *)textObj{
@@ -51,7 +51,11 @@ NSRect Rect4Text(NSRect rect,NSEdgeInsets textEdgeInsets){
 }
 
 - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView{
-    [super drawInteriorWithFrame:Rect4Text(cellFrame,_textEdgeInsets) inView:controlView];
+    if ([controlView isKindOfClass:[XUITextField class]]) {
+        XUITextField *tf = (XUITextField *)controlView;
+        cellFrame = Rect4Text(cellFrame,[tf textEdgeInsets]);
+    }
+    [super drawInteriorWithFrame:cellFrame inView:controlView];
 }
 
 @end

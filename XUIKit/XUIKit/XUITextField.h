@@ -26,4 +26,6 @@
 
 @property(nonatomic,readonly,getter=isEditing) BOOL         editing;
 
+@property(nonatomic,assign,readonly)    NSEdgeInsets        textEdgeInsets;  // default is {0,0,0,0}
+
 @end

@@ -18,6 +18,8 @@ static NSImage *clearButtonImageDown = nil;
     NSImage                                 *_disabledBackground;
     NSView                                  *_leftView;
     NSView                                  *_rightView;
+    NSRect                                  _originalRectLeftView;
+    NSRect                                  _originalRectRightView;
     XUIButton                               *_clearButton;
     struct{
         unsigned int clearButtonMode:8;
@@ -39,6 +41,7 @@ static NSImage *clearButtonImageDown = nil;
     if(nil != leftView){
         [self addSubview:leftView];
     }
+    _originalRectLeftView = [leftView frame];
     _leftView = leftView;
     [self setNeedsDisplay:YES];
 }
@@ -54,6 +57,7 @@ static NSImage *clearButtonImageDown = nil;
     if(nil != rightView){
         [self addSubview:rightView];
     }
+    _originalRectRightView = [rightView frame];
     _rightView = rightView;
     [self setNeedsDisplay:YES];
 }
@@ -111,6 +115,10 @@ static NSImage *clearButtonImageDown = nil;
 
 -(BOOL)isEditing{
     return [[self cell] isEditing];
+}
+
+-(NSEdgeInsets)textEdgeInsets{
+    return NSEdgeInsetsMake(0, NSMaxX([self __rectLeftView]), 0, NSWidth([self __rectClearButton]) + NSWidth([self __rectRightView]));
 }
 
 #pragma mark - Override Methods
@@ -179,6 +187,67 @@ static NSImage *clearButtonImageDown = nil;
     [self addSubview:_clearButton];
 }
 
+-(NSRect)__rectLeftView{
+    NSRect rectLeftView = NSZeroRect;
+    //leftView
+    if(nil != _leftView){
+        rectLeftView = [_leftView frame];
+        rectLeftView.origin = NSMakePoint(0, 0);
+        rectLeftView.size.height = NSHeight(self.frame);
+        rectLeftView.size.width = _originalRectLeftView.size.width;
+    }
+    
+    if(XUITextFieldViewModeNever == _textfieldFlags.leftViewMode){
+        rectLeftView = NSZeroRect;
+    }else if(XUITextFieldViewModeWhileEditing == _textfieldFlags.leftViewMode){
+        rectLeftView = [self.cell isEditing] ? rectLeftView : NSZeroRect;
+    }else if(XUITextFieldViewModeUnlessEditing == _textfieldFlags.leftViewMode){
+        rectLeftView = ![self.cell isEditing] ? rectLeftView : NSZeroRect;
+    }else{
+    }
+    return rectLeftView;
+}
+
+-(NSRect)__rectRightView{
+    NSRect rectRightView = NSZeroRect;
+    //rightView
+    if (nil != _rightView) {
+        rectRightView = [_rightView frame];
+        rectRightView.origin = NSMakePoint(NSWidth(self.frame) - NSWidth(rectRightView), 0);
+        rectRightView.size.height = NSHeight(self.frame);
+        rectRightView.size.width = _originalRectRightView.size.width;
+    }
+    
+    if(XUITextFieldViewModeNever == _textfieldFlags.rightViewMode){
+        rectRightView = NSZeroRect;
+    }else if(XUITextFieldViewModeWhileEditing == _textfieldFlags.rightViewMode){
+        rectRightView = [self.cell isEditing] ? rectRightView : NSZeroRect;
+    }else if(XUITextFieldViewModeUnlessEditing == _textfieldFlags.rightViewMode){
+        rectRightView = ![self.cell isEditing] ? rectRightView : NSZeroRect;
+    }else{
+    }
+    return rectRightView;
+}
+
+-(NSRect)__rectClearButton{
+    NSRect rectClearButton = NSZeroRect;
+    NSRect rectRightView = [self __rectRightView];
+    //clearButton
+    rectClearButton = [_clearButton frame];
+    rectClearButton.size = NSMakeSize(16, 16);
+    rectClearButton.origin = NSMakePoint(NSWidth(self.frame) - NSWidth(rectRightView) - NSWidth(rectClearButton) - 2,(int)((NSHeight(self.frame) - NSHeight(rectClearButton))/2));
+    
+    if(XUITextFieldViewModeNever == _textfieldFlags.clearButtonMode){
+        rectClearButton = NSZeroRect;
+    }else if(XUITextFieldViewModeWhileEditing == _textfieldFlags.clearButtonMode){
+        rectClearButton = [self.cell isEditing] ? rectClearButton : NSZeroRect;
+    }else if(XUITextFieldViewModeUnlessEditing == _textfieldFlags.clearButtonMode){
+        rectClearButton = ![self.cell isEditing] ? rectClearButton : NSZeroRect;
+    }else{
+    }
+    return rectClearButton;
+}
+
 - (void)__updateLookup{
     //Draw background
     if(self.enabled){
@@ -191,30 +260,74 @@ static NSImage *clearButtonImageDown = nil;
         }
     }
     
-    NSRect rectLeftView = NSZeroRect;
-    NSRect rectRightView = NSZeroRect;
-    NSRect rectClearButton = NSZeroRect;
+    [_leftView setFrame:[self __rectLeftView]];
+    [_rightView setFrame:[self __rectRightView]];
+    [_clearButton setFrame:[self __rectClearButton]];
     
-    //leftView
-    if(nil != _leftView){
-        rectLeftView = [_leftView frame];
-        rectLeftView.origin = NSMakePoint(0, 0);
-        rectLeftView.size.height = NSHeight(self.frame);
-        [_leftView setFrame:rectLeftView];
-    }
-    //rightView
-    if (nil != _rightView) {
-        rectRightView = [_rightView frame];
-        rectRightView.origin = NSMakePoint(NSWidth(self.frame) - NSWidth(rectRightView), 0);
-        rectRightView.size.height = NSHeight(self.frame);
-        [_rightView setFrame:rectRightView];
-    }
-    //clearButton
-    rectClearButton = [_clearButton frame];
-    rectClearButton.size = NSMakeSize(16, 16);
-    rectClearButton.origin = NSMakePoint(NSWidth(self.frame) - NSWidth(rectRightView) - NSWidth(rectClearButton) - 2,(int)((NSHeight(self.frame) - NSHeight(rectClearButton))/2));
-    [_clearButton setFrame:rectClearButton];
-    [[self cell] setTextEdgeInsets:NSEdgeInsetsMake(0, NSMaxX(rectLeftView), 0, NSWidth(self.frame) - NSMinX(rectClearButton))];
+//    NSRect rectLeftView = NSZeroRect;
+//    NSRect rectRightView = NSZeroRect;
+//    NSRect rectClearButton = NSZeroRect;
+//    
+//    //leftView
+//    if(nil != _leftView){
+//        rectLeftView = [_leftView frame];
+//        rectLeftView.origin = NSMakePoint(0, 0);
+//        rectLeftView.size.height = NSHeight(self.frame);
+//        [_leftView setFrame:rectLeftView];
+//    }
+//    
+//    if(XUITextFieldViewModeNever == _textfieldFlags.leftViewMode){
+//        rectLeftView = NSZeroRect;
+//        [_leftView setHidden:YES];
+//    }else if(XUITextFieldViewModeWhileEditing == _textfieldFlags.leftViewMode){
+//        rectLeftView = [self.cell isEditing] ? rectLeftView : NSZeroRect;
+//        [_leftView setHidden:![self.cell isEditing]];
+//    }else if(XUITextFieldViewModeUnlessEditing == _textfieldFlags.leftViewMode){
+//        rectLeftView = ![self.cell isEditing] ? rectLeftView : NSZeroRect;
+//        [_leftView setHidden:[self.cell isEditing]];
+//    }else{
+//        [_leftView setHidden:NO];
+//    }
+//    
+//    //rightView
+//    if (nil != _rightView) {
+//        rectRightView = [_rightView frame];
+//        rectRightView.origin = NSMakePoint(NSWidth(self.frame) - NSWidth(rectRightView), 0);
+//        rectRightView.size.height = NSHeight(self.frame);
+//        [_rightView setFrame:rectRightView];
+//    }
+//    
+//    if(XUITextFieldViewModeNever == _textfieldFlags.rightViewMode){
+//        rectRightView = NSZeroRect;
+//        [_rightView setHidden:YES];
+//    }else if(XUITextFieldViewModeWhileEditing == _textfieldFlags.rightViewMode){
+//        rectRightView = [self.cell isEditing] ? rectRightView : NSZeroRect;
+//        [_rightView setHidden:![self.cell isEditing]];
+//    }else if(XUITextFieldViewModeUnlessEditing == _textfieldFlags.rightViewMode){
+//        rectRightView = ![self.cell isEditing] ? rectRightView : NSZeroRect;
+//        [_rightView setHidden:[self.cell isEditing]];
+//    }else{
+//        [_rightView setHidden:NO];
+//    }
+//    
+//    //clearButton
+//    rectClearButton = [_clearButton frame];
+//    rectClearButton.size = NSMakeSize(16, 16);
+//    rectClearButton.origin = NSMakePoint(NSWidth(self.frame) - NSWidth(rectRightView) - NSWidth(rectClearButton) - 2,(int)((NSHeight(self.frame) - NSHeight(rectClearButton))/2));
+//    [_clearButton setFrame:rectClearButton];
+//    
+//    if(XUITextFieldViewModeNever == _textfieldFlags.clearButtonMode){
+//        rectClearButton = NSZeroRect;
+//        [_clearButton setHidden:YES];
+//    }else if(XUITextFieldViewModeWhileEditing == _textfieldFlags.clearButtonMode){
+//        rectClearButton = [self.cell isEditing] ? rectClearButton : NSZeroRect;
+//        [_clearButton setHidden:![self.cell isEditing]];
+//    }else if(XUITextFieldViewModeUnlessEditing == _textfieldFlags.clearButtonMode){
+//        rectClearButton = ![self.cell isEditing] ? rectClearButton : NSZeroRect;
+//        [_clearButton setHidden:[self.cell isEditing]];
+//    }else{
+//        [_clearButton setHidden:NO];
+//    }
 }
 
 #pragma mark - Actions
