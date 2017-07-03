@@ -70,7 +70,7 @@
     
     _knobLayer = [CALayer layer];
     _knobLayer.backgroundColor = _thumbTintColor.CGColor;
-    _knobLayer.borderColor = [_tintColor darkenColorByValue:0.1f].CGColor;
+    _knobLayer.borderColor = [_thumbTintColor darkenColorByValue:0.05f].CGColor;
     _knobLayer.borderWidth = 1.f;
     _knobLayer.shadowColor = [NSColor blackColor].CGColor;
     _knobLayer.shadowOffset = (CGSize){ .width = 0.f, .height = -3.f };
@@ -86,14 +86,13 @@
     if (_switchFlags.isLeft) {
         _backgroundLayer.backgroundColor = isEnabled ? _tintColor.CGColor : [_tintColor darkenColorByValue:0.05f].CGColor;
         _backgroundLayer.borderColor = isEnabled ? _borderColor.CGColor : [_borderColor lightenColorByValue:0.4f].CGColor;
-        _knobLayer.borderColor = [_tintColor darkenColorByValue:0.1f].CGColor;
         _knobLayer.frame = [self __rectForKnobLeft];
     }else{
         _backgroundLayer.backgroundColor = isEnabled ? _onTintColor.CGColor : [_onTintColor lightenColorByValue:0.4f].CGColor;
         _backgroundLayer.borderColor = isEnabled ? _onBorderColor.CGColor : [_onBorderColor lightenColorByValue:0.4f].CGColor;
-        _knobLayer.borderColor = [_onTintColor darkenColorByValue:0.1f].CGColor;
         _knobLayer.frame = [self __rectForKnobRight];
     }
+    _knobLayer.borderColor = [_thumbTintColor darkenColorByValue:0.05f].CGColor;
     _knobLayer.backgroundColor = _thumbTintColor.CGColor;
 }
 
@@ -152,6 +151,9 @@
 }
 
 -(void)mouseDown:(NSEvent *)theEvent{
+    if (![self isEnabled]) {
+        [super mouseDown:theEvent];
+    }
 }
 
 -(void)mouseUp:(NSEvent *)theEvent{
