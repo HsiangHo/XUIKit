@@ -10,10 +10,6 @@
 #import "NSColor+XUIAdditions.h"
 #import <Quartz/Quartz.h>
 
-#define M3UI_SWITCH_DEFAULT_BORDERCOLOR [NSColor colorWithCalibratedRed:169/255.0 green:169/255.0 blue:169/255.0 alpha:1.f]
-#define M3UI_SWITCH_DEFAULT_ONBACKGROUNDCOLOR [NSColor colorWithCalibratedRed:0/255.0 green:223/255.0 blue:91/255.0 alpha:1.f]
-#define M3UI_SWITCH_DEFAULT_OFFBACKGROUNDCOLOR [NSColor colorWithCalibratedRed:1.0 green:1.0 blue:1.0 alpha:1.f]
-
 @implementation XUISwitch{
     CALayer             *_backgroundLayer;
     CALayer             *_knobLayer;
