@@ -31,11 +31,11 @@
 }
 
 -(void)setUserInteractionEnabled:(BOOL)userInteractionEnabled{
-    XUI_SET_PROPERTY([NSNumber numberWithBool:userInteractionEnabled], kUserInteractionEnabled);
+    XUI_SET_PROPERTY([NSNumber numberWithBool:!userInteractionEnabled], kUserInteractionEnabled);
 }
 
 -(BOOL)isUserInteractionEnabled{
-    return [(NSNumber *)XUI_GET_PROPERTY(kUserInteractionEnabled) boolValue];
+    return ![(NSNumber *)XUI_GET_PROPERTY(kUserInteractionEnabled) boolValue];
 }
 
 -(void)setTag:(NSInteger)tag{
