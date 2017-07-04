@@ -77,7 +77,7 @@
     [_trackTintLayer setBackgroundColor:(nil == trackTintColor) ? DefaultTrackColor.CGColor :  trackTintColor.CGColor];
     
     NSRect rctProgress = [self.layer bounds];
-    rctProgress.size.width *= _progress;
+    rctProgress.size.width *= (_progress > 1.0 ? 1.0 : _progress);
     [_progressTintLayer setFrame:rctProgress];
     [_progressTintLayer setBackgroundColor:(nil == _progressTintColor) ? DefaultProgressColor.CGColor : progressTintColor.CGColor];
 }
@@ -109,12 +109,12 @@
 }
 
 -(void)setProgress:(float)progress{
-    _progress = progress;
+    _progress = (progress >= 1.0) ? 1.0 : progress;
     [self __updateLookup];
 }
 
 - (void)setProgress:(float)progress animated:(BOOL)animated{
-    _progress = progress;
+    _progress = (progress >= 1.0) ? 1.0 : progress;
     if (animated) {
         [self __updateLookup];
     }else{
