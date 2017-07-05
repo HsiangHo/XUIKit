@@ -18,6 +18,8 @@
 #define kTargetActions              @"targetActions"
 #define kCurrentStateFlags          @"currentStateFlag"
 #define kEffictiveAreaPath          @"effictiveAreaPath"
+#define kStateWillChangeBlock       @"stateWillChangeBlock"
+#define kStateDidChangeBlock        @"stateDidChangeBlock"
 
 typedef struct _xui_stateFlags{
     unsigned char down;
@@ -55,6 +57,14 @@ typedef struct _xui_stateFlags{
     XUI_SET_PROPERTY(effectiveAreaPath, kEffictiveAreaPath);
 }
 
+-(void)setStateWillChangeBlock:(XUIControlStateActionBlock) block{
+    XUI_SET_PROPERTY(block, kStateWillChangeBlock);
+}
+
+-(void)setStateDidChangeBlock:(XUIControlStateActionBlock) block{
+    XUI_SET_PROPERTY(block, kStateDidChangeBlock);
+}
+
 - (XUIControlState)controlState{
     XUIControlState state = XUIControlStateNormal;
     xui_stateFlags flags = [self __currentStateFlags];
@@ -78,7 +88,7 @@ typedef struct _xui_stateFlags{
     return state;
 }
 
-#pragma mark - Override
+#pragma mark - Override Functions
 
 -(void)__firstResponderChanged:(NSResponder *)oldFirstResponder withNewResponder:(NSResponder *)newFirstResponder{
     if(oldFirstResponder == self || newFirstResponder == self){
@@ -110,6 +120,14 @@ typedef struct _xui_stateFlags{
         bRtn = [path containsPoint:point];
     }
     return bRtn;
+}
+
+-(XUIControlStateActionBlock)__stateDidChangeBlock{
+    return XUI_GET_PROPERTY(kStateDidChangeBlock);
+}
+
+-(XUIControlStateActionBlock)__stateWillChangeBlock{
+    return XUI_GET_PROPERTY(kStateWillChangeBlock);
 }
 
 #pragma mark - Swizzle Functions
@@ -333,3 +351,22 @@ typedef struct _xui_stateFlags{
 }
 
 @end
+
+@implementation NSControl (Private)
+
+- (void)__stateWillChange{
+    XUIControlStateActionBlock block = [self __stateWillChangeBlock];
+    if(nil != block){
+        block(self, [self controlState]);
+    }
+}
+
+- (void)__stateDidChange{
+    XUIControlStateActionBlock block = [self __stateDidChangeBlock];
+    if(nil != block){
+        block(self, [self controlState]);
+    }
+}
+
+@end
+

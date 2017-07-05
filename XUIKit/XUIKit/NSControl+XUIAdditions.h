@@ -9,6 +9,8 @@
 #import <Cocoa/Cocoa.h>
 #import "XUIType.h"
 
+typedef void (^XUIControlStateActionBlock)(NSControl *control, XUIControlState currentState);
+
 @interface NSControl (XUIAdditions)
 
 @property(nonatomic,readonly) XUIControlState controlState;
@@ -17,6 +19,10 @@
 
 // effectiveAreaPath will affect the control's response area.
 @property (nullable, nonatomic, strong) NSBezierPath  *effectiveAreaPath;
+
+// if state is changing or changed,the block will be called.
+-(void)setStateWillChangeBlock:(nullable XUIControlStateActionBlock) block;
+-(void)setStateDidChangeBlock:(nullable XUIControlStateActionBlock) block;
 
 // add target/action for particular event. you can call this multiple times and you can specify multiple target/actions for a particular event.
 // passing in nil as the target goes up the responder chain. The action may optionally include the sender and the event in that order
