@@ -15,6 +15,9 @@
 
 @property (nonatomic, assign) BOOL acceptsFirstMouse;
 
+// effectiveAreaPath will affect the control's response area.
+@property (nullable, nonatomic, strong) NSBezierPath  *effectiveAreaPath;
+
 // add target/action for particular event. you can call this multiple times and you can specify multiple target/actions for a particular event.
 // passing in nil as the target goes up the responder chain. The action may optionally include the sender and the event in that order
 // the action cannot be NULL. Note that the target is not retained.

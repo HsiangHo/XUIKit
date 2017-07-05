@@ -17,6 +17,7 @@
 #define kAcceptsFirstMouse          @"acceptsFirstMouse"
 #define kTargetActions              @"targetActions"
 #define kCurrentStateFlags          @"currentStateFlag"
+#define kEffictiveAreaPath          @"effictiveAreaPath"
 
 typedef struct _xui_stateFlags{
     unsigned char down;
@@ -44,6 +45,14 @@ typedef struct _xui_stateFlags{
 
 - (void)setAcceptsFirstMouse:(BOOL)acceptsFirstMouse{
     XUI_SET_PROPERTY([NSNumber numberWithBool:!acceptsFirstMouse], kAcceptsFirstMouse);
+}
+
+-(NSBezierPath *)effectiveAreaPath{
+    return XUI_GET_PROPERTY(kEffictiveAreaPath);
+}
+
+-(void)setEffectiveAreaPath:(NSBezierPath *)effectiveAreaPath{
+    XUI_SET_PROPERTY(effectiveAreaPath, kEffictiveAreaPath);
 }
 
 - (XUIControlState)controlState{
@@ -88,6 +97,19 @@ typedef struct _xui_stateFlags{
 -(void)__setCurrentStateFlags:(xui_stateFlags)flags{
     NSValue *value = [NSValue valueWithBytes:&flags objCType:@encode(xui_stateFlags)];
     XUI_SET_PROPERTY(value, kCurrentStateFlags);
+}
+
+-(BOOL)__isPointInEffectiveArea:(NSPoint)point{
+    BOOL bRtn = YES;
+    //transform effectiveAreaPath to control's frame
+    NSBezierPath *path = [[self effectiveAreaPath] copy];
+    if (nil != path) {
+        NSAffineTransform *transform = [NSAffineTransform transform];
+        [transform translateXBy: self.frame.origin.x yBy: self.frame.origin.y];
+        [path transformUsingAffineTransform:transform];
+        bRtn = [path containsPoint:point];
+    }
+    return bRtn;
 }
 
 #pragma mark - Swizzle Functions
@@ -145,8 +167,13 @@ typedef struct _xui_stateFlags{
     
     [self __stateWillChange];
     xui_stateFlags flags = [self __currentStateFlags];
-    flags.tracking = 1;
-    flags.inside = 1;
+    if([self __isPointInEffectiveArea:event.locationInWindow]){
+        flags.tracking = 1;
+        flags.inside = 1;
+    }else{
+        flags.tracking = 0;
+        flags.inside = 0;
+    }
     [self __setCurrentStateFlags:flags];
     [self __stateDidChange];
     
@@ -155,15 +182,15 @@ typedef struct _xui_stateFlags{
 
 - (void)xui_mouseEntered:(NSEvent *)event{
     [self xui_mouseEntered:event];
-    
-    [self __stateWillChange];
-    xui_stateFlags flags = [self __currentStateFlags];
-    flags.tracking = 1;
-    flags.inside = 1;
-    [self __setCurrentStateFlags:flags];
-    [self __stateDidChange];
-    
-    [self setNeedsDisplay];
+    if([self __isPointInEffectiveArea:event.locationInWindow]){
+        [self __stateWillChange];
+        xui_stateFlags flags = [self __currentStateFlags];
+        flags.tracking = 1;
+        flags.inside = 1;
+        [self __setCurrentStateFlags:flags];
+        [self __stateDidChange];
+        [self setNeedsDisplay];
+    }
 }
 
 - (void)xui_mouseExited:(NSEvent *)event{
@@ -175,7 +202,6 @@ typedef struct _xui_stateFlags{
     flags.inside = 0;
     [self __setCurrentStateFlags:flags];
     [self __stateDidChange];
-    
     [self setNeedsDisplay];
 }
 
@@ -183,6 +209,9 @@ typedef struct _xui_stateFlags{
     NSView *view = nil;
     if ([self isUserInteractionEnabled]) {
         view = [self xui_hitTest:point];
+        if (nil != view && ![self __isPointInEffectiveArea:point]){
+            view = nil;
+        }
     }
     return view;
 }
