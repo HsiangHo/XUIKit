@@ -16,10 +16,11 @@ FOUNDATION_EXPORT const unsigned char XUIKitVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <XUIKit/PublicHeader.h>
 
+#import<XUIKit/NSColor+XUIAdditions.h>
+#import<XUIKit/NSBezierPath+XUIAdditions.h>
 
 #import<XUIKit/XUIResponder.h>
 #import<XUIKit/XUIView.h>
-#import<XUIKit/NSColor+XUIAdditions.h>
 #import<XUIKit/NSView+XUIAdditions.h>
 #import<XUIKit/NSControl+XUIAdditions.h>
 #import<XUIKit/XUIButton.h>

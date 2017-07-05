@@ -31,6 +31,8 @@
 		98AF7B011F0BB1AC009B84F4 /* XUIProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AF7AFF1F0BB1AC009B84F4 /* XUIProgressView.m */; };
 		98AF7B081F0C7CB1009B84F4 /* XUIActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 98AF7B061F0C7CB1009B84F4 /* XUIActivityIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98AF7B091F0C7CB1009B84F4 /* XUIActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AF7B071F0C7CB1009B84F4 /* XUIActivityIndicatorView.m */; };
+		98AF7B0D1F0CB97C009B84F4 /* NSBezierPath+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98AF7B0B1F0CB97C009B84F4 /* NSBezierPath+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		98AF7B0E1F0CB97C009B84F4 /* NSBezierPath+XUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AF7B0C1F0CB97C009B84F4 /* NSBezierPath+XUIAdditions.m */; };
 		98BB7B011F0133240089E4D0 /* XUILabelCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 98BB7AFF1F0133240089E4D0 /* XUILabelCell.h */; };
 		98BB7B021F0133240089E4D0 /* XUILabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BB7B001F0133240089E4D0 /* XUILabelCell.m */; };
 		98C409121EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98C409101EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -75,6 +77,8 @@
 		98AF7AFF1F0BB1AC009B84F4 /* XUIProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIProgressView.m; sourceTree = "<group>"; };
 		98AF7B061F0C7CB1009B84F4 /* XUIActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIActivityIndicatorView.h; sourceTree = "<group>"; };
 		98AF7B071F0C7CB1009B84F4 /* XUIActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIActivityIndicatorView.m; sourceTree = "<group>"; };
+		98AF7B0B1F0CB97C009B84F4 /* NSBezierPath+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBezierPath+XUIAdditions.h"; sourceTree = "<group>"; };
+		98AF7B0C1F0CB97C009B84F4 /* NSBezierPath+XUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBezierPath+XUIAdditions.m"; sourceTree = "<group>"; };
 		98BB7AFF1F0133240089E4D0 /* XUILabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUILabelCell.h; sourceTree = "<group>"; };
 		98BB7B001F0133240089E4D0 /* XUILabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUILabelCell.m; sourceTree = "<group>"; };
 		98C409101EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSControl+XUIAdditions.h"; sourceTree = "<group>"; };
@@ -202,6 +206,15 @@
 			name = XUIActivityIndicatorView;
 			sourceTree = "<group>";
 		};
+		98AF7B0A1F0CB95D009B84F4 /* XUIBezierPath */ = {
+			isa = PBXGroup;
+			children = (
+				98AF7B0B1F0CB97C009B84F4 /* NSBezierPath+XUIAdditions.h */,
+				98AF7B0C1F0CB97C009B84F4 /* NSBezierPath+XUIAdditions.m */,
+			);
+			name = XUIBezierPath;
+			sourceTree = "<group>";
+		};
 		98C4090F1EEFF5A900F0A4F6 /* XUIControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +248,8 @@
 			isa = PBXGroup;
 			children = (
 				98D158441EEAB252005A0434 /* XUIKit.h */,
+				98514C591EEEDB8C0001B8A6 /* XUIColor */,
+				98AF7B0A1F0CB95D009B84F4 /* XUIBezierPath */,
 				98AF7B051F0C7B67009B84F4 /* XUIActivityIndicatorView */,
 				98AF7AF91F0BA8C1009B84F4 /* XUIProgressView */,
 				9861A2341F088F97003641B9 /* XUISwitch */,
@@ -245,7 +260,6 @@
 				98D358D51EF7EE6B004D4218 /* XUIImageView */,
 				98ED222B1EF63961004BD87D /* XUILabel */,
 				98C4090F1EEFF5A900F0A4F6 /* XUIControl */,
-				98514C591EEEDB8C0001B8A6 /* XUIColor */,
 				9813E11A1EED82F3009F1495 /* XUIProperty */,
 				9854CFBB1EED2069008A3454 /* XUIResponder */,
 				9854CFDD1EED2E6D008A3454 /* XUIView */,
@@ -305,6 +319,7 @@
 				98D358D81EF7EEB5004D4218 /* XUIImageView.h in Headers */,
 				9861A2371F089217003641B9 /* XUISwitch.h in Headers */,
 				98AF7B001F0BB1AC009B84F4 /* XUIProgressView.h in Headers */,
+				98AF7B0D1F0CB97C009B84F4 /* NSBezierPath+XUIAdditions.h in Headers */,
 				98AF7B081F0C7CB1009B84F4 /* XUIActivityIndicatorView.h in Headers */,
 				98BB7B011F0133240089E4D0 /* XUILabelCell.h in Headers */,
 				98ED22331EF64056004BD87D /* NSTextField+XUIAdditions.h in Headers */,
@@ -397,6 +412,7 @@
 				9854CFBF1EED212C008A3454 /* XUIResponder.m in Sources */,
 				9861A2381F089217003641B9 /* XUISwitch.m in Sources */,
 				98ED22341EF64056004BD87D /* NSTextField+XUIAdditions.m in Sources */,
+				98AF7B0E1F0CB97C009B84F4 /* NSBezierPath+XUIAdditions.m in Sources */,
 				98BB7B021F0133240089E4D0 /* XUILabelCell.m in Sources */,
 				987923471EF1854100F2534A /* NSView+XUIAdditions.m in Sources */,
 				98AF7B091F0C7CB1009B84F4 /* XUIActivityIndicatorView.m in Sources */,
