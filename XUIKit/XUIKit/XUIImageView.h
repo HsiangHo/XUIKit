@@ -10,4 +10,7 @@
 
 @interface XUIImageView : NSImageView
 
+// shapeAreaPath will affect the XUIImageView's display area.
+@property (nullable, nonatomic, strong) NSBezierPath  *shapeAreaPath;
+
 @end
