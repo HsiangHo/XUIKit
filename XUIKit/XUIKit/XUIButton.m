@@ -199,11 +199,12 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
 }
 
 - (void)__stateWillChange{
-    
+    [super __stateWillChange];
 }
 
 - (void)__stateDidChange{
     [self __updateLookup];
+    [super __stateDidChange];
 }
 
 -(void)drawRect:(NSRect)dirtyRect{
