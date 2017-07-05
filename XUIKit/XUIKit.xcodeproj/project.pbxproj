@@ -29,6 +29,8 @@
 		987923771EF2A53E00F2534A /* XUIControlTargetAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 987923751EF2A53E00F2534A /* XUIControlTargetAction.m */; };
 		98AF7B001F0BB1AC009B84F4 /* XUIProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 98AF7AFE1F0BB1AC009B84F4 /* XUIProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98AF7B011F0BB1AC009B84F4 /* XUIProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AF7AFF1F0BB1AC009B84F4 /* XUIProgressView.m */; };
+		98AF7B081F0C7CB1009B84F4 /* XUIActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 98AF7B061F0C7CB1009B84F4 /* XUIActivityIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		98AF7B091F0C7CB1009B84F4 /* XUIActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AF7B071F0C7CB1009B84F4 /* XUIActivityIndicatorView.m */; };
 		98BB7B011F0133240089E4D0 /* XUILabelCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 98BB7AFF1F0133240089E4D0 /* XUILabelCell.h */; };
 		98BB7B021F0133240089E4D0 /* XUILabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BB7B001F0133240089E4D0 /* XUILabelCell.m */; };
 		98C409121EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98C409101EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -71,6 +73,8 @@
 		987923781EF2A88C00F2534A /* XUIType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XUIType.h; sourceTree = "<group>"; };
 		98AF7AFE1F0BB1AC009B84F4 /* XUIProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIProgressView.h; sourceTree = "<group>"; };
 		98AF7AFF1F0BB1AC009B84F4 /* XUIProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIProgressView.m; sourceTree = "<group>"; };
+		98AF7B061F0C7CB1009B84F4 /* XUIActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIActivityIndicatorView.h; sourceTree = "<group>"; };
+		98AF7B071F0C7CB1009B84F4 /* XUIActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIActivityIndicatorView.m; sourceTree = "<group>"; };
 		98BB7AFF1F0133240089E4D0 /* XUILabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUILabelCell.h; sourceTree = "<group>"; };
 		98BB7B001F0133240089E4D0 /* XUILabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUILabelCell.m; sourceTree = "<group>"; };
 		98C409101EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSControl+XUIAdditions.h"; sourceTree = "<group>"; };
@@ -189,6 +193,15 @@
 			name = XUIProgressView;
 			sourceTree = "<group>";
 		};
+		98AF7B051F0C7B67009B84F4 /* XUIActivityIndicatorView */ = {
+			isa = PBXGroup;
+			children = (
+				98AF7B061F0C7CB1009B84F4 /* XUIActivityIndicatorView.h */,
+				98AF7B071F0C7CB1009B84F4 /* XUIActivityIndicatorView.m */,
+			);
+			name = XUIActivityIndicatorView;
+			sourceTree = "<group>";
+		};
 		98C4090F1EEFF5A900F0A4F6 /* XUIControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				98D158441EEAB252005A0434 /* XUIKit.h */,
+				98AF7B051F0C7B67009B84F4 /* XUIActivityIndicatorView */,
 				98AF7AF91F0BA8C1009B84F4 /* XUIProgressView */,
 				9861A2341F088F97003641B9 /* XUISwitch */,
 				987923791EF2B68200F2534A /* XUIBase */,
@@ -291,6 +305,7 @@
 				98D358D81EF7EEB5004D4218 /* XUIImageView.h in Headers */,
 				9861A2371F089217003641B9 /* XUISwitch.h in Headers */,
 				98AF7B001F0BB1AC009B84F4 /* XUIProgressView.h in Headers */,
+				98AF7B081F0C7CB1009B84F4 /* XUIActivityIndicatorView.h in Headers */,
 				98BB7B011F0133240089E4D0 /* XUILabelCell.h in Headers */,
 				98ED22331EF64056004BD87D /* NSTextField+XUIAdditions.h in Headers */,
 				9854CFE01EED2EA4008A3454 /* XUIView.h in Headers */,
@@ -384,6 +399,7 @@
 				98ED22341EF64056004BD87D /* NSTextField+XUIAdditions.m in Sources */,
 				98BB7B021F0133240089E4D0 /* XUILabelCell.m in Sources */,
 				987923471EF1854100F2534A /* NSView+XUIAdditions.m in Sources */,
+				98AF7B091F0C7CB1009B84F4 /* XUIActivityIndicatorView.m in Sources */,
 				98D358DD1EF7F105004D4218 /* XUIButton.m in Sources */,
 				98AF7B011F0BB1AC009B84F4 /* XUIProgressView.m in Sources */,
 				987923121EF1486400F2534A /* XUIMethodsHelper.m in Sources */,

@@ -29,3 +29,4 @@ FOUNDATION_EXPORT const unsigned char XUIKitVersionString[];
 #import<XUIKit/NSTextField+XUIAdditions.h>
 #import<XUIKit/XUISwitch.h>
 #import<XUIKit/XUIProgressView.h>
+#import<XUIKit/XUIActivityIndicatorView.h>
