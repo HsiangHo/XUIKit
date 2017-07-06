@@ -16,6 +16,10 @@
 @property(nonatomic, strong, nullable) NSColor* trackTintColor;
 @property(nonatomic, strong, nullable) NSImage* progressImage;
 @property(nonatomic, strong, nullable) NSImage* trackImage;
+@property(nonatomic, assign) NSEdgeInsets progressEdgeInsets;
+@property(nonatomic, assign) NSEdgeInsets trackEdgeInsets;
+@property(nonatomic, assign) CGFloat progressCornerRadius;
+@property(nonatomic, assign) CGFloat trackCornerRadius;
 
 - (void)setProgress:(float)progress animated:(BOOL)animated;
 
