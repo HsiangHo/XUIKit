@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "XUIType.h"
 
-typedef void (^XUIControlStateActionBlock)(NSControl *control, XUIControlState currentState);
+typedef void (^XUIControlStateActionBlock)( NSControl * _Nonnull control, XUIControlState currentState);
 
 @interface NSControl (XUIAdditions)
 
