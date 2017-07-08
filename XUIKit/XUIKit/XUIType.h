@@ -37,4 +37,9 @@ typedef NS_ENUM(NSInteger, XUITextFieldViewMode) {
     XUITextFieldViewModeAlways
 };
 
+typedef NS_ENUM(NSInteger, XUIProgressViewStyle) {
+    XUIProgressViewStyleBar,     // normal progress bar
+    XUIProgressViewStyleCircle   // circle progress bar
+};
+
 #endif /* XUIType_h */

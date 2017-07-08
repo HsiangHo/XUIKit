@@ -9,6 +9,7 @@
 #import "XUIProgressView.h"
 #import "NSColor+XUIAdditions.h"
 #import <Quartz/Quartz.h>
+#import "NSBezierPath+XUIAdditions.h"
 
 #define DefaultTrackColor           [NSColor colorWithHex:@"#b5b5b5" alpha:1.0]
 #define DefaultProgressColor        [NSColor colorWithHex:@"#007ef3" alpha:1.0]
@@ -16,17 +17,21 @@
 #define INSETS_TO_FRAME(EdgeInsets,Frame)\
 NSMakeRect(EdgeInsets.left, EdgeInsets.bottom, NSWidth(Frame) - EdgeInsets.right - EdgeInsets.left, NSHeight(Frame) - EdgeInsets.top - EdgeInsets.bottom)
 
-
 @implementation XUIProgressView{
     float                           _progress;
     NSColor                         *_progressTintColor;
     NSColor                         *_trackTintColor;
     NSImage                         *_progressImage;
     NSImage                         *_trackImage;
-    CALayer                         *_progressTintLayer;
-    CALayer                         *_trackTintLayer;
+    CAShapeLayer                    *_progressTintLayer;
+    CAShapeLayer                    *_trackTintLayer;
     NSEdgeInsets                    _progressEdgeInsets;
     NSEdgeInsets                    _trackEdgeInsets;
+    CGFloat                         _progressLineWidth;
+    CGFloat                         _trackLineWidth;
+    CGFloat                         _progressCornerRadius;
+    CGFloat                         _trackCornerRadius;
+    XUIProgressViewStyle            _progressViewStyle;
     
     struct{
         unsigned int showTrackImage:1;
@@ -38,6 +43,7 @@ NSMakeRect(EdgeInsets.left, EdgeInsets.bottom, NSWidth(Frame) - EdgeInsets.right
 
 - (instancetype)init{
     if(self = [super init]){
+        _progressViewStyle = XUIProgressViewStyleBar;
         [self __initializeXUIProgressView];
     }
     return self;
@@ -45,9 +51,15 @@ NSMakeRect(EdgeInsets.left, EdgeInsets.bottom, NSWidth(Frame) - EdgeInsets.right
 
 - (instancetype)initWithFrame:(NSRect)frameRect{
     if (self = [super initWithFrame:frameRect]) {
+        _progressViewStyle = XUIProgressViewStyleBar;
         [self __initializeXUIProgressView];
     }
     return self;
+}
+
+-(void)drawRect:(NSRect)dirtyRect{
+    [super drawRect:dirtyRect];
+    [self __updateLookup];
 }
 
 #pragma mark - Private Methods
@@ -57,21 +69,31 @@ NSMakeRect(EdgeInsets.left, EdgeInsets.bottom, NSWidth(Frame) - EdgeInsets.right
     _progressEdgeInsets = NSEdgeInsetsMake(0, 0, 0, 0);
     _trackEdgeInsets = NSEdgeInsetsMake(0, 0, 0, 0);
     
+    _progressCornerRadius = -1;
+    _trackCornerRadius = -1;
+    _trackLineWidth = 2.f;
+    _progressLineWidth = 2.f;
     _trackTintColor = DefaultTrackColor;
     _progressTintColor = DefaultProgressColor;
     _progress = 0;
     _progressViewFlags.showTrackImage = NO;
     _progressViewFlags.showProgressImage = NO;
-    _trackTintLayer = [CALayer layer];
+    _trackTintLayer = [CAShapeLayer layer];
     [self.layer addSublayer:_trackTintLayer];
     
-    _progressTintLayer = [CALayer layer];
+    _progressTintLayer = [CAShapeLayer layer];
     [self.layer addSublayer:_progressTintLayer];
-    
-    [self __updateLookup];
 }
 
 -(void)__updateLookup{
+    if(XUIProgressViewStyleCircle == _progressViewStyle){
+        [self __updateCircleLookup];
+    }else{
+        [self __updateNormalBarLookup];
+    }
+}
+
+-(void)__updateNormalBarLookup{
     NSColor *trackTintColor = _trackTintColor;
     NSColor *progressTintColor = _progressTintColor;
     if(_progressViewFlags.showTrackImage && nil != _trackImage){
@@ -81,50 +103,120 @@ NSMakeRect(EdgeInsets.left, EdgeInsets.bottom, NSWidth(Frame) - EdgeInsets.right
         progressTintColor = [NSColor colorWithPatternImage:_progressImage];
     }
     
-    [_trackTintLayer setFrame:INSETS_TO_FRAME(_trackEdgeInsets, [self.layer bounds])];
+    NSRect rctTrack = INSETS_TO_FRAME(_trackEdgeInsets, [self bounds]);
+    rctTrack.size.height = _trackLineWidth;
+    [_trackTintLayer setFrame:rctTrack];
     [_trackTintLayer setBackgroundColor:(nil == trackTintColor) ? DefaultTrackColor.CGColor :  trackTintColor.CGColor];
+    [_trackTintLayer setCornerRadius:_trackCornerRadius < 0 ? 0: _trackCornerRadius];
     
-    NSRect rctProgress = INSETS_TO_FRAME(_progressEdgeInsets, [self.layer bounds]);
+    NSRect rctProgress = INSETS_TO_FRAME(_progressEdgeInsets, [self bounds]);
+    rctProgress.size.height = _progressLineWidth;
     rctProgress.size.width *= (_progress > 1.0 ? 1.0 : _progress);
     [_progressTintLayer setFrame:rctProgress];
     [_progressTintLayer setBackgroundColor:(nil == _progressTintColor) ? DefaultProgressColor.CGColor : progressTintColor.CGColor];
+    [_progressTintLayer setCornerRadius:_progressCornerRadius < 0 ? 0: _progressCornerRadius];
+}
+
+-(void)__updateCircleLookup{
+    NSColor *trackTintColor = _trackTintColor;
+    NSColor *progressTintColor = _progressTintColor;
+    if(_progressViewFlags.showTrackImage && nil != _trackImage){
+        trackTintColor = [NSColor colorWithPatternImage:_trackImage];
+    }
+    if (_progressViewFlags.showProgressImage && nil != _progressImage) {
+        progressTintColor = [NSColor colorWithPatternImage:_progressImage];
+    }
+    NSRect rctFrame = [self bounds];
+    if (NSWidth(rctFrame) > NSHeight(rctFrame)) {
+        rctFrame.size.width = NSHeight(rctFrame);
+    }else{
+        rctFrame.size.height = NSWidth(rctFrame);
+    }
+    NSPoint center = NSMakePoint(NSMidX(rctFrame), NSMidY(rctFrame));
+    
+    NSRect rctTrack = rctFrame;
+    CGFloat defaultRadius = (NSWidth(rctTrack) - _trackLineWidth)* 0.5f;
+    CGFloat radius = _trackCornerRadius < 0 ? defaultRadius: (_trackCornerRadius > defaultRadius ? defaultRadius : _trackCornerRadius);
+    rctTrack = NSInsetRect(rctTrack, _trackLineWidth, 0);
+    [_trackTintLayer setFillColor:[NSColor clearColor].CGColor];
+    [_trackTintLayer setStrokeColor: (nil == trackTintColor) ? DefaultTrackColor.CGColor :  trackTintColor.CGColor];
+    [_trackTintLayer setOpacity:1.0f];
+    [_trackTintLayer setLineWidth:_trackLineWidth];
+    NSBezierPath *path = [NSBezierPath bezierPath];
+    [path appendBezierPathWithArcWithCenter:center radius:radius startAngle:90 endAngle:-270 clockwise:YES];
+    CGPathRef pathRef = [path quartzPath];
+    _trackTintLayer.path = pathRef;
+    CGPathRelease(pathRef);
+    
+    NSRect rctProgress = rctFrame;
+    CGFloat defaultRadius2 = (NSWidth(rctProgress) - _progressLineWidth)* 0.5f;
+    CGFloat radius2 = _progressCornerRadius < 0 ? defaultRadius2: (_progressCornerRadius > defaultRadius2 ? defaultRadius2 : _progressCornerRadius);
+    rctProgress = NSInsetRect(rctProgress, _progressLineWidth, 0);
+    CGFloat startAngle = 90;
+    CGFloat endAngle = 90 + (-360 * _progress);
+    [_progressTintLayer setFillColor:[NSColor clearColor].CGColor];
+    [_progressTintLayer setStrokeColor: (nil == progressTintColor) ? DefaultProgressColor.CGColor :  progressTintColor.CGColor];
+    [_progressTintLayer setOpacity:1.0f];
+    [_progressTintLayer setLineWidth:_progressLineWidth];
+    NSBezierPath *path2 = [NSBezierPath bezierPath];
+    [path2 appendBezierPathWithArcWithCenter:center radius:radius2 startAngle:startAngle endAngle:endAngle clockwise:YES];
+    [path2 moveToPoint:NSMakePoint(NSMaxX(rctProgress), NSMaxY(rctProgress))];
+    CGPathRef pathRef2 = [path2 quartzPath];
+    _progressTintLayer.path = pathRef2;
+    CGPathRelease(pathRef2);
+}
+
+-(void)__setProgressViewStyle:(XUIProgressViewStyle)buttonType{
+    _progressViewStyle = buttonType;
 }
 
 #pragma mark - Public Methods
 
++ (id)progressViewWithType:(XUIProgressViewStyle)progressViewType{
+    XUIProgressView *progressView = [[XUIProgressView alloc] init];
+    [progressView __setProgressViewStyle:progressViewType];
+    return progressView;
+}
+
++ (id)progressView{
+    XUIProgressView *progressView = [[XUIProgressView alloc] init];
+    [progressView __setProgressViewStyle:XUIProgressViewStyleBar];
+    return progressView;
+}
+
 -(void)setTrackTintColor:(NSColor *)trackTintColor{
     _progressViewFlags.showTrackImage = NO;
     _trackTintColor = trackTintColor;
-    [self __updateLookup];
+    [self setNeedsDisplay:YES];
 }
 
 -(void)setProgressTintColor:(NSColor *)progressTintColor{
     _progressViewFlags.showProgressImage = NO;
     _progressTintColor = progressTintColor;
-    [self __updateLookup];
+    [self setNeedsDisplay:YES];
 }
 
 -(void)setTrackImage:(NSImage *)trackImage{
     _progressViewFlags.showTrackImage = YES;
     _trackImage = trackImage;
-    [self __updateLookup];
+    [self setNeedsDisplay:YES];
 }
 
 -(void)setProgressImage:(NSImage *)progressImage{
     _progressViewFlags.showProgressImage = YES;
     _progressImage = progressImage;
-    [self __updateLookup];
+    [self setNeedsDisplay:YES];
 }
 
 -(void)setProgress:(float)progress{
     _progress = (progress >= 1.0) ? 1.0 : progress;
-    [self __updateLookup];
+    [self setNeedsDisplay:YES];
 }
 
 - (void)setProgress:(float)progress animated:(BOOL)animated{
     _progress = (progress >= 1.0) ? 1.0 : progress;
     if (animated) {
-        [self __updateLookup];
+        [self setNeedsDisplay:YES];
     }else{
         [CATransaction begin];
         [CATransaction setDisableActions:YES];
@@ -135,7 +227,7 @@ NSMakeRect(EdgeInsets.left, EdgeInsets.bottom, NSWidth(Frame) - EdgeInsets.right
 
 -(void)setProgressEdgeInsets:(NSEdgeInsets)progressEdgeInsets{
     _progressEdgeInsets = progressEdgeInsets;
-    [self __updateLookup];
+    [self setNeedsDisplay:YES];
 }
 
 -(NSEdgeInsets)progressEdgeInsets{
@@ -144,7 +236,7 @@ NSMakeRect(EdgeInsets.left, EdgeInsets.bottom, NSWidth(Frame) - EdgeInsets.right
 
 -(void)setTrackEdgeInsets:(NSEdgeInsets)trackEdgeInsets{
     _trackEdgeInsets = trackEdgeInsets;
-    [self __updateLookup];
+    [self setNeedsDisplay:YES];
 }
 
 -(NSEdgeInsets)trackEdgeInsets{
@@ -152,21 +244,39 @@ NSMakeRect(EdgeInsets.left, EdgeInsets.bottom, NSWidth(Frame) - EdgeInsets.right
 }
 
 -(void)setProgressCornerRadius:(CGFloat)progressCornerRadius{
-    _progressTintLayer.cornerRadius = progressCornerRadius;
-    [self __updateLookup];
+    _progressCornerRadius = progressCornerRadius;
+    [self setNeedsDisplay:YES];
 }
 
 -(CGFloat)progressCornerRadius{
-    return _progressTintLayer.cornerRadius;
+    return _progressCornerRadius;
 }
 
 -(void)setTrackCornerRadius:(CGFloat)trackCornerRadius{
-    _trackTintLayer.cornerRadius = trackCornerRadius;
-    [self __updateLookup];
+    _trackCornerRadius = trackCornerRadius;
+    [self setNeedsDisplay:YES];
 }
 
 -(CGFloat)trackCornerRadius{
-    return _trackTintLayer.cornerRadius;
+    return _trackCornerRadius;
+}
+
+-(void)setProgressLineWidth:(CGFloat)progressLineWidth{
+    _progressLineWidth = progressLineWidth;
+    [self setNeedsDisplay:YES];
+}
+
+-(CGFloat)progressLineWidth{
+    return _progressLineWidth;
+}
+
+-(void)setTrackLineWidth:(CGFloat)trackLineWidth{
+    _trackLineWidth = trackLineWidth;
+    [self setNeedsDisplay:YES];
+}
+
+-(CGFloat)trackLineWidth{
+    return _trackLineWidth;
 }
 
 @end
