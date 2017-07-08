@@ -158,6 +158,7 @@ NSMakeRect(EdgeInsets.left, EdgeInsets.bottom, NSWidth(Frame) - EdgeInsets.right
     [_progressTintLayer setStrokeColor: (nil == progressTintColor) ? DefaultProgressColor.CGColor :  progressTintColor.CGColor];
     [_progressTintLayer setOpacity:1.0f];
     [_progressTintLayer setLineWidth:_progressLineWidth];
+    [_progressTintLayer setLineCap:kCALineCapRound];
     NSBezierPath *path2 = [NSBezierPath bezierPath];
     [path2 appendBezierPathWithArcWithCenter:center radius:radius2 startAngle:startAngle endAngle:endAngle clockwise:YES];
     [path2 moveToPoint:NSMakePoint(NSMaxX(rctProgress), NSMaxY(rctProgress))];
