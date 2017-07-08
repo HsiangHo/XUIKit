@@ -124,13 +124,13 @@
 
 -(void)__moveleft{
     _switchFlags.isLeft = YES;
-    [self __updateSwitch];
+    [self setNeedsDisplay:YES];
     [self sendAction:_action to:_target];
 }
 
 -(void)__moveright{
     _switchFlags.isLeft = NO;
-    [self __updateSwitch];
+    [self setNeedsDisplay:YES];
     [self sendAction:_action to:_target];
 }
 
@@ -206,7 +206,7 @@
 
 -(void)setEnabled:(BOOL)enabled{
     [super setEnabled:enabled];
-    [self __updateSwitch];
+    [self setNeedsDisplay:YES];
 }
 
 -(void)setTarget:(id)target{
@@ -225,37 +225,41 @@
     return _action;
 }
 
+-(void)drawRect:(NSRect)dirtyRect{
+    [self __updateSwitch];
+}
+
 #pragma mark - Public Methods
 
 -(void)setOnTintColor:(NSColor *)onTintColor{
     _onTintColor = onTintColor;
-    [self __updateSwitch];
+    [self setNeedsDisplay:YES];
 }
 
 -(void)setTintColor:(NSColor *)tintColor{
     _tintColor = tintColor;
-    [self __updateSwitch];
+    [self setNeedsDisplay:YES];
 }
 
 -(void)setBorderColor:(NSColor *)borderColor{
     _borderColor = borderColor;
-    [self __updateSwitch];
+    [self setNeedsDisplay:YES];
 }
 
 -(void)setOnBorderColor:(NSColor *)onBorderColor{
     _onBorderColor = onBorderColor;
-    [self __updateSwitch];
+    [self setNeedsDisplay:YES];
 }
 
 -(void)setThumbTintColor:(NSColor *)thumbTintColor{
     _thumbTintColor = thumbTintColor;
-    [self __updateSwitch];
+    [self setNeedsDisplay:YES];
 }
 
 -(void)setOn:(BOOL)on animated:(BOOL)animated{
     _switchFlags.isLeft = !on;
     if (animated) {
-        [self __updateSwitch];
+        [self setNeedsDisplay:YES];
     }else{
         [CATransaction begin];
         [CATransaction setDisableActions:YES];
@@ -266,7 +270,7 @@
 
 -(void)setOn:(BOOL)on{
     _switchFlags.isLeft = !on;
-    [self __updateSwitch];
+    [self setNeedsDisplay:YES];
 }
 
 -(BOOL)isOn{
