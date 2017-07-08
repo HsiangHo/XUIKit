@@ -75,7 +75,7 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
 
 -(void)setNormalTextMode:(BOOL)normalText{
     _buttonFlags.isNormalStringValue = normalText;
-    [self __updateLookup];
+    [self setNeedsDisplay:YES];
 }
 
 - (BOOL)dimsInBackground{
@@ -156,7 +156,6 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
     
     [self.imageView setUserInteractionEnabled:NO];
     [self.titleLabel setUserInteractionEnabled:NO];
-    [self __updateLookup];
 }
 
 -(void)__updateLookup{
@@ -203,7 +202,7 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
 }
 
 - (void)__stateDidChange{
-    [self __updateLookup];
+    [self setNeedsDisplay:YES];
     [super __stateDidChange];
 }
 
@@ -213,6 +212,7 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),N
         NSRect rctImage = NSMakeRect((int)((NSWidth(self.bounds) - img.size.width) / 2), ((int)(NSHeight(self.bounds) - img.size.height) / 2), img.size.width, img.size.height);
         [img drawInRect:rctImage];
     }
+    [self __updateLookup];
 }
 
 #pragma mark - Content Lookup
