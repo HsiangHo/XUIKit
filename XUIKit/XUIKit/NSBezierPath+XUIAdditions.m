@@ -45,9 +45,9 @@
             }
         }
         // Be sure the path is closed or Quartz may not do valid hit detection.
-//        if (!didClosePath){
-//            CGPathCloseSubpath(path);
-//        }
+        if (!didClosePath){
+            CGPathCloseSubpath(path);
+        }
         immutablePath = CGPathCreateCopy(path);
         CGPathRelease(path);
     }
