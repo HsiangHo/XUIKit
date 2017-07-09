@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9813E11D1EED91BB009F1495 /* XUIProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 9813E11B1EED91BB009F1495 /* XUIProperty.h */; };
 		9813E11E1EED91BB009F1495 /* XUIProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9813E11C1EED91BB009F1495 /* XUIProperty.m */; };
+		9833B4D41F12A691006552BD /* XUIProgressView+Bar.h in Headers */ = {isa = PBXBuildFile; fileRef = 9833B4D21F12A691006552BD /* XUIProgressView+Bar.h */; };
+		9833B4D81F12A6D0006552BD /* XUIProgressView+Circle.h in Headers */ = {isa = PBXBuildFile; fileRef = 9833B4D61F12A6D0006552BD /* XUIProgressView+Circle.h */; };
 		98514C5C1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98514C5A1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */ = {isa = PBXBuildFile; fileRef = 9854CFBC1EED212C008A3454 /* XUIResponder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9854CFBF1EED212C008A3454 /* XUIResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854CFBD1EED212C008A3454 /* XUIResponder.m */; };
@@ -55,6 +57,8 @@
 /* Begin PBXFileReference section */
 		9813E11B1EED91BB009F1495 /* XUIProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIProperty.h; sourceTree = "<group>"; };
 		9813E11C1EED91BB009F1495 /* XUIProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIProperty.m; sourceTree = "<group>"; };
+		9833B4D21F12A691006552BD /* XUIProgressView+Bar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XUIProgressView+Bar.h"; sourceTree = "<group>"; };
+		9833B4D61F12A6D0006552BD /* XUIProgressView+Circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XUIProgressView+Circle.h"; sourceTree = "<group>"; };
 		98514C5A1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+XUIAdditions.h"; sourceTree = "<group>"; };
 		98514C5B1EEEDCC20001B8A6 /* NSColor+XUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+XUIAdditions.m"; sourceTree = "<group>"; };
 		9854CFBC1EED212C008A3454 /* XUIResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIResponder.h; sourceTree = "<group>"; };
@@ -191,6 +195,8 @@
 			children = (
 				98AF7AFE1F0BB1AC009B84F4 /* XUIProgressView.h */,
 				98AF7AFF1F0BB1AC009B84F4 /* XUIProgressView.m */,
+				9833B4D21F12A691006552BD /* XUIProgressView+Bar.h */,
+				9833B4D61F12A6D0006552BD /* XUIProgressView+Circle.h */,
 			);
 			name = XUIProgressView;
 			sourceTree = "<group>";
@@ -318,10 +324,12 @@
 				98AF7B001F0BB1AC009B84F4 /* XUIProgressView.h in Headers */,
 				98AF7B0D1F0CB97C009B84F4 /* NSBezierPath+XUIAdditions.h in Headers */,
 				98AF7B081F0C7CB1009B84F4 /* XUIActivityIndicatorView.h in Headers */,
+				9833B4D81F12A6D0006552BD /* XUIProgressView+Circle.h in Headers */,
 				98BB7B011F0133240089E4D0 /* XUILabelCell.h in Headers */,
 				98ED22331EF64056004BD87D /* NSTextField+XUIAdditions.h in Headers */,
 				9854CFE01EED2EA4008A3454 /* XUIView.h in Headers */,
 				98ED22141EF44B7D004BD87D /* XUIType.h in Headers */,
+				9833B4D41F12A691006552BD /* XUIProgressView+Bar.h in Headers */,
 				98514C5C1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h in Headers */,
 				9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */,
 				987923111EF1486400F2534A /* XUIMethodsHelper.h in Headers */,

@@ -10,6 +10,8 @@
 #import "NSColor+XUIAdditions.h"
 #import <Quartz/Quartz.h>
 #import "NSBezierPath+XUIAdditions.h"
+#import "XUIProgressView+Bar.h"
+#import "XUIProgressView+Circle.h"
 
 #define DefaultTrackColor           [NSColor colorWithHex:@"#b5b5b5" alpha:1.0]
 #define DefaultProgressColor        [NSColor colorWithHex:@"#007ef3" alpha:1.0]
@@ -91,79 +93,6 @@ NSMakeRect(EdgeInsets.left, EdgeInsets.bottom, NSWidth(Frame) - EdgeInsets.right
     }else{
         [self __updateNormalBarLookup];
     }
-}
-
--(void)__updateNormalBarLookup{
-    NSColor *trackTintColor = _trackTintColor;
-    NSColor *progressTintColor = _progressTintColor;
-    if(_progressViewFlags.showTrackImage && nil != _trackImage){
-        trackTintColor = [NSColor colorWithPatternImage:_trackImage];
-    }
-    if (_progressViewFlags.showProgressImage && nil != _progressImage) {
-        progressTintColor = [NSColor colorWithPatternImage:_progressImage];
-    }
-    
-    NSRect rctTrack = INSETS_TO_FRAME(_trackEdgeInsets, [self bounds]);
-    rctTrack.size.height = _trackLineWidth;
-    [_trackTintLayer setFrame:rctTrack];
-    [_trackTintLayer setBackgroundColor:(nil == trackTintColor) ? DefaultTrackColor.CGColor :  trackTintColor.CGColor];
-    [_trackTintLayer setCornerRadius:_trackCornerRadius < 0 ? 0: _trackCornerRadius];
-    
-    NSRect rctProgress = INSETS_TO_FRAME(_progressEdgeInsets, [self bounds]);
-    rctProgress.size.height = _progressLineWidth;
-    rctProgress.size.width *= (_progress > 1.0 ? 1.0 : _progress);
-    [_progressTintLayer setFrame:rctProgress];
-    [_progressTintLayer setBackgroundColor:(nil == _progressTintColor) ? DefaultProgressColor.CGColor : progressTintColor.CGColor];
-    [_progressTintLayer setCornerRadius:_progressCornerRadius < 0 ? 0: _progressCornerRadius];
-}
-
--(void)__updateCircleLookup{
-    NSColor *trackTintColor = _trackTintColor;
-    NSColor *progressTintColor = _progressTintColor;
-    if(_progressViewFlags.showTrackImage && nil != _trackImage){
-        trackTintColor = [NSColor colorWithPatternImage:_trackImage];
-    }
-    if (_progressViewFlags.showProgressImage && nil != _progressImage) {
-        progressTintColor = [NSColor colorWithPatternImage:_progressImage];
-    }
-    NSRect rctFrame = [self bounds];
-    if (NSWidth(rctFrame) > NSHeight(rctFrame)) {
-        rctFrame.size.width = NSHeight(rctFrame);
-    }else{
-        rctFrame.size.height = NSWidth(rctFrame);
-    }
-    NSPoint center = NSMakePoint(NSMidX(rctFrame), NSMidY(rctFrame));
-    
-    NSRect rctTrack = rctFrame;
-    CGFloat defaultRadius = (NSWidth(rctTrack) - _trackLineWidth)* 0.5f;
-    CGFloat radius = _trackCornerRadius < 0 ? defaultRadius: (_trackCornerRadius > defaultRadius ? defaultRadius : _trackCornerRadius);
-    rctTrack = NSInsetRect(rctTrack, _trackLineWidth, 0);
-    [_trackTintLayer setFillColor:[NSColor clearColor].CGColor];
-    [_trackTintLayer setStrokeColor: (nil == trackTintColor) ? DefaultTrackColor.CGColor :  trackTintColor.CGColor];
-    [_trackTintLayer setOpacity:1.0f];
-    [_trackTintLayer setLineWidth:_trackLineWidth];
-    NSBezierPath *path = [NSBezierPath bezierPath];
-    [path appendBezierPathWithArcWithCenter:center radius:radius startAngle:90 endAngle:-270 clockwise:YES];
-    CGPathRef pathRef = [path quartzPath];
-    _trackTintLayer.path = pathRef;
-    CGPathRelease(pathRef);
-    
-    NSRect rctProgress = rctFrame;
-    CGFloat defaultRadius2 = (NSWidth(rctProgress) - _progressLineWidth)* 0.5f;
-    CGFloat radius2 = _progressCornerRadius < 0 ? defaultRadius2: (_progressCornerRadius > defaultRadius2 ? defaultRadius2 : _progressCornerRadius);
-    rctProgress = NSInsetRect(rctProgress, _progressLineWidth, 0);
-    [_progressTintLayer setFillColor:[NSColor clearColor].CGColor];
-    [_progressTintLayer setStrokeColor: (nil == progressTintColor) ? DefaultProgressColor.CGColor :  progressTintColor.CGColor];
-    [_progressTintLayer setOpacity:1.0f];
-    [_progressTintLayer setLineWidth:_progressLineWidth];
-    [_progressTintLayer setLineCap:kCALineCapRound];
-    NSBezierPath *path2 = [NSBezierPath bezierPath];
-    [path2 appendBezierPathWithArcWithCenter:center radius:radius2 startAngle:90 endAngle:-270 clockwise:YES];
-    CGPathRef pathRef2 = [path2 quartzPath];
-    _progressTintLayer.path = pathRef2;
-    CGPathRelease(pathRef2);
-    _progressTintLayer.strokeStart = 0;
-    _progressTintLayer.strokeEnd = _progress;
 }
 
 -(void)__setProgressViewStyle:(XUIProgressViewStyle)buttonType{
@@ -277,6 +206,89 @@ NSMakeRect(EdgeInsets.left, EdgeInsets.bottom, NSWidth(Frame) - EdgeInsets.right
 
 -(CGFloat)trackLineWidth{
     return _trackLineWidth;
+}
+
+@end
+
+#pragma mark - Category
+
+@implementation XUIProgressView (Bar)
+
+-(void)__updateNormalBarLookup{
+    NSColor *trackTintColor = _trackTintColor;
+    NSColor *progressTintColor = _progressTintColor;
+    if(_progressViewFlags.showTrackImage && nil != _trackImage){
+        trackTintColor = [NSColor colorWithPatternImage:_trackImage];
+    }
+    if (_progressViewFlags.showProgressImage && nil != _progressImage) {
+        progressTintColor = [NSColor colorWithPatternImage:_progressImage];
+    }
+    
+    NSRect rctTrack = INSETS_TO_FRAME(_trackEdgeInsets, [self bounds]);
+    rctTrack.size.height = _trackLineWidth;
+    [_trackTintLayer setFrame:rctTrack];
+    [_trackTintLayer setBackgroundColor:(nil == trackTintColor) ? DefaultTrackColor.CGColor :  trackTintColor.CGColor];
+    [_trackTintLayer setCornerRadius:_trackCornerRadius < 0 ? 0: _trackCornerRadius];
+    
+    NSRect rctProgress = INSETS_TO_FRAME(_progressEdgeInsets, [self bounds]);
+    rctProgress.size.height = _progressLineWidth;
+    rctProgress.size.width *= (_progress > 1.0 ? 1.0 : _progress);
+    [_progressTintLayer setFrame:rctProgress];
+    [_progressTintLayer setBackgroundColor:(nil == _progressTintColor) ? DefaultProgressColor.CGColor : progressTintColor.CGColor];
+    [_progressTintLayer setCornerRadius:_progressCornerRadius < 0 ? 0: _progressCornerRadius];
+}
+
+@end
+
+@implementation XUIProgressView (Circle)
+
+-(void)__updateCircleLookup{
+    NSColor *trackTintColor = _trackTintColor;
+    NSColor *progressTintColor = _progressTintColor;
+    if(_progressViewFlags.showTrackImage && nil != _trackImage){
+        trackTintColor = [NSColor colorWithPatternImage:_trackImage];
+    }
+    if (_progressViewFlags.showProgressImage && nil != _progressImage) {
+        progressTintColor = [NSColor colorWithPatternImage:_progressImage];
+    }
+    NSRect rctFrame = [self bounds];
+    if (NSWidth(rctFrame) > NSHeight(rctFrame)) {
+        rctFrame.size.width = NSHeight(rctFrame);
+    }else{
+        rctFrame.size.height = NSWidth(rctFrame);
+    }
+    NSPoint center = NSMakePoint(NSMidX(rctFrame), NSMidY(rctFrame));
+    
+    NSRect rctTrack = rctFrame;
+    CGFloat defaultRadius = (NSWidth(rctTrack) - _trackLineWidth)* 0.5f;
+    CGFloat radius = _trackCornerRadius < 0 ? defaultRadius: (_trackCornerRadius > defaultRadius ? defaultRadius : _trackCornerRadius);
+    rctTrack = NSInsetRect(rctTrack, _trackLineWidth, 0);
+    [_trackTintLayer setFillColor:[NSColor clearColor].CGColor];
+    [_trackTintLayer setStrokeColor: (nil == trackTintColor) ? DefaultTrackColor.CGColor :  trackTintColor.CGColor];
+    [_trackTintLayer setOpacity:1.0f];
+    [_trackTintLayer setLineWidth:_trackLineWidth];
+    NSBezierPath *path = [NSBezierPath bezierPath];
+    [path appendBezierPathWithArcWithCenter:center radius:radius startAngle:90 endAngle:-270 clockwise:YES];
+    CGPathRef pathRef = [path quartzPath];
+    _trackTintLayer.path = pathRef;
+    CGPathRelease(pathRef);
+    
+    NSRect rctProgress = rctFrame;
+    CGFloat defaultRadius2 = (NSWidth(rctProgress) - _progressLineWidth)* 0.5f;
+    CGFloat radius2 = _progressCornerRadius < 0 ? defaultRadius2: (_progressCornerRadius > defaultRadius2 ? defaultRadius2 : _progressCornerRadius);
+    rctProgress = NSInsetRect(rctProgress, _progressLineWidth, 0);
+    [_progressTintLayer setFillColor:[NSColor clearColor].CGColor];
+    [_progressTintLayer setStrokeColor: (nil == progressTintColor) ? DefaultProgressColor.CGColor :  progressTintColor.CGColor];
+    [_progressTintLayer setOpacity:1.0f];
+    [_progressTintLayer setLineWidth:_progressLineWidth];
+    [_progressTintLayer setLineCap:kCALineCapRound];
+    NSBezierPath *path2 = [NSBezierPath bezierPath];
+    [path2 appendBezierPathWithArcWithCenter:center radius:radius2 startAngle:90 endAngle:-270 clockwise:YES];
+    CGPathRef pathRef2 = [path2 quartzPath];
+    _progressTintLayer.path = pathRef2;
+    CGPathRelease(pathRef2);
+    _progressTintLayer.strokeStart = 0;
+    _progressTintLayer.strokeEnd = _progress;
 }
 
 @end
