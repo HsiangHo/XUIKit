@@ -152,18 +152,18 @@ NSMakeRect(EdgeInsets.left, EdgeInsets.bottom, NSWidth(Frame) - EdgeInsets.right
     CGFloat defaultRadius2 = (NSWidth(rctProgress) - _progressLineWidth)* 0.5f;
     CGFloat radius2 = _progressCornerRadius < 0 ? defaultRadius2: (_progressCornerRadius > defaultRadius2 ? defaultRadius2 : _progressCornerRadius);
     rctProgress = NSInsetRect(rctProgress, _progressLineWidth, 0);
-    CGFloat startAngle = 90;
-    CGFloat endAngle = 90 + (-360 * _progress);
     [_progressTintLayer setFillColor:[NSColor clearColor].CGColor];
     [_progressTintLayer setStrokeColor: (nil == progressTintColor) ? DefaultProgressColor.CGColor :  progressTintColor.CGColor];
     [_progressTintLayer setOpacity:1.0f];
     [_progressTintLayer setLineWidth:_progressLineWidth];
     [_progressTintLayer setLineCap:kCALineCapRound];
     NSBezierPath *path2 = [NSBezierPath bezierPath];
-    [path2 appendBezierPathWithArcWithCenter:center radius:radius2 startAngle:startAngle endAngle:endAngle clockwise:YES];
+    [path2 appendBezierPathWithArcWithCenter:center radius:radius2 startAngle:90 endAngle:-270 clockwise:YES];
     CGPathRef pathRef2 = [path2 quartzPath];
     _progressTintLayer.path = pathRef2;
     CGPathRelease(pathRef2);
+    _progressTintLayer.strokeStart = 0;
+    _progressTintLayer.strokeEnd = _progress;
 }
 
 -(void)__setProgressViewStyle:(XUIProgressViewStyle)buttonType{
