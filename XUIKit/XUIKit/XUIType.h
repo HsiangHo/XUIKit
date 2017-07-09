@@ -42,4 +42,13 @@ typedef NS_ENUM(NSInteger, XUIProgressViewStyle) {
     XUIProgressViewStyleCircle   // circle progress bar
 };
 
+typedef NS_ENUM(NSInteger, XUIActivityIndicatorViewStyle) {
+    XUIActivityIndicatorViewStyleCircleLineRotate,
+    XUIActivityIndicatorViewStyleBallRotateChase,
+    XUIActivityIndicatorViewStyleLineSpinFade,
+    XUIActivityIndicatorViewStyleBallSpinFade,
+    XUIActivityIndicatorViewStyleBallPulse,
+    XUIActivityIndicatorViewStyleLineScale
+};
+
 #endif /* XUIType_h */
