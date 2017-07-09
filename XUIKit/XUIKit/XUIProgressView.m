@@ -161,7 +161,6 @@ NSMakeRect(EdgeInsets.left, EdgeInsets.bottom, NSWidth(Frame) - EdgeInsets.right
     [_progressTintLayer setLineCap:kCALineCapRound];
     NSBezierPath *path2 = [NSBezierPath bezierPath];
     [path2 appendBezierPathWithArcWithCenter:center radius:radius2 startAngle:startAngle endAngle:endAngle clockwise:YES];
-    [path2 moveToPoint:NSMakePoint(NSMaxX(rctProgress), NSMaxY(rctProgress))];
     CGPathRef pathRef2 = [path2 quartzPath];
     _progressTintLayer.path = pathRef2;
     CGPathRelease(pathRef2);
