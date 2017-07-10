@@ -11,6 +11,9 @@
 		9813E11E1EED91BB009F1495 /* XUIProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9813E11C1EED91BB009F1495 /* XUIProperty.m */; };
 		9833B4D41F12A691006552BD /* XUIProgressView+Bar.h in Headers */ = {isa = PBXBuildFile; fileRef = 9833B4D21F12A691006552BD /* XUIProgressView+Bar.h */; };
 		9833B4D81F12A6D0006552BD /* XUIProgressView+Circle.h in Headers */ = {isa = PBXBuildFile; fileRef = 9833B4D61F12A6D0006552BD /* XUIProgressView+Circle.h */; };
+		9833B4DF1F13A039006552BD /* XUIActivityIndicatorViewProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 9833B4DE1F13A039006552BD /* XUIActivityIndicatorViewProtocol.h */; };
+		9833B4E21F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9833B4E01F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.h */; };
+		9833B4E31F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9833B4E11F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.m */; };
 		98514C5C1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98514C5A1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */ = {isa = PBXBuildFile; fileRef = 9854CFBC1EED212C008A3454 /* XUIResponder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9854CFBF1EED212C008A3454 /* XUIResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854CFBD1EED212C008A3454 /* XUIResponder.m */; };
@@ -59,6 +62,9 @@
 		9813E11C1EED91BB009F1495 /* XUIProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIProperty.m; sourceTree = "<group>"; };
 		9833B4D21F12A691006552BD /* XUIProgressView+Bar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XUIProgressView+Bar.h"; sourceTree = "<group>"; };
 		9833B4D61F12A6D0006552BD /* XUIProgressView+Circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XUIProgressView+Circle.h"; sourceTree = "<group>"; };
+		9833B4DE1F13A039006552BD /* XUIActivityIndicatorViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIActivityIndicatorViewProtocol.h; sourceTree = "<group>"; };
+		9833B4E01F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIActivityIndicatorCircleLineRotateView.h; sourceTree = "<group>"; };
+		9833B4E11F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIActivityIndicatorCircleLineRotateView.m; sourceTree = "<group>"; };
 		98514C5A1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+XUIAdditions.h"; sourceTree = "<group>"; };
 		98514C5B1EEEDCC20001B8A6 /* NSColor+XUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+XUIAdditions.m"; sourceTree = "<group>"; };
 		9854CFBC1EED212C008A3454 /* XUIResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIResponder.h; sourceTree = "<group>"; };
@@ -204,8 +210,11 @@
 		98AF7B051F0C7B67009B84F4 /* XUIActivityIndicatorView */ = {
 			isa = PBXGroup;
 			children = (
+				9833B4DE1F13A039006552BD /* XUIActivityIndicatorViewProtocol.h */,
 				98AF7B061F0C7CB1009B84F4 /* XUIActivityIndicatorView.h */,
 				98AF7B071F0C7CB1009B84F4 /* XUIActivityIndicatorView.m */,
+				9833B4E01F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.h */,
+				9833B4E11F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.m */,
 			);
 			name = XUIActivityIndicatorView;
 			sourceTree = "<group>";
@@ -326,6 +335,7 @@
 				98AF7B081F0C7CB1009B84F4 /* XUIActivityIndicatorView.h in Headers */,
 				9833B4D81F12A6D0006552BD /* XUIProgressView+Circle.h in Headers */,
 				98BB7B011F0133240089E4D0 /* XUILabelCell.h in Headers */,
+				9833B4E21F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.h in Headers */,
 				98ED22331EF64056004BD87D /* NSTextField+XUIAdditions.h in Headers */,
 				9854CFE01EED2EA4008A3454 /* XUIView.h in Headers */,
 				98ED22141EF44B7D004BD87D /* XUIType.h in Headers */,
@@ -334,6 +344,7 @@
 				9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */,
 				987923111EF1486400F2534A /* XUIMethodsHelper.h in Headers */,
 				987923761EF2A53E00F2534A /* XUIControlTargetAction.h in Headers */,
+				9833B4DF1F13A039006552BD /* XUIActivityIndicatorViewProtocol.h in Headers */,
 				98CDB03C1EFC2291008C0C6C /* NSResponder+Private.h in Headers */,
 				9813E11D1EED91BB009F1495 /* XUIProperty.h in Headers */,
 			);
@@ -410,6 +421,7 @@
 				987923481EF188DD00F2534A /* NSControl+XUIAdditions.m in Sources */,
 				987923131EF1550F00F2534A /* NSColor+XUIAdditions.m in Sources */,
 				98ED223B1EF6506D004BD87D /* XUITextField.m in Sources */,
+				9833B4E31F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.m in Sources */,
 				9813E11E1EED91BB009F1495 /* XUIProperty.m in Sources */,
 				987923771EF2A53E00F2534A /* XUIControlTargetAction.m in Sources */,
 				9854CFE11EED2EA4008A3454 /* XUIView.m in Sources */,
