@@ -14,6 +14,14 @@
 		9833B4DF1F13A039006552BD /* XUIActivityIndicatorViewProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 9833B4DE1F13A039006552BD /* XUIActivityIndicatorViewProtocol.h */; };
 		9833B4E21F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9833B4E01F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.h */; };
 		9833B4E31F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9833B4E11F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.m */; };
+		984447DD1F18EE35003BFD37 /* XUIActivityIndicatorLineSpinFadeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 984447DB1F18EE35003BFD37 /* XUIActivityIndicatorLineSpinFadeView.h */; };
+		984447DE1F18EE35003BFD37 /* XUIActivityIndicatorLineSpinFadeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 984447DC1F18EE35003BFD37 /* XUIActivityIndicatorLineSpinFadeView.m */; };
+		984447E11F18EE55003BFD37 /* XUIActivityIndicatorBallSpinFadeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 984447DF1F18EE55003BFD37 /* XUIActivityIndicatorBallSpinFadeView.h */; };
+		984447E21F18EE55003BFD37 /* XUIActivityIndicatorBallSpinFadeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 984447E01F18EE55003BFD37 /* XUIActivityIndicatorBallSpinFadeView.m */; };
+		984447E51F18EE75003BFD37 /* XUIActivityIndicatorBallPulseView.h in Headers */ = {isa = PBXBuildFile; fileRef = 984447E31F18EE75003BFD37 /* XUIActivityIndicatorBallPulseView.h */; };
+		984447E61F18EE75003BFD37 /* XUIActivityIndicatorBallPulseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 984447E41F18EE75003BFD37 /* XUIActivityIndicatorBallPulseView.m */; };
+		984447E91F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 984447E71F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.h */; };
+		984447EA1F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 984447E81F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.m */; };
 		98514C5C1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98514C5A1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */ = {isa = PBXBuildFile; fileRef = 9854CFBC1EED212C008A3454 /* XUIResponder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9854CFBF1EED212C008A3454 /* XUIResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854CFBD1EED212C008A3454 /* XUIResponder.m */; };
@@ -67,6 +75,14 @@
 		9833B4DE1F13A039006552BD /* XUIActivityIndicatorViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIActivityIndicatorViewProtocol.h; sourceTree = "<group>"; };
 		9833B4E01F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIActivityIndicatorCircleLineRotateView.h; sourceTree = "<group>"; };
 		9833B4E11F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIActivityIndicatorCircleLineRotateView.m; sourceTree = "<group>"; };
+		984447DB1F18EE35003BFD37 /* XUIActivityIndicatorLineSpinFadeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIActivityIndicatorLineSpinFadeView.h; sourceTree = "<group>"; };
+		984447DC1F18EE35003BFD37 /* XUIActivityIndicatorLineSpinFadeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIActivityIndicatorLineSpinFadeView.m; sourceTree = "<group>"; };
+		984447DF1F18EE55003BFD37 /* XUIActivityIndicatorBallSpinFadeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIActivityIndicatorBallSpinFadeView.h; sourceTree = "<group>"; };
+		984447E01F18EE55003BFD37 /* XUIActivityIndicatorBallSpinFadeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIActivityIndicatorBallSpinFadeView.m; sourceTree = "<group>"; };
+		984447E31F18EE75003BFD37 /* XUIActivityIndicatorBallPulseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIActivityIndicatorBallPulseView.h; sourceTree = "<group>"; };
+		984447E41F18EE75003BFD37 /* XUIActivityIndicatorBallPulseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIActivityIndicatorBallPulseView.m; sourceTree = "<group>"; };
+		984447E71F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIActivityIndicatorLineScaleView.h; sourceTree = "<group>"; };
+		984447E81F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIActivityIndicatorLineScaleView.m; sourceTree = "<group>"; };
 		98514C5A1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+XUIAdditions.h"; sourceTree = "<group>"; };
 		98514C5B1EEEDCC20001B8A6 /* NSColor+XUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+XUIAdditions.m"; sourceTree = "<group>"; };
 		9854CFBC1EED212C008A3454 /* XUIResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIResponder.h; sourceTree = "<group>"; };
@@ -221,6 +237,14 @@
 				9833B4E11F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.m */,
 				98E301681F1654580015704B /* XUIActivityIndicatorBallRotateChaseView.h */,
 				98E301691F1654580015704B /* XUIActivityIndicatorBallRotateChaseView.m */,
+				984447DB1F18EE35003BFD37 /* XUIActivityIndicatorLineSpinFadeView.h */,
+				984447DC1F18EE35003BFD37 /* XUIActivityIndicatorLineSpinFadeView.m */,
+				984447DF1F18EE55003BFD37 /* XUIActivityIndicatorBallSpinFadeView.h */,
+				984447E01F18EE55003BFD37 /* XUIActivityIndicatorBallSpinFadeView.m */,
+				984447E31F18EE75003BFD37 /* XUIActivityIndicatorBallPulseView.h */,
+				984447E41F18EE75003BFD37 /* XUIActivityIndicatorBallPulseView.m */,
+				984447E71F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.h */,
+				984447E81F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.m */,
 			);
 			name = XUIActivityIndicatorView;
 			sourceTree = "<group>";
@@ -330,10 +354,12 @@
 				98C409161EF014FE00F0A4F6 /* NSControl+Private.h in Headers */,
 				987923461EF1854100F2534A /* NSView+XUIAdditions.h in Headers */,
 				98ED222E1EF639E6004BD87D /* XUILabel.h in Headers */,
+				984447E91F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.h in Headers */,
 				98D358DC1EF7F105004D4218 /* XUIButton.h in Headers */,
 				98C409121EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h in Headers */,
 				987521EE1F0407B800A6D890 /* XUITextFieldCell.h in Headers */,
 				98ED223A1EF6506D004BD87D /* XUITextField.h in Headers */,
+				984447E51F18EE75003BFD37 /* XUIActivityIndicatorBallPulseView.h in Headers */,
 				98D358D81EF7EEB5004D4218 /* XUIImageView.h in Headers */,
 				9861A2371F089217003641B9 /* XUISwitch.h in Headers */,
 				98AF7B001F0BB1AC009B84F4 /* XUIProgressView.h in Headers */,
@@ -348,8 +374,10 @@
 				98ED22141EF44B7D004BD87D /* XUIType.h in Headers */,
 				9833B4D41F12A691006552BD /* XUIProgressView+Bar.h in Headers */,
 				98514C5C1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h in Headers */,
+				984447E11F18EE55003BFD37 /* XUIActivityIndicatorBallSpinFadeView.h in Headers */,
 				9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */,
 				987923111EF1486400F2534A /* XUIMethodsHelper.h in Headers */,
+				984447DD1F18EE35003BFD37 /* XUIActivityIndicatorLineSpinFadeView.h in Headers */,
 				987923761EF2A53E00F2534A /* XUIControlTargetAction.h in Headers */,
 				9833B4DF1F13A039006552BD /* XUIActivityIndicatorViewProtocol.h in Headers */,
 				98CDB03C1EFC2291008C0C6C /* NSResponder+Private.h in Headers */,
@@ -433,6 +461,8 @@
 				987923771EF2A53E00F2534A /* XUIControlTargetAction.m in Sources */,
 				9854CFE11EED2EA4008A3454 /* XUIView.m in Sources */,
 				9854CFBF1EED212C008A3454 /* XUIResponder.m in Sources */,
+				984447E61F18EE75003BFD37 /* XUIActivityIndicatorBallPulseView.m in Sources */,
+				984447EA1F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.m in Sources */,
 				9861A2381F089217003641B9 /* XUISwitch.m in Sources */,
 				98ED22341EF64056004BD87D /* NSTextField+XUIAdditions.m in Sources */,
 				98AF7B0E1F0CB97C009B84F4 /* NSBezierPath+XUIAdditions.m in Sources */,
@@ -442,7 +472,9 @@
 				98D358DD1EF7F105004D4218 /* XUIButton.m in Sources */,
 				98E3016B1F1654580015704B /* XUIActivityIndicatorBallRotateChaseView.m in Sources */,
 				98AF7B011F0BB1AC009B84F4 /* XUIProgressView.m in Sources */,
+				984447E21F18EE55003BFD37 /* XUIActivityIndicatorBallSpinFadeView.m in Sources */,
 				987923121EF1486400F2534A /* XUIMethodsHelper.m in Sources */,
+				984447DE1F18EE35003BFD37 /* XUIActivityIndicatorLineSpinFadeView.m in Sources */,
 				98ED222F1EF639E6004BD87D /* XUILabel.m in Sources */,
 				98D358D91EF7EEB5004D4218 /* XUIImageView.m in Sources */,
 				98CDB03D1EFC2291008C0C6C /* NSResponder+Private.m in Sources */,
