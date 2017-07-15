@@ -10,7 +10,7 @@
 #import "XUIActivityIndicatorViewProtocol.h"
 #import "XUIActivityIndicatorCircleLineRotateView.h"
 #import "XUIActivityIndicatorBallRotateChaseView.h"
-
+#import "XUIActivityIndicatorLineSpinFadeView.h"
 
 @implementation XUIActivityIndicatorView{
     XUIActivityIndicatorViewStyle           _activityIndicatorViewStyle;
@@ -64,6 +64,11 @@
             case XUIActivityIndicatorViewStyleBallRotateChase:
                 _currentStyleObj = [[XUIActivityIndicatorBallRotateChaseView alloc] initWithLayer:self.layer withColor:_color withDurationTime:_durationTime];
                 break;
+                
+            case XUIActivityIndicatorViewStyleLineSpinFade:
+                _currentStyleObj = [[XUIActivityIndicatorLineSpinFadeView alloc] initWithLayer:self.layer withColor:_color withDurationTime:_durationTime];
+                break;
+                
             default:
                 break;
         }
