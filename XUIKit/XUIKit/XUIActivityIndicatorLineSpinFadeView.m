@@ -38,9 +38,9 @@
 -(void)__updateAnimations{
     [_parentLayer setSublayers:nil];
     
-    CGFloat lineWidth = 15.0f;
     NSRect rctFrame = NSInsetRect([_parentLayer frame], 2.0, 2.0);
     CGFloat gapFromCenter = MIN(NSWidth(rctFrame), NSHeight(rctFrame))/5;
+    CGFloat lineWidth = gapFromCenter / 2.0;
     NSPoint center = NSMakePoint(MIN(NSWidth(rctFrame), NSHeight(rctFrame))/2, MIN(NSWidth(rctFrame), NSHeight(rctFrame))/2);
     CGFloat randius = MIN(NSWidth(rctFrame), NSHeight(rctFrame))/2 - gapFromCenter - lineWidth;
     
