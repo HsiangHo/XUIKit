@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XUIActivityIndicatorViewProtocol.h"
 
-@interface XUIActivityIndicatorLineScaleView : NSObject
+@interface XUIActivityIndicatorLineScaleView : NSObject<XUIActivityIndicatorViewProtocol>
 
 @end
