@@ -50,7 +50,7 @@
         [layer setCornerRadius:randius];
         [layer setFrame:NSMakeRect(gap * (1 + i) - randius, ptCenter.y, randius * 2, randius * 2)];
         
-        CGFloat beginTime = _durationTime / (FACTOR_NUM * 1.0) * (i + 1);
+        CGFloat beginTime = _durationTime / ((FACTOR_NUM + 1) * 1.0) * (i + 1);
         CAKeyframeAnimation *opacityAnimation = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
         opacityAnimation.keyTimes = @[@(0.1),@(0.5),@(0.9)];
         opacityAnimation.values = @[@(1),@(0.3),@(1)];
