@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XUIActivityIndicatorViewProtocol.h"
 
-@interface XUIActivityIndicatorBallSpinFadeView : NSObject
+@interface XUIActivityIndicatorBallSpinFadeView : NSObject<XUIActivityIndicatorViewProtocol>
 
 @end
