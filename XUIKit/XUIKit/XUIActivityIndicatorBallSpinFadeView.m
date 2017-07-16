@@ -46,12 +46,12 @@
     CGFloat smallAngle = 2 * M_PI / FACTOR_NUM;
     for (int i = 0; i < FACTOR_NUM; ++i) {
         angle = smallAngle * i;
-        NSPoint pCenter = NSMakePoint(center.x + (gapFromCenter * cos(angle)), center.y + (gapFromCenter * sin(angle)));
+        NSPoint ptCenter = NSMakePoint(center.x + (gapFromCenter * cos(angle)), center.y + (gapFromCenter * sin(angle)));
         CALayer *layer = [CALayer layer];
         [layer setBackgroundColor: _color.CGColor];
         [layer setOpacity:1.0f];
         [layer setCornerRadius:randius];
-        [layer setFrame:NSMakeRect(pCenter.x - randius, pCenter.y - randius, randius * 2, randius * 2)];
+        [layer setFrame:NSMakeRect(ptCenter.x - randius, ptCenter.y - randius, randius * 2, randius * 2)];
         
         CGFloat beginTime = _durationTime / (FACTOR_NUM * 1.0) * (i + 1);
         CAKeyframeAnimation *opacityAnimation = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
