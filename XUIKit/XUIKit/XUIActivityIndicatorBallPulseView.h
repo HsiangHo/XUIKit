@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XUIActivityIndicatorViewProtocol.h"
 
-@interface XUIActivityIndicatorBallPulseView : NSObject
+@interface XUIActivityIndicatorBallPulseView : NSObject<XUIActivityIndicatorViewProtocol>
 
 @end
