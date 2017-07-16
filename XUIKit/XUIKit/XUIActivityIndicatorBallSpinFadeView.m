@@ -43,7 +43,7 @@
     NSPoint center = NSMakePoint(MIN(NSWidth(rctFrame), NSHeight(rctFrame))/2, MIN(NSWidth(rctFrame), NSHeight(rctFrame))/2);
     
     CGFloat angle = 0;
-    CGFloat smallAngle = 2 * M_PI / FACTOR_NUM;
+    CGFloat smallAngle = - 2 * M_PI / FACTOR_NUM;
     for (int i = 0; i < FACTOR_NUM; ++i) {
         angle = smallAngle * i;
         NSPoint ptCenter = NSMakePoint(center.x + (gapFromCenter * cos(angle)), center.y + (gapFromCenter * sin(angle)));
