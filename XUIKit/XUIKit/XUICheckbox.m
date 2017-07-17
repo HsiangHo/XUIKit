@@ -41,6 +41,7 @@
 -(void)setDetaY:(NSInteger)nValue{
     XUICheckbox *cell = [self cell];
     [cell setDetaY:nValue];
+    [self setNeedsDisplay:YES];
 }
 
 #pragma mark - Private Methods
