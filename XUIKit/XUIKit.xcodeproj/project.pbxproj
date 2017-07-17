@@ -43,7 +43,7 @@
 		988943611F1BAADD00708D0F /* XUICheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 9889435F1F1BAADD00708D0F /* XUICheckbox.m */; };
 		988943641F1BAD9500708D0F /* XUICheckboxCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 988943621F1BAD9500708D0F /* XUICheckboxCell.h */; };
 		988943651F1BAD9500708D0F /* XUICheckboxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 988943631F1BAD9500708D0F /* XUICheckboxCell.m */; };
-		988943691F1C473700708D0F /* XUIComboBox.h in Headers */ = {isa = PBXBuildFile; fileRef = 988943671F1C473700708D0F /* XUIComboBox.h */; };
+		988943691F1C473700708D0F /* XUIComboBox.h in Headers */ = {isa = PBXBuildFile; fileRef = 988943671F1C473700708D0F /* XUIComboBox.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9889436A1F1C473700708D0F /* XUIComboBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 988943681F1C473700708D0F /* XUIComboBox.m */; };
 		98AF7B001F0BB1AC009B84F4 /* XUIProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 98AF7AFE1F0BB1AC009B84F4 /* XUIProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98AF7B011F0BB1AC009B84F4 /* XUIProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98AF7AFF1F0BB1AC009B84F4 /* XUIProgressView.m */; };
@@ -388,7 +388,6 @@
 				98C409161EF014FE00F0A4F6 /* NSControl+Private.h in Headers */,
 				987923461EF1854100F2534A /* NSView+XUIAdditions.h in Headers */,
 				98ED222E1EF639E6004BD87D /* XUILabel.h in Headers */,
-				988943691F1C473700708D0F /* XUIComboBox.h in Headers */,
 				984447E91F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.h in Headers */,
 				98D358DC1EF7F105004D4218 /* XUIButton.h in Headers */,
 				98C409121EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h in Headers */,
@@ -400,6 +399,7 @@
 				98AF7B001F0BB1AC009B84F4 /* XUIProgressView.h in Headers */,
 				988943601F1BAADD00708D0F /* XUICheckbox.h in Headers */,
 				98AF7B0D1F0CB97C009B84F4 /* NSBezierPath+XUIAdditions.h in Headers */,
+				988943691F1C473700708D0F /* XUIComboBox.h in Headers */,
 				98E3016A1F1654580015704B /* XUIActivityIndicatorBallRotateChaseView.h in Headers */,
 				98AF7B081F0C7CB1009B84F4 /* XUIActivityIndicatorView.h in Headers */,
 				9833B4D81F12A6D0006552BD /* XUIProgressView+Circle.h in Headers */,
