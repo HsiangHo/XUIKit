@@ -31,6 +31,10 @@
 		9861A2381F089217003641B9 /* XUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9861A2361F089217003641B9 /* XUISwitch.m */; };
 		987521EE1F0407B800A6D890 /* XUITextFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 987521EC1F0407B800A6D890 /* XUITextFieldCell.h */; };
 		987521EF1F0407B800A6D890 /* XUITextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 987521ED1F0407B800A6D890 /* XUITextFieldCell.m */; };
+		987749951F1CD8CC00255CAE /* XUIRadioButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 987749931F1CD8CC00255CAE /* XUIRadioButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		987749961F1CD8CC00255CAE /* XUIRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 987749941F1CD8CC00255CAE /* XUIRadioButton.m */; };
+		987749991F1CD98F00255CAE /* XUIRadioButtonCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 987749971F1CD98F00255CAE /* XUIRadioButtonCell.h */; };
+		9877499A1F1CD98F00255CAE /* XUIRadioButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 987749981F1CD98F00255CAE /* XUIRadioButtonCell.m */; };
 		987923111EF1486400F2534A /* XUIMethodsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9879230F1EF1486400F2534A /* XUIMethodsHelper.h */; };
 		987923121EF1486400F2534A /* XUIMethodsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 987923101EF1486400F2534A /* XUIMethodsHelper.m */; };
 		987923131EF1550F00F2534A /* NSColor+XUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 98514C5B1EEEDCC20001B8A6 /* NSColor+XUIAdditions.m */; };
@@ -99,6 +103,10 @@
 		9861A2361F089217003641B9 /* XUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUISwitch.m; sourceTree = "<group>"; };
 		987521EC1F0407B800A6D890 /* XUITextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUITextFieldCell.h; sourceTree = "<group>"; };
 		987521ED1F0407B800A6D890 /* XUITextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUITextFieldCell.m; sourceTree = "<group>"; };
+		987749931F1CD8CC00255CAE /* XUIRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIRadioButton.h; sourceTree = "<group>"; };
+		987749941F1CD8CC00255CAE /* XUIRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIRadioButton.m; sourceTree = "<group>"; };
+		987749971F1CD98F00255CAE /* XUIRadioButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIRadioButtonCell.h; sourceTree = "<group>"; };
+		987749981F1CD98F00255CAE /* XUIRadioButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIRadioButtonCell.m; sourceTree = "<group>"; };
 		9879230F1EF1486400F2534A /* XUIMethodsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIMethodsHelper.h; sourceTree = "<group>"; };
 		987923101EF1486400F2534A /* XUIMethodsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIMethodsHelper.m; sourceTree = "<group>"; };
 		987923441EF1854100F2534A /* NSView+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+XUIAdditions.h"; sourceTree = "<group>"; };
@@ -211,6 +219,17 @@
 				9861A2361F089217003641B9 /* XUISwitch.m */,
 			);
 			name = XUISwitch;
+			sourceTree = "<group>";
+		};
+		987749921F1CD88B00255CAE /* XUIRadioButton */ = {
+			isa = PBXGroup;
+			children = (
+				987749931F1CD8CC00255CAE /* XUIRadioButton.h */,
+				987749941F1CD8CC00255CAE /* XUIRadioButton.m */,
+				987749971F1CD98F00255CAE /* XUIRadioButtonCell.h */,
+				987749981F1CD98F00255CAE /* XUIRadioButtonCell.m */,
+			);
+			name = XUIRadioButton;
 			sourceTree = "<group>";
 		};
 		9879230E1EF1484C00F2534A /* XUIHelper */ = {
@@ -326,6 +345,7 @@
 				9879230E1EF1484C00F2534A /* XUIHelper */,
 				98514C591EEEDB8C0001B8A6 /* XUIColor */,
 				98AF7B0A1F0CB95D009B84F4 /* XUIBezierPath */,
+				987749921F1CD88B00255CAE /* XUIRadioButton */,
 				988943661F1BCDDF00708D0F /* XUIComboBox */,
 				984447EB1F1BA3AF003BFD37 /* XUICheckbox */,
 				98AF7B051F0C7B67009B84F4 /* XUIActivityIndicatorView */,
@@ -396,6 +416,7 @@
 				984447E51F18EE75003BFD37 /* XUIActivityIndicatorBallPulseView.h in Headers */,
 				98D358D81EF7EEB5004D4218 /* XUIImageView.h in Headers */,
 				9861A2371F089217003641B9 /* XUISwitch.h in Headers */,
+				987749951F1CD8CC00255CAE /* XUIRadioButton.h in Headers */,
 				98AF7B001F0BB1AC009B84F4 /* XUIProgressView.h in Headers */,
 				988943601F1BAADD00708D0F /* XUICheckbox.h in Headers */,
 				98AF7B0D1F0CB97C009B84F4 /* NSBezierPath+XUIAdditions.h in Headers */,
@@ -403,6 +424,7 @@
 				98E3016A1F1654580015704B /* XUIActivityIndicatorBallRotateChaseView.h in Headers */,
 				98AF7B081F0C7CB1009B84F4 /* XUIActivityIndicatorView.h in Headers */,
 				9833B4D81F12A6D0006552BD /* XUIProgressView+Circle.h in Headers */,
+				987749991F1CD98F00255CAE /* XUIRadioButtonCell.h in Headers */,
 				98BB7B011F0133240089E4D0 /* XUILabelCell.h in Headers */,
 				9833B4E21F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.h in Headers */,
 				98ED22331EF64056004BD87D /* NSTextField+XUIAdditions.h in Headers */,
@@ -491,6 +513,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				987923481EF188DD00F2534A /* NSControl+XUIAdditions.m in Sources */,
+				9877499A1F1CD98F00255CAE /* XUIRadioButtonCell.m in Sources */,
 				988943651F1BAD9500708D0F /* XUICheckboxCell.m in Sources */,
 				987923131EF1550F00F2534A /* NSColor+XUIAdditions.m in Sources */,
 				98ED223B1EF6506D004BD87D /* XUITextField.m in Sources */,
@@ -516,6 +539,7 @@
 				987923121EF1486400F2534A /* XUIMethodsHelper.m in Sources */,
 				984447DE1F18EE35003BFD37 /* XUIActivityIndicatorLineSpinFadeView.m in Sources */,
 				98ED222F1EF639E6004BD87D /* XUILabel.m in Sources */,
+				987749961F1CD8CC00255CAE /* XUIRadioButton.m in Sources */,
 				98D358D91EF7EEB5004D4218 /* XUIImageView.m in Sources */,
 				98CDB03D1EFC2291008C0C6C /* NSResponder+Private.m in Sources */,
 				987521EF1F0407B800A6D890 /* XUITextFieldCell.m in Sources */,

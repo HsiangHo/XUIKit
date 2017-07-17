@@ -33,3 +33,4 @@ FOUNDATION_EXPORT const unsigned char XUIKitVersionString[];
 #import<XUIKit/XUIActivityIndicatorView.h>
 #import<XUIKit/XUICheckbox.h>
 #import<XUIKit/XUIComboBox.h>
+#import<XUIKit/XUIRadioButton.h>
