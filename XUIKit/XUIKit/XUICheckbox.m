@@ -31,6 +31,8 @@
     return self;
 }
 
+#pragma mark - Public Methods
+
 -(NSInteger)detaY{
     XUICheckbox *cell = [self cell];
     return [cell detaY];
