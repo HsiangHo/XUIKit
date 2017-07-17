@@ -10,4 +10,8 @@
 
 @interface XUIComboBox : NSComboBox
 
+@property   (nonatomic,strong)      NSColor         *arrowColor;
+@property   (nonatomic,strong)      NSColor         *tileColor;
+@property   (nonatomic,strong)      NSColor         *borderColor;
+
 @end

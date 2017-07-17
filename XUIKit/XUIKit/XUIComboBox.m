@@ -17,6 +17,23 @@
     NSColor         *_borderColor;
 }
 
+#pragma mark - Public methods
+
+-(void)setArrowColor:(NSColor *)arrowColor{
+    _arrowColor = arrowColor;
+    [self setNeedsDisplay:YES];
+}
+
+-(void)setTileColor:(NSColor *)tileColor{
+    _tileColor = tileColor;
+    [self setNeedsDisplay:YES];
+}
+
+-(void)setBorderColor:(NSColor *)borderColor{
+    _borderColor = borderColor;
+    [self setNeedsDisplay:YES];
+}
+
 #pragma mark - Private methods
 
 -(void)__initializeXUIComboBox{
