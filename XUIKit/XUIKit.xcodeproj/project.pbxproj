@@ -29,6 +29,7 @@
 		9854CFE11EED2EA4008A3454 /* XUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854CFDF1EED2EA4008A3454 /* XUIView.m */; };
 		9861A2371F089217003641B9 /* XUISwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 9861A2351F089217003641B9 /* XUISwitch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9861A2381F089217003641B9 /* XUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9861A2361F089217003641B9 /* XUISwitch.m */; };
+		98652A691F1E5317002D0775 /* XUITextField+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 98652A671F1E5317002D0775 /* XUITextField+Private.h */; };
 		987521EE1F0407B800A6D890 /* XUITextFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 987521EC1F0407B800A6D890 /* XUITextFieldCell.h */; };
 		987521EF1F0407B800A6D890 /* XUITextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 987521ED1F0407B800A6D890 /* XUITextFieldCell.m */; };
 		987749951F1CD8CC00255CAE /* XUIRadioButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 987749931F1CD8CC00255CAE /* XUIRadioButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -101,6 +102,7 @@
 		9854CFDF1EED2EA4008A3454 /* XUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIView.m; sourceTree = "<group>"; };
 		9861A2351F089217003641B9 /* XUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUISwitch.h; sourceTree = "<group>"; };
 		9861A2361F089217003641B9 /* XUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUISwitch.m; sourceTree = "<group>"; };
+		98652A671F1E5317002D0775 /* XUITextField+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XUITextField+Private.h"; sourceTree = "<group>"; };
 		987521EC1F0407B800A6D890 /* XUITextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUITextFieldCell.h; sourceTree = "<group>"; };
 		987521ED1F0407B800A6D890 /* XUITextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUITextFieldCell.m; sourceTree = "<group>"; };
 		987749931F1CD8CC00255CAE /* XUIRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIRadioButton.h; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 				98ED22321EF64056004BD87D /* NSTextField+XUIAdditions.m */,
 				98ED22381EF6506D004BD87D /* XUITextField.h */,
 				98ED22391EF6506D004BD87D /* XUITextField.m */,
+				98652A671F1E5317002D0775 /* XUITextField+Private.h */,
 				987521EC1F0407B800A6D890 /* XUITextFieldCell.h */,
 				987521ED1F0407B800A6D890 /* XUITextFieldCell.m */,
 			);
@@ -415,6 +418,7 @@
 				98ED223A1EF6506D004BD87D /* XUITextField.h in Headers */,
 				984447E51F18EE75003BFD37 /* XUIActivityIndicatorBallPulseView.h in Headers */,
 				98D358D81EF7EEB5004D4218 /* XUIImageView.h in Headers */,
+				98652A691F1E5317002D0775 /* XUITextField+Private.h in Headers */,
 				9861A2371F089217003641B9 /* XUISwitch.h in Headers */,
 				987749951F1CD8CC00255CAE /* XUIRadioButton.h in Headers */,
 				98AF7B001F0BB1AC009B84F4 /* XUIProgressView.h in Headers */,

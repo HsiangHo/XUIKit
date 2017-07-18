@@ -7,6 +7,7 @@
 //
 
 #import "XUITextField.h"
+#import "XUITextField+Private.h"
 #import "XUIButton.h"
 #import "XUITextFieldCell.h"
 
@@ -187,6 +188,66 @@ static NSImage *clearButtonImageDown = nil;
     [self addSubview:_clearButton];
 }
 
+#pragma mark - Actions
+- (IBAction)clearText_click:(id)sender{
+    [self setStringValue:@""];
+}
+
+#pragma mark - Private method
+
+
+#pragma mark - ClearButton image method
++(NSImage *)__drawClearButton:(NSColor *)backgroundColor{
+    NSImage *image = [[NSImage alloc] initWithSize: NSMakeSize(16, 16)];
+    
+    [image lockFocus];
+    
+    // Color Declarations
+    NSColor* color = [NSColor colorWithCalibratedRed: 1 green: 1 blue: 1 alpha: 1];
+    
+    // Oval Drawing
+    NSBezierPath* ovalPath = [NSBezierPath bezierPathWithOvalInRect: NSMakeRect(0, 0, 16, 16)];
+    [backgroundColor setFill];
+    [ovalPath fill];
+    
+    // Bezier Drawing
+    NSBezierPath* bezierPath = [NSBezierPath bezierPath];
+    [bezierPath moveToPoint: NSMakePoint(11.5, 11.5)];
+    [bezierPath lineToPoint: NSMakePoint(4.5, 4.5)];
+    [color setStroke];
+    bezierPath.lineWidth = 2;
+    [bezierPath stroke];
+    
+    // Bezier 2 Drawing
+    NSBezierPath* bezier2Path = [NSBezierPath bezierPath];
+    [bezier2Path moveToPoint: NSMakePoint(4.5, 11.5)];
+    [bezier2Path lineToPoint: NSMakePoint(11.5, 4.5)];
+    [color setStroke];
+    bezier2Path.lineWidth = 2;
+    [bezier2Path stroke];
+    
+    [image unlockFocus];
+    return image;
+}
+
++(NSImage *)__clearButtonImageDown{
+    if (nil == clearButtonImageDown){
+       clearButtonImageDown = [XUITextField __drawClearButton:[NSColor colorWithCalibratedRed: 0 green: 0.42 blue: 0.898 alpha: 1]];
+    }
+    return clearButtonImageDown;
+}
+
++(NSImage *)__clearButtonImageNormal{
+    if (nil == clearButtonImageNormal){
+        clearButtonImageNormal = [XUITextField __drawClearButton:[NSColor colorWithCalibratedRed: 0.8 green: 0.8 blue: 0.8 alpha: 1]];
+    }
+    return clearButtonImageNormal;
+}
+
+@end
+
+@implementation XUITextField (Private)
+
 -(NSRect)__rectLeftView{
     NSRect rectLeftView = NSZeroRect;
     if(nil != _leftView){
@@ -261,60 +322,5 @@ static NSImage *clearButtonImageDown = nil;
     [_clearButton setFrame:[self __rectClearButton]];
 }
 
-#pragma mark - Actions
-- (IBAction)clearText_click:(id)sender{
-    [self setStringValue:@""];
-}
-
-#pragma mark - Private method
-
-
-#pragma mark - ClearButton image method
-+(NSImage *)__drawClearButton:(NSColor *)backgroundColor{
-    NSImage *image = [[NSImage alloc] initWithSize: NSMakeSize(16, 16)];
-    
-    [image lockFocus];
-    
-    // Color Declarations
-    NSColor* color = [NSColor colorWithCalibratedRed: 1 green: 1 blue: 1 alpha: 1];
-    
-    // Oval Drawing
-    NSBezierPath* ovalPath = [NSBezierPath bezierPathWithOvalInRect: NSMakeRect(0, 0, 16, 16)];
-    [backgroundColor setFill];
-    [ovalPath fill];
-    
-    // Bezier Drawing
-    NSBezierPath* bezierPath = [NSBezierPath bezierPath];
-    [bezierPath moveToPoint: NSMakePoint(11.5, 11.5)];
-    [bezierPath lineToPoint: NSMakePoint(4.5, 4.5)];
-    [color setStroke];
-    bezierPath.lineWidth = 2;
-    [bezierPath stroke];
-    
-    // Bezier 2 Drawing
-    NSBezierPath* bezier2Path = [NSBezierPath bezierPath];
-    [bezier2Path moveToPoint: NSMakePoint(4.5, 11.5)];
-    [bezier2Path lineToPoint: NSMakePoint(11.5, 4.5)];
-    [color setStroke];
-    bezier2Path.lineWidth = 2;
-    [bezier2Path stroke];
-    
-    [image unlockFocus];
-    return image;
-}
-
-+(NSImage *)__clearButtonImageDown{
-    if (nil == clearButtonImageDown){
-       clearButtonImageDown = [XUITextField __drawClearButton:[NSColor colorWithCalibratedRed: 0 green: 0.42 blue: 0.898 alpha: 1]];
-    }
-    return clearButtonImageDown;
-}
-
-+(NSImage *)__clearButtonImageNormal{
-    if (nil == clearButtonImageNormal){
-        clearButtonImageNormal = [XUITextField __drawClearButton:[NSColor colorWithCalibratedRed: 0.8 green: 0.8 blue: 0.8 alpha: 1]];
-    }
-    return clearButtonImageNormal;
-}
-
 @end
+
