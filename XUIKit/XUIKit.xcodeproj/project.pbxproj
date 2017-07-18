@@ -30,6 +30,10 @@
 		9861A2371F089217003641B9 /* XUISwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 9861A2351F089217003641B9 /* XUISwitch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9861A2381F089217003641B9 /* XUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9861A2361F089217003641B9 /* XUISwitch.m */; };
 		98652A691F1E5317002D0775 /* XUITextField+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 98652A671F1E5317002D0775 /* XUITextField+Private.h */; };
+		98652A711F1E5EBB002D0775 /* XUISecureTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 98652A6F1F1E5EBB002D0775 /* XUISecureTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		98652A721F1E5EBB002D0775 /* XUISecureTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 98652A701F1E5EBB002D0775 /* XUISecureTextField.m */; };
+		98652A751F1E5EE4002D0775 /* XUISecureTextFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 98652A731F1E5EE4002D0775 /* XUISecureTextFieldCell.h */; };
+		98652A761F1E5EE4002D0775 /* XUISecureTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 98652A741F1E5EE4002D0775 /* XUISecureTextFieldCell.m */; };
 		987521EE1F0407B800A6D890 /* XUITextFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 987521EC1F0407B800A6D890 /* XUITextFieldCell.h */; };
 		987521EF1F0407B800A6D890 /* XUITextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 987521ED1F0407B800A6D890 /* XUITextFieldCell.m */; };
 		987749951F1CD8CC00255CAE /* XUIRadioButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 987749931F1CD8CC00255CAE /* XUIRadioButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -103,6 +107,10 @@
 		9861A2351F089217003641B9 /* XUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUISwitch.h; sourceTree = "<group>"; };
 		9861A2361F089217003641B9 /* XUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUISwitch.m; sourceTree = "<group>"; };
 		98652A671F1E5317002D0775 /* XUITextField+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XUITextField+Private.h"; sourceTree = "<group>"; };
+		98652A6F1F1E5EBB002D0775 /* XUISecureTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUISecureTextField.h; sourceTree = "<group>"; };
+		98652A701F1E5EBB002D0775 /* XUISecureTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUISecureTextField.m; sourceTree = "<group>"; };
+		98652A731F1E5EE4002D0775 /* XUISecureTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUISecureTextFieldCell.h; sourceTree = "<group>"; };
+		98652A741F1E5EE4002D0775 /* XUISecureTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUISecureTextFieldCell.m; sourceTree = "<group>"; };
 		987521EC1F0407B800A6D890 /* XUITextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUITextFieldCell.h; sourceTree = "<group>"; };
 		987521ED1F0407B800A6D890 /* XUITextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUITextFieldCell.m; sourceTree = "<group>"; };
 		987749931F1CD8CC00255CAE /* XUIRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIRadioButton.h; sourceTree = "<group>"; };
@@ -234,6 +242,17 @@
 			name = XUIRadioButton;
 			sourceTree = "<group>";
 		};
+		987749A41F1D234D00255CAE /* XUISecureTextField */ = {
+			isa = PBXGroup;
+			children = (
+				98652A6F1F1E5EBB002D0775 /* XUISecureTextField.h */,
+				98652A701F1E5EBB002D0775 /* XUISecureTextField.m */,
+				98652A731F1E5EE4002D0775 /* XUISecureTextFieldCell.h */,
+				98652A741F1E5EE4002D0775 /* XUISecureTextFieldCell.m */,
+			);
+			name = XUISecureTextField;
+			sourceTree = "<group>";
+		};
 		9879230E1EF1484C00F2534A /* XUIHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -343,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				98D158441EEAB252005A0434 /* XUIKit.h */,
+				987749A41F1D234D00255CAE /* XUISecureTextField */,
 				987923791EF2B68200F2534A /* XUIBase */,
 				9879230E1EF1484C00F2534A /* XUIHelper */,
 				98514C591EEEDB8C0001B8A6 /* XUIColor */,
@@ -422,6 +442,7 @@
 				9861A2371F089217003641B9 /* XUISwitch.h in Headers */,
 				987749951F1CD8CC00255CAE /* XUIRadioButton.h in Headers */,
 				98AF7B001F0BB1AC009B84F4 /* XUIProgressView.h in Headers */,
+				98652A711F1E5EBB002D0775 /* XUISecureTextField.h in Headers */,
 				988943601F1BAADD00708D0F /* XUICheckbox.h in Headers */,
 				98AF7B0D1F0CB97C009B84F4 /* NSBezierPath+XUIAdditions.h in Headers */,
 				988943691F1C473700708D0F /* XUIComboBox.h in Headers */,
@@ -429,6 +450,7 @@
 				98AF7B081F0C7CB1009B84F4 /* XUIActivityIndicatorView.h in Headers */,
 				9833B4D81F12A6D0006552BD /* XUIProgressView+Circle.h in Headers */,
 				987749991F1CD98F00255CAE /* XUIRadioButtonCell.h in Headers */,
+				98652A751F1E5EE4002D0775 /* XUISecureTextFieldCell.h in Headers */,
 				98BB7B011F0133240089E4D0 /* XUILabelCell.h in Headers */,
 				9833B4E21F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.h in Headers */,
 				98ED22331EF64056004BD87D /* NSTextField+XUIAdditions.h in Headers */,
@@ -519,6 +541,7 @@
 				987923481EF188DD00F2534A /* NSControl+XUIAdditions.m in Sources */,
 				9877499A1F1CD98F00255CAE /* XUIRadioButtonCell.m in Sources */,
 				988943651F1BAD9500708D0F /* XUICheckboxCell.m in Sources */,
+				98652A721F1E5EBB002D0775 /* XUISecureTextField.m in Sources */,
 				987923131EF1550F00F2534A /* NSColor+XUIAdditions.m in Sources */,
 				98ED223B1EF6506D004BD87D /* XUITextField.m in Sources */,
 				9833B4E31F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.m in Sources */,
@@ -547,6 +570,7 @@
 				98D358D91EF7EEB5004D4218 /* XUIImageView.m in Sources */,
 				98CDB03D1EFC2291008C0C6C /* NSResponder+Private.m in Sources */,
 				987521EF1F0407B800A6D890 /* XUITextFieldCell.m in Sources */,
+				98652A761F1E5EE4002D0775 /* XUISecureTextFieldCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
