@@ -35,3 +35,4 @@ FOUNDATION_EXPORT const unsigned char XUIKitVersionString[];
 #import<XUIKit/XUIComboBox.h>
 #import<XUIKit/XUIRadioButton.h>
 #import<XUIKit/XUISecureTextField.h>
+#import<XUIKit/NSImage+XUIAdditions.h>
