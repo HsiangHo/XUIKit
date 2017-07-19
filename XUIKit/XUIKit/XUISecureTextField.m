@@ -10,9 +10,7 @@
 #import "XUISecureTextField+Private.h"
 #import "XUIButton.h"
 #import "XUISecureTextFieldCell.h"
-
-static NSImage *clearButtonImageNormal = nil;
-static NSImage *clearButtonImageDown = nil;
+#import "NSImage+XUIAdditions.h"
 
 @implementation XUISecureTextField{
     NSImage                                 *_background;
@@ -130,14 +128,14 @@ static NSImage *clearButtonImageDown = nil;
 
 - (instancetype)init{
     if(self = [super init]){
-        [self __initializeXUITextField];
+        [self __initializeXUISecureTextField];
     }
     return self;
 }
 
 - (instancetype)initWithFrame:(NSRect)frameRect{
     if (self = [super initWithFrame:frameRect]) {
-        [self __initializeXUITextField];
+        [self __initializeXUISecureTextField];
     }
     return self;
 }
@@ -171,7 +169,7 @@ static NSImage *clearButtonImageDown = nil;
 
 #pragma mark - Private Methods
 
-- (void)__initializeXUITextField{
+- (void)__initializeXUISecureTextField{
     _background = nil;
     _disabledBackground = nil;
     _leftView = nil;
@@ -181,8 +179,8 @@ static NSImage *clearButtonImageDown = nil;
     _textfieldFlags.leftViewMode = XUITextFieldViewModeNever;
     _textfieldFlags.rightViewMode = XUITextFieldViewModeNever;
     _clearButton = [[XUIButton alloc] initWithFrame:NSZeroRect];
-    [_clearButton setBackgroundImage:[XUISecureTextField __clearButtonImageNormal] forState:XUIControlStateNormal];
-    [_clearButton setBackgroundImage:[XUISecureTextField __clearButtonImageDown] forState:XUIControlStateDown];
+    [_clearButton setBackgroundImage:[NSImage XUI_clearButtonImageNormal] forState:XUIControlStateNormal];
+    [_clearButton setBackgroundImage:[NSImage XUI_clearButtonImageDown] forState:XUIControlStateDown];
     [_clearButton setAction:@selector(clearText_click:)];
     [_clearButton setTarget:self];
     [self addSubview:_clearButton];
@@ -191,57 +189,6 @@ static NSImage *clearButtonImageDown = nil;
 #pragma mark - Actions
 - (IBAction)clearText_click:(id)sender{
     [self setStringValue:@""];
-}
-
-#pragma mark - Private method
-
-
-#pragma mark - ClearButton image method
-+(NSImage *)__drawClearButton:(NSColor *)backgroundColor{
-    NSImage *image = [[NSImage alloc] initWithSize: NSMakeSize(16, 16)];
-    
-    [image lockFocus];
-    
-    // Color Declarations
-    NSColor* color = [NSColor colorWithCalibratedRed: 1 green: 1 blue: 1 alpha: 1];
-    
-    // Oval Drawing
-    NSBezierPath* ovalPath = [NSBezierPath bezierPathWithOvalInRect: NSMakeRect(0, 0, 16, 16)];
-    [backgroundColor setFill];
-    [ovalPath fill];
-    
-    // Bezier Drawing
-    NSBezierPath* bezierPath = [NSBezierPath bezierPath];
-    [bezierPath moveToPoint: NSMakePoint(11.5, 11.5)];
-    [bezierPath lineToPoint: NSMakePoint(4.5, 4.5)];
-    [color setStroke];
-    bezierPath.lineWidth = 2;
-    [bezierPath stroke];
-    
-    // Bezier 2 Drawing
-    NSBezierPath* bezier2Path = [NSBezierPath bezierPath];
-    [bezier2Path moveToPoint: NSMakePoint(4.5, 11.5)];
-    [bezier2Path lineToPoint: NSMakePoint(11.5, 4.5)];
-    [color setStroke];
-    bezier2Path.lineWidth = 2;
-    [bezier2Path stroke];
-    
-    [image unlockFocus];
-    return image;
-}
-
-+(NSImage *)__clearButtonImageDown{
-    if (nil == clearButtonImageDown){
-        clearButtonImageDown = [XUISecureTextField __drawClearButton:[NSColor colorWithCalibratedRed: 0 green: 0.42 blue: 0.898 alpha: 1]];
-    }
-    return clearButtonImageDown;
-}
-
-+(NSImage *)__clearButtonImageNormal{
-    if (nil == clearButtonImageNormal){
-        clearButtonImageNormal = [XUISecureTextField __drawClearButton:[NSColor colorWithCalibratedRed: 0.8 green: 0.8 blue: 0.8 alpha: 1]];
-    }
-    return clearButtonImageNormal;
 }
 
 @end
