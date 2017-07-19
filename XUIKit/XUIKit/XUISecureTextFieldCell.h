@@ -10,4 +10,6 @@
 
 @interface XUISecureTextFieldCell : NSSecureTextFieldCell
 
+@property(nonatomic,readonly,getter=isEditing)  BOOL            editing;
+
 @end

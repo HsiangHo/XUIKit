@@ -22,6 +22,7 @@
 		984447E61F18EE75003BFD37 /* XUIActivityIndicatorBallPulseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 984447E41F18EE75003BFD37 /* XUIActivityIndicatorBallPulseView.m */; };
 		984447E91F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 984447E71F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.h */; };
 		984447EA1F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 984447E81F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.m */; };
+		98448D771F1F797600CB8B17 /* XUISecureTextField+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 98448D751F1F797600CB8B17 /* XUISecureTextField+Private.h */; };
 		98514C5C1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98514C5A1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */ = {isa = PBXBuildFile; fileRef = 9854CFBC1EED212C008A3454 /* XUIResponder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9854CFBF1EED212C008A3454 /* XUIResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854CFBD1EED212C008A3454 /* XUIResponder.m */; };
@@ -98,6 +99,7 @@
 		984447E41F18EE75003BFD37 /* XUIActivityIndicatorBallPulseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIActivityIndicatorBallPulseView.m; sourceTree = "<group>"; };
 		984447E71F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIActivityIndicatorLineScaleView.h; sourceTree = "<group>"; };
 		984447E81F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIActivityIndicatorLineScaleView.m; sourceTree = "<group>"; };
+		98448D751F1F797600CB8B17 /* XUISecureTextField+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XUISecureTextField+Private.h"; sourceTree = "<group>"; };
 		98514C5A1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+XUIAdditions.h"; sourceTree = "<group>"; };
 		98514C5B1EEEDCC20001B8A6 /* NSColor+XUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+XUIAdditions.m"; sourceTree = "<group>"; };
 		9854CFBC1EED212C008A3454 /* XUIResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIResponder.h; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 			children = (
 				98652A6F1F1E5EBB002D0775 /* XUISecureTextField.h */,
 				98652A701F1E5EBB002D0775 /* XUISecureTextField.m */,
+				98448D751F1F797600CB8B17 /* XUISecureTextField+Private.h */,
 				98652A731F1E5EE4002D0775 /* XUISecureTextFieldCell.h */,
 				98652A741F1E5EE4002D0775 /* XUISecureTextFieldCell.m */,
 			);
@@ -362,11 +365,11 @@
 			isa = PBXGroup;
 			children = (
 				98D158441EEAB252005A0434 /* XUIKit.h */,
-				987749A41F1D234D00255CAE /* XUISecureTextField */,
 				987923791EF2B68200F2534A /* XUIBase */,
 				9879230E1EF1484C00F2534A /* XUIHelper */,
 				98514C591EEEDB8C0001B8A6 /* XUIColor */,
 				98AF7B0A1F0CB95D009B84F4 /* XUIBezierPath */,
+				987749A41F1D234D00255CAE /* XUISecureTextField */,
 				987749921F1CD88B00255CAE /* XUIRadioButton */,
 				988943661F1BCDDF00708D0F /* XUIComboBox */,
 				984447EB1F1BA3AF003BFD37 /* XUICheckbox */,
@@ -467,6 +470,7 @@
 				9833B4DF1F13A039006552BD /* XUIActivityIndicatorViewProtocol.h in Headers */,
 				98CDB03C1EFC2291008C0C6C /* NSResponder+Private.h in Headers */,
 				9813E11D1EED91BB009F1495 /* XUIProperty.h in Headers */,
+				98448D771F1F797600CB8B17 /* XUISecureTextField+Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
