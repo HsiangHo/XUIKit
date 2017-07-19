@@ -28,6 +28,4 @@
 
 @property(nonatomic,assign,readonly)    NSEdgeInsets        textEdgeInsets;  // default is {0,0,0,0}
 
-@property (nonatomic,assign)    BOOL        echosBullets;
-
 @end
