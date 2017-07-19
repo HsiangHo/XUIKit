@@ -36,7 +36,7 @@ static NSImage *hideSecureTextImage = nil;
     return showSecureTextImage;
 }
 
-+(NSImage *)XUI_hidenSecureTextImage{
++(NSImage *)XUI_hideSecureTextImage{
     if (nil == hideSecureTextImage){
         hideSecureTextImage =  [self __drawEyeImage:[NSColor blackColor] withOn:NO];
     }
