@@ -13,6 +13,6 @@
 +(NSImage *)XUI_clearButtonImageDown;
 +(NSImage *)XUI_clearButtonImageNormal;
 +(NSImage *)XUI_showSecureTextImage;
-+(NSImage *)XUI_hidenSecureTextImage;
++(NSImage *)XUI_hideSecureTextImage;
 
 @end
