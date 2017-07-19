@@ -23,7 +23,7 @@
 		984447E91F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 984447E71F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.h */; };
 		984447EA1F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 984447E81F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.m */; };
 		98448D771F1F797600CB8B17 /* XUISecureTextField+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 98448D751F1F797600CB8B17 /* XUISecureTextField+Private.h */; };
-		98448D7C1F1F81C200CB8B17 /* NSImage+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98448D7A1F1F81C200CB8B17 /* NSImage+XUIAdditions.h */; };
+		98448D7C1F1F81C200CB8B17 /* NSImage+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98448D7A1F1F81C200CB8B17 /* NSImage+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98448D7D1F1F81C200CB8B17 /* NSImage+XUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 98448D7B1F1F81C200CB8B17 /* NSImage+XUIAdditions.m */; };
 		98514C5C1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98514C5A1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */ = {isa = PBXBuildFile; fileRef = 9854CFBC1EED212C008A3454 /* XUIResponder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -461,12 +461,12 @@
 				98AF7B001F0BB1AC009B84F4 /* XUIProgressView.h in Headers */,
 				98652A711F1E5EBB002D0775 /* XUISecureTextField.h in Headers */,
 				988943601F1BAADD00708D0F /* XUICheckbox.h in Headers */,
+				98448D7C1F1F81C200CB8B17 /* NSImage+XUIAdditions.h in Headers */,
 				98AF7B0D1F0CB97C009B84F4 /* NSBezierPath+XUIAdditions.h in Headers */,
 				988943691F1C473700708D0F /* XUIComboBox.h in Headers */,
 				98E3016A1F1654580015704B /* XUIActivityIndicatorBallRotateChaseView.h in Headers */,
 				98AF7B081F0C7CB1009B84F4 /* XUIActivityIndicatorView.h in Headers */,
 				9833B4D81F12A6D0006552BD /* XUIProgressView+Circle.h in Headers */,
-				98448D7C1F1F81C200CB8B17 /* NSImage+XUIAdditions.h in Headers */,
 				987749991F1CD98F00255CAE /* XUIRadioButtonCell.h in Headers */,
 				98652A751F1E5EE4002D0775 /* XUISecureTextFieldCell.h in Headers */,
 				98BB7B011F0133240089E4D0 /* XUILabelCell.h in Headers */,
