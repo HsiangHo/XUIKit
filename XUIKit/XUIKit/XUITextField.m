@@ -199,8 +199,8 @@
     NSRect rectLeftView = NSZeroRect;
     if(nil != _leftView){
         rectLeftView = [_leftView frame];
-        rectLeftView.origin = NSMakePoint(0, 0);
-        rectLeftView.size.height = NSHeight(self.frame);
+        rectLeftView.origin = NSMakePoint(1, 1);
+        rectLeftView.size.height = NSHeight(self.frame) - 2;
         rectLeftView.size.width = _originalRectLeftView.size.width;
     }
     
@@ -219,8 +219,8 @@
     NSRect rectRightView = NSZeroRect;
     if (nil != _rightView) {
         rectRightView = [_rightView frame];
-        rectRightView.origin = NSMakePoint(NSWidth(self.frame) - NSWidth(rectRightView), 0);
-        rectRightView.size.height = NSHeight(self.frame);
+        rectRightView.origin = NSMakePoint(NSWidth(self.frame) - NSWidth(rectRightView) - 1, 1);
+        rectRightView.size.height = NSHeight(self.frame) - 2;
         rectRightView.size.width = _originalRectRightView.size.width;
     }
     
