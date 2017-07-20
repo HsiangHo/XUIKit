@@ -18,6 +18,7 @@ FOUNDATION_EXPORT const unsigned char XUIKitVersionString[];
 
 #import<XUIKit/NSColor+XUIAdditions.h>
 #import<XUIKit/NSBezierPath+XUIAdditions.h>
+#import<XUIKit/NSImage+XUIAdditions.h>
 
 #import<XUIKit/XUIResponder.h>
 #import<XUIKit/XUIView.h>
@@ -35,4 +36,4 @@ FOUNDATION_EXPORT const unsigned char XUIKitVersionString[];
 #import<XUIKit/XUIComboBox.h>
 #import<XUIKit/XUIRadioButton.h>
 #import<XUIKit/XUISecureTextField.h>
-#import<XUIKit/NSImage+XUIAdditions.h>
+#import<XUIKit/XUIPasswordView.h>
