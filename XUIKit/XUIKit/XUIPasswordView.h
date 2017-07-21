@@ -14,7 +14,7 @@
 @property (nonnull,nonatomic,strong)                        NSString    *passwordStringValue;
 @property (nonatomic,assign,getter=isPasswordHidden)        BOOL        passwordHidden;
 @property (nullable,nonatomic,weak)                         NSObject    *delegate;
-@property (nullable, nonatomic,strong) NSView               *leftView;
+@property (nullable, nonatomic,strong)                      NSView      *leftView;
 @property (nonatomic)        XUITextFieldViewMode           leftViewMode;
 
 @end

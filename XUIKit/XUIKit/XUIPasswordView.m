@@ -77,35 +77,44 @@
     [_tfSecurePassword setClearButtonMode:XUITextFieldViewModeWhileEditing];
     [_tfPassword setRightViewMode:XUITextFieldViewModeAlways];
     [_tfSecurePassword setRightViewMode:XUITextFieldViewModeAlways];
+    [_tfPassword setDelegate:(id<NSTextFieldDelegate>)self];
+    [_tfSecurePassword setDelegate:(id<NSTextFieldDelegate>)self];
+    [_tfPassword.cell setWraps:NO];
+    [_tfPassword.cell setUsesSingleLineMode:YES];
+    [_tfSecurePassword.cell setWraps:NO];
+    [_tfSecurePassword.cell setUsesSingleLineMode:YES];
+    [_tfPassword setHidden:YES];
+    [_tfSecurePassword setHidden:YES];
     [self addSubview:_tfPassword];
     [self addSubview:_tfSecurePassword];
     [self __setupSecureTextField];
 }
 
 -(void)__setupSecureTextField{
-    [_tfSecurePassword setHidden:NO];
-    [_tfPassword setHidden:YES];
     [_tfSecurePassword setStringValue:_tfPassword.stringValue];
     [_btnEye setBackgroundImage:[NSImage XUI_showSecureTextImage] forState:XUIControlStateNormal];
     [_tfSecurePassword setRightView:_btnEye];
+    [_tfSecurePassword setHidden:NO];
+    [_tfPassword setHidden:YES];
 }
 
 -(void)__setupTextField{
-    [_tfSecurePassword setHidden:YES];
-    [_tfPassword setHidden:NO];
     [_tfPassword setStringValue:_tfSecurePassword.stringValue];
     [_btnEye setBackgroundImage:[NSImage XUI_hideSecureTextImage] forState:XUIControlStateNormal];
     [_tfPassword setRightView:_btnEye];
+    [_tfSecurePassword setHidden:YES];
+    [_tfPassword setHidden:NO];
 }
 
 #pragma mark - Actions
 
 -(IBAction)eyeButton_click:(id)sender{
-    if (_tfSecurePassword.isHidden) {
+    if (!_passwordHidden) {
         [self __setupSecureTextField];
     }else{
         [self __setupTextField];
     }
+    _passwordHidden = !_passwordHidden;
 }
 
 #pragma mark - Public methods
@@ -118,8 +127,11 @@
 
 -(void)setPasswordHidden:(BOOL)passwordHidden{
     _passwordHidden = passwordHidden;
-    [_tfPassword setHidden:_passwordHidden];
-    [_tfSecurePassword setHidden:!_passwordHidden];
+    if(_passwordHidden){
+        [self __setupSecureTextField];
+    }else{
+        [self __setupTextField];
+    }
 }
 
 -(void)setLeftView:(NSView *)leftView{
