@@ -9,12 +9,25 @@
 #import "XUIView.h"
 #import "XUIType.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
+@protocol XUIPasswordViewDelegate <NSObject>
+
+@optional
+- (void)controlTextDidChange:(NSNotification *)notification;
+- (void)controlTextDidBeginEditing:(NSNotification *)obj;
+- (void)controlTextDidEndEditing:(NSNotification *)obj;
+
+@end
+
 @interface XUIPasswordView : XUIView
 
 @property (nonnull,nonatomic,strong)                        NSString    *passwordStringValue;
 @property (nonatomic,assign,getter=isPasswordHidden)        BOOL        passwordHidden;
-@property (nullable,nonatomic,weak)                         NSObject    *delegate;
+@property (nullable,nonatomic,weak)     id<XUIPasswordViewDelegate>     delegate;
 @property (nullable, nonatomic,strong)                      NSView      *leftView;
 @property (nonatomic)        XUITextFieldViewMode           leftViewMode;
 
 @end
+
+NS_ASSUME_NONNULL_END

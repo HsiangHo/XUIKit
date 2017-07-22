@@ -19,7 +19,7 @@
     NSView                                  *_leftView;
     NSString                                *_passwordStringValue;
     BOOL                                    _passwordHidden;
-    __weak NSObject                         *_delegate;
+    __weak id<XUIPasswordViewDelegate>      _delegate;
 }
 
 #pragma mark - Override methods
@@ -73,6 +73,8 @@
     _btnEye = [[XUIButton alloc] initWithFrame:NSMakeRect(0, 0, 28, 18)];
     [_btnEye setTarget:self];
     [_btnEye setAction:@selector(eyeButton_click:)];
+    [_tfPassword setLeftViewMode:XUITextFieldViewModeAlways];
+    [_tfSecurePassword setLeftViewMode:XUITextFieldViewModeAlways];
     [_tfPassword setClearButtonMode:XUITextFieldViewModeWhileEditing];
     [_tfSecurePassword setClearButtonMode:XUITextFieldViewModeWhileEditing];
     [_tfPassword setRightViewMode:XUITextFieldViewModeAlways];
@@ -94,6 +96,7 @@
     [_tfSecurePassword setStringValue:_tfPassword.stringValue];
     [_btnEye setBackgroundImage:[NSImage XUI_showSecureTextImage] forState:XUIControlStateNormal];
     [_tfSecurePassword setRightView:_btnEye];
+    [_tfSecurePassword setLeftView:_leftView];
     [_tfSecurePassword setHidden:NO];
     [_tfPassword setHidden:YES];
 }
@@ -102,6 +105,7 @@
     [_tfPassword setStringValue:_tfSecurePassword.stringValue];
     [_btnEye setBackgroundImage:[NSImage XUI_hideSecureTextImage] forState:XUIControlStateNormal];
     [_tfPassword setRightView:_btnEye];
+    [_tfPassword setLeftView:_leftView];
     [_tfSecurePassword setHidden:YES];
     [_tfPassword setHidden:NO];
 }
@@ -136,10 +140,6 @@
 
 -(void)setLeftView:(NSView *)leftView{
     _leftView = leftView;
-}
-
--(NSView *)leftView{
-    return _leftView;
 }
 
 -(void)setLeftViewMode:(XUITextFieldViewMode)leftViewMode{
