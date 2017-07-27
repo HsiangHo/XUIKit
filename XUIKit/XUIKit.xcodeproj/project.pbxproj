@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		98040C951F24928800C483E7 /* XUIWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 98040C931F24928800C483E7 /* XUIWindow.h */; };
+		98040C951F24928800C483E7 /* XUIWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 98040C931F24928800C483E7 /* XUIWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98040C961F24928800C483E7 /* XUIWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 98040C941F24928800C483E7 /* XUIWindow.m */; };
-		980676331F2A09D3006C7F8F /* XUIWindowSystemButtonView.h in Headers */ = {isa = PBXBuildFile; fileRef = 980676311F2A09D2006C7F8F /* XUIWindowSystemButtonView.h */; };
+		980676331F2A09D3006C7F8F /* XUIWindowSystemButtonView.h in Headers */ = {isa = PBXBuildFile; fileRef = 980676311F2A09D2006C7F8F /* XUIWindowSystemButtonView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		980676341F2A09D3006C7F8F /* XUIWindowSystemButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 980676321F2A09D2006C7F8F /* XUIWindowSystemButtonView.m */; };
 		9813E11D1EED91BB009F1495 /* XUIProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 9813E11B1EED91BB009F1495 /* XUIProperty.h */; };
 		9813E11E1EED91BB009F1495 /* XUIProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 9813E11C1EED91BB009F1495 /* XUIProperty.m */; };
@@ -493,11 +493,13 @@
 				9861A2371F089217003641B9 /* XUISwitch.h in Headers */,
 				987749951F1CD8CC00255CAE /* XUIRadioButton.h in Headers */,
 				98AF7B001F0BB1AC009B84F4 /* XUIProgressView.h in Headers */,
+				980676331F2A09D3006C7F8F /* XUIWindowSystemButtonView.h in Headers */,
 				98652A711F1E5EBB002D0775 /* XUISecureTextField.h in Headers */,
 				988943601F1BAADD00708D0F /* XUICheckbox.h in Headers */,
 				98448D7C1F1F81C200CB8B17 /* NSImage+XUIAdditions.h in Headers */,
 				98AF7B0D1F0CB97C009B84F4 /* NSBezierPath+XUIAdditions.h in Headers */,
 				988943691F1C473700708D0F /* XUIComboBox.h in Headers */,
+				98040C951F24928800C483E7 /* XUIWindow.h in Headers */,
 				98448D811F1FCADC00CB8B17 /* XUIPasswordView.h in Headers */,
 				98E3016A1F1654580015704B /* XUIActivityIndicatorBallRotateChaseView.h in Headers */,
 				98AF7B081F0C7CB1009B84F4 /* XUIActivityIndicatorView.h in Headers */,
@@ -519,10 +521,8 @@
 				987923761EF2A53E00F2534A /* XUIControlTargetAction.h in Headers */,
 				9833B4DF1F13A039006552BD /* XUIActivityIndicatorViewProtocol.h in Headers */,
 				98CDB03C1EFC2291008C0C6C /* NSResponder+Private.h in Headers */,
-				980676331F2A09D3006C7F8F /* XUIWindowSystemButtonView.h in Headers */,
 				9813E11D1EED91BB009F1495 /* XUIProperty.h in Headers */,
 				98448D771F1F797600CB8B17 /* XUISecureTextField+Private.h in Headers */,
-				98040C951F24928800C483E7 /* XUIWindow.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
