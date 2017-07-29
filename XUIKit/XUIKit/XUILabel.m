@@ -71,6 +71,28 @@
     return _underlined;
 }
 
+-(int)widthOfText{
+    int nWidth = 0;
+    if (nil != self.attributedText) {
+        nWidth = self.attributedText.size.width;
+    }else{
+        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:self.font, NSFontAttributeName, nil];
+        nWidth = [self.text sizeWithAttributes:attributes].width;
+    }
+    return nWidth;
+}
+
+-(int)heightOfText{
+    int nHeight = 0;
+    if (nil != self.attributedText) {
+        nHeight = self.attributedText.size.height;
+    }else{
+        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:self.font, NSFontAttributeName, nil];
+        nHeight = [self.text sizeWithAttributes:attributes].height;
+    }
+    return nHeight;
+}
+
 #pragma - mark Override Method
 
 -(void)setText:(NSString *)text{

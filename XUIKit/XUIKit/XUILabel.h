@@ -17,6 +17,8 @@
 -(void)setAttributedStringValue:(NSAttributedString *)attributedStringValue XUI_UNAVAILABLE;
 -(NSAttributedString *)attributedStringValue XUI_UNAVAILABLE;
 
+@property (nonatomic,readonly)                      int                 widthOfText;
+@property (nonatomic,readonly)                      int                 heightOfText;
 @property (nonatomic,assign,getter=isUnderLined)    BOOL                underlined;
 @property (nonatomic,assign)                        CGFloat             movingSpeed;
 -(void)startMoving;
