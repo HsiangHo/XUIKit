@@ -23,7 +23,7 @@
 }
 
 -(NSString *)text{
-    return [self text];
+    return [self stringValue];
 }
 
 -(void)setAttributedText:(NSAttributedString *)attributedText{
