@@ -15,6 +15,7 @@
 @implementation XUIWindow{
     XUIWindowSystemButtonView           *_systemButtonView;
     XUIView                             *_headerView;
+    XUIView                             *_mainView;
     XUILabel                            *_windowTitle;
     NSRect                              _titleFrame;
     NSSize                              _minimumSize;
@@ -97,6 +98,7 @@
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidResize:) name:NSWindowDidResizeNotification object:nil];
     _headerView = [[XUIView alloc] initWithFrame:NSMakeRect(0, 0, 0, 40)];
+    _mainView = [[XUIView alloc] initWithFrame:NSMakeRect(0, 0, 0, 0)];
     _systemButtonView = [[XUIWindowSystemButtonView alloc] initWithFrame:NSMakeRect(10, 10, 63, 18)];
     _titleFrame = NSMakeRect(0, 10, 0, 0);
     _windowTitle = [[XUILabel alloc] initWithFrame:_titleFrame];
@@ -107,6 +109,7 @@
     [_headerView addSubview:_systemButtonView];
     [_headerView addSubview:_windowTitle];
     [self.contentView addSubview:_headerView];
+    [self.contentView addSubview:_mainView];
     _minimumSize = NSMakeSize(300, 200);
     _maximumSize = NSMakeSize(10000, 10000);
     [self __adjustContentViewLayout];
@@ -116,6 +119,7 @@
     [self.contentView setFrame: self.contentView.superview.bounds];
     NSRect rctContent = self.contentView.bounds;
     NSRect rctHeaderView = _headerView.frame;
+    NSRect rctMainView = _mainView.frame;
     
     rctHeaderView.size.width = NSWidth(rctContent);
     rctHeaderView.origin.x = 0;
@@ -126,6 +130,12 @@
     _titleFrame.size.width = _windowTitle.widthOfText * 1.2;
     _titleFrame.origin.x = (int)((NSWidth(rctContent) - NSWidth(_titleFrame)) / 2);
     [_windowTitle setFrame:_titleFrame];
+    
+    rctMainView.size.height = (int)(NSHeight(rctContent) - NSHeight(rctHeaderView));
+    rctMainView.size.width = NSWidth(rctContent);
+    rctMainView.origin.x = 0;
+    rctMainView.origin.y = 0;
+    [_mainView setFrame:rctMainView];
 }
 
 #pragma mark - Public Methods

@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,strong,readonly)       XUIWindowSystemButtonView   *systemButtonView;
 @property (nonatomic,strong,readonly)       XUIView                     *headerView;
+//mainView is a subview of contentView whitch is next to the headerView.
+@property (nonatomic,strong,readonly)       XUIView                     *mainView;
 
 @property (nonatomic,assign)                NSSize                      minimumSize;
 @property (nonatomic,assign)                NSSize                       maximumSize;
