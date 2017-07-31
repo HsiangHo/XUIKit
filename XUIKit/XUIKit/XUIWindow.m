@@ -158,4 +158,37 @@
     return _windowTitle.textColor;
 }
 
+-(void)setResizable:(BOOL)resizable{
+    NSInteger style = self.styleMask;
+    style = resizable ? style|NSResizableWindowMask : style&~NSResizableWindowMask;
+    [self setStyleMask:style];
+    [[_systemButtonView maxButton] setEnabled:resizable];
+}
+
+-(BOOL)isResizable{
+    return self.styleMask & NSResizableWindowMask;
+}
+
+-(void)setCloseable:(BOOL)closeable{
+    NSInteger style = self.styleMask;
+    style = closeable ? style|NSClosableWindowMask : style&~NSClosableWindowMask;
+    [self setStyleMask:style];
+    [[_systemButtonView closeButton] setEnabled:closeable];
+}
+
+-(BOOL)isCloseable{
+    return self.styleMask & NSClosableWindowMask;
+}
+
+-(void)setMinimizable:(BOOL)minimizable{
+    NSInteger style = self.styleMask;
+    style = minimizable ? style|NSMiniaturizableWindowMask : style&~NSMiniaturizableWindowMask;
+    [self setStyleMask:style];
+    [[_systemButtonView minButton] setEnabled:minimizable];
+}
+
+-(BOOL)isMinimizable{
+    return self.styleMask & NSMiniaturizableWindowMask;
+}
+
 @end

@@ -28,5 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy)                  NSColor                     *titleColor;
 @property (nonatomic,copy)                  NSFont                      *titleFont;
 
+@property (nonatomic,getter=isResizable)    BOOL                        resizable;
+@property (nonatomic,getter=isMinimizable)  BOOL                        minimizable;
+@property (nonatomic,getter=isCloseable)    BOOL                        closeable;
+
 @end
 NS_ASSUME_NONNULL_END
