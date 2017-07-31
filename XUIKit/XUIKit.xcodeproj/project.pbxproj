@@ -57,6 +57,8 @@
 		987923481EF188DD00F2534A /* NSControl+XUIAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 98C409111EEFF9B300F0A4F6 /* NSControl+XUIAdditions.m */; };
 		987923761EF2A53E00F2534A /* XUIControlTargetAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 987923741EF2A53E00F2534A /* XUIControlTargetAction.h */; };
 		987923771EF2A53E00F2534A /* XUIControlTargetAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 987923751EF2A53E00F2534A /* XUIControlTargetAction.m */; };
+		9881FB6E1F2F539400274929 /* XUIHudWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 9881FB6C1F2F539400274929 /* XUIHudWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9881FB6F1F2F539400274929 /* XUIHudWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9881FB6D1F2F539400274929 /* XUIHudWindow.m */; };
 		988943601F1BAADD00708D0F /* XUICheckbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 9889435E1F1BAADD00708D0F /* XUICheckbox.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		988943611F1BAADD00708D0F /* XUICheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 9889435F1F1BAADD00708D0F /* XUICheckbox.m */; };
 		988943641F1BAD9500708D0F /* XUICheckboxCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 988943621F1BAD9500708D0F /* XUICheckboxCell.h */; };
@@ -142,6 +144,8 @@
 		987923741EF2A53E00F2534A /* XUIControlTargetAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIControlTargetAction.h; sourceTree = "<group>"; };
 		987923751EF2A53E00F2534A /* XUIControlTargetAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIControlTargetAction.m; sourceTree = "<group>"; };
 		987923781EF2A88C00F2534A /* XUIType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XUIType.h; sourceTree = "<group>"; };
+		9881FB6C1F2F539400274929 /* XUIHudWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIHudWindow.h; sourceTree = "<group>"; };
+		9881FB6D1F2F539400274929 /* XUIHudWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIHudWindow.m; sourceTree = "<group>"; };
 		9889435E1F1BAADD00708D0F /* XUICheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUICheckbox.h; sourceTree = "<group>"; };
 		9889435F1F1BAADD00708D0F /* XUICheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUICheckbox.m; sourceTree = "<group>"; };
 		988943621F1BAD9500708D0F /* XUICheckboxCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUICheckboxCell.h; sourceTree = "<group>"; };
@@ -327,6 +331,15 @@
 			name = XUIButton;
 			sourceTree = "<group>";
 		};
+		9881FB6B1F2F52F900274929 /* XUIHudWindow */ = {
+			isa = PBXGroup;
+			children = (
+				9881FB6C1F2F539400274929 /* XUIHudWindow.h */,
+				9881FB6D1F2F539400274929 /* XUIHudWindow.m */,
+			);
+			name = XUIHudWindow;
+			sourceTree = "<group>";
+		};
 		988943661F1BCDDF00708D0F /* XUIComboBox */ = {
 			isa = PBXGroup;
 			children = (
@@ -432,6 +445,7 @@
 				9854CFBB1EED2069008A3454 /* XUIResponder */,
 				9854CFDD1EED2E6D008A3454 /* XUIView */,
 				98040C921F248E5D00C483E7 /* XUIWindow */,
+				9881FB6B1F2F52F900274929 /* XUIHudWindow */,
 				98D158451EEAB252005A0434 /* Info.plist */,
 			);
 			path = XUIKit;
@@ -500,6 +514,7 @@
 				98AF7B0D1F0CB97C009B84F4 /* NSBezierPath+XUIAdditions.h in Headers */,
 				988943691F1C473700708D0F /* XUIComboBox.h in Headers */,
 				98040C951F24928800C483E7 /* XUIWindow.h in Headers */,
+				9881FB6E1F2F539400274929 /* XUIHudWindow.h in Headers */,
 				98448D811F1FCADC00CB8B17 /* XUIPasswordView.h in Headers */,
 				98E3016A1F1654580015704B /* XUIActivityIndicatorBallRotateChaseView.h in Headers */,
 				98AF7B081F0C7CB1009B84F4 /* XUIActivityIndicatorView.h in Headers */,
@@ -596,6 +611,7 @@
 			files = (
 				987923481EF188DD00F2534A /* NSControl+XUIAdditions.m in Sources */,
 				9877499A1F1CD98F00255CAE /* XUIRadioButtonCell.m in Sources */,
+				9881FB6F1F2F539400274929 /* XUIHudWindow.m in Sources */,
 				988943651F1BAD9500708D0F /* XUICheckboxCell.m in Sources */,
 				98652A721F1E5EBB002D0775 /* XUISecureTextField.m in Sources */,
 				987923131EF1550F00F2534A /* NSColor+XUIAdditions.m in Sources */,
