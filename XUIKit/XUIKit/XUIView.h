@@ -11,6 +11,7 @@
 
 @class XUIView;
 typedef void(^XUIViewDrawRect)(XUIView *view, NSRect dirtyRect);
+typedef void(^XUIHyperFocusCompletion)(BOOL cancelled);
 
 @interface XUIView : NSView
 
@@ -19,5 +20,11 @@ typedef void(^XUIViewDrawRect)(XUIView *view, NSRect dirtyRect);
  */
 - (void)setDrawRectBlock:(XUIViewDrawRect)drawRectBlock;
 - (XUIViewDrawRect)drawRectBlock;
+
+/*
+ HyperFocus methods
+ */
+- (void)hyperFocus:(XUIView *)focusView completion:(XUIHyperFocusCompletion)completion;
+- (void)endHyperFocus:(BOOL)cancel;
 
 @end
