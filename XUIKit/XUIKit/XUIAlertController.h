@@ -40,8 +40,8 @@ typedef NS_ENUM(NSInteger, XUIAlertActionStyle) {
 
 @property (nullable, nonatomic, strong) XUIView *accessoryView;
 
-@property (nullable, nonatomic, copy) NSString *AlertTitle;
-@property (nullable, nonatomic, copy) NSString *AlertMessage;
+@property (nullable, nonatomic, copy) NSString *alertTitle;
+@property (nullable, nonatomic, copy) NSString *alertMessage;
 
 @end
 
