@@ -14,7 +14,7 @@
 #import "NSControl+XUIAdditions.h"
 
 #define INSETS_TO_FRAME(EdgeInsets,Frame)\
-NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSWidth(Frame),NSWidth(Frame)*(1 - EdgeInsets.right - EdgeInsets.left) ,NSHeight(Frame)*(1 - EdgeInsets.top - EdgeInsets.bottom))
+NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSHeight(Frame),NSWidth(Frame)*(1 - EdgeInsets.right - EdgeInsets.left) ,NSHeight(Frame)*(1 - EdgeInsets.top - EdgeInsets.bottom))
 
 @interface XUIButtonContent : NSObject
 
