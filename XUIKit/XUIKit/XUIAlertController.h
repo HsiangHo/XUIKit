@@ -8,24 +8,18 @@
 
 #import <Cocoa/Cocoa.h>
 #import "XUIView.h"
+#import "XUIButton.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class XUIAlertAction;
 typedef void(^XUIAlertActionHandlerBlock)(XUIAlertAction *action);
 
-typedef NS_ENUM(NSInteger, XUIAlertActionStyle) {
-    XUIAlertActionStyleDefault = 0,
-    XUIAlertActionStyleDestructive
-};
-
 @interface XUIAlertAction : NSObject
 
-+ (instancetype)actionWithTitle:(nullable NSString *)title style:(XUIAlertActionStyle)style handler:(XUIAlertActionHandlerBlock)handler;
++ (instancetype)actionWithTitle:(nullable NSString *)title handler:(XUIAlertActionHandlerBlock)handler;
 
-@property (nullable, nonatomic, readonly) NSString *title;
-@property (nonatomic, readonly) XUIAlertActionStyle style;
-@property (nonatomic, getter=isEnabled) BOOL enabled;
+@property (nullable, nonatomic, readonly) XUIButton *actionButton;
 
 @end
 
@@ -36,12 +30,13 @@ typedef NS_ENUM(NSInteger, XUIAlertActionStyle) {
 - (void)addAction:(XUIAlertAction *)action;
 @property (nonatomic, readonly) NSArray<XUIAlertAction *> *actions;
 
-@property (nonatomic, strong, nullable) XUIAlertAction *preferredAction;
-
 @property (nullable, nonatomic, strong) XUIView *accessoryView;
 
 @property (nullable, nonatomic, copy) NSString *alertTitle;
 @property (nullable, nonatomic, copy) NSString *alertMessage;
+
+@property (nullable, nonatomic, strong) NSColor *alertTitleColor;
+@property (nullable, nonatomic, strong) NSColor *alertMessageColor;
 
 @end
 
