@@ -130,6 +130,14 @@
     return _lbMessage.textColor;
 }
 
+-(void)setAlertBackgroundColor:(NSColor *)alertBackgroundColor{
+    _presentView.backgroundColor = alertBackgroundColor;
+}
+
+-(NSColor *)alertBackgroundColor{
+    return _presentView.backgroundColor;
+}
+
 #pragma mark - Private methods
 
 - (void)__initializeXUIAlertController{

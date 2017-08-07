@@ -37,6 +37,7 @@ typedef void(^XUIAlertActionHandlerBlock)(XUIAlertAction *action);
 
 @property (nullable, nonatomic, strong) NSColor *alertTitleColor;
 @property (nullable, nonatomic, strong) NSColor *alertMessageColor;
+@property (nullable, nonatomic, strong) NSColor *alertBackgroundColor;
 
 @end
 
