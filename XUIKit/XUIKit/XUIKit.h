@@ -41,3 +41,4 @@ FOUNDATION_EXPORT const unsigned char XUIKitVersionString[];
 #import<XUIKit/XUIWindowSystemButtonView.h>
 #import<XUIKit/XUIHudWindow.h>
 #import<XUIKit/XUIAlertController.h>
+#import<XUIKit/XUILanguageManager.h>
