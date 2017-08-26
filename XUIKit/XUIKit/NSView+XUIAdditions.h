@@ -77,4 +77,10 @@ typedef void(^XUIViewLayoutSubview)(NSView *view);
 - (void)setAlpha:(CGFloat)alpha;
 - (CGFloat)alpha;
 
+/*
+ default is nil.
+ */
+-(void)setLayoutSubviewBlock:(XUIViewLayoutSubview)block;
+-(XUIViewLayoutSubview)layoutSubviewBlock;
+
 @end
