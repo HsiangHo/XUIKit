@@ -35,7 +35,7 @@ static XUILanguageManager *instance;
 
 -(NSString *)__currentLanguage{
     NSString *currentLanguage = [[NSUserDefaults standardUserDefaults]objectForKey:kXUI_CURRENT_LANGUAGE];
-    if (nil == currentLanguage){
+    if (nil == currentLanguage || [currentLanguage isEqualToString:@""]){
         currentLanguage = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
         [self __setCurrentLanguage:currentLanguage];
     }
