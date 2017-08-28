@@ -23,6 +23,7 @@
     CGFloat                                 _durationTime;
     NSColor                                 *_color;
     BOOL                                    _animating;
+    id<XUIActivityIndicatorViewProtocol>    _currentStyleObj;
 }
 
 -(instancetype)init{
@@ -59,7 +60,6 @@
 }
 
 -(id<XUIActivityIndicatorViewProtocol>)__currentStyleObject{
-    static id<XUIActivityIndicatorViewProtocol> _currentStyleObj = nil;
     if(nil == _currentStyleObj){
         switch (_activityIndicatorViewStyle) {
             case XUIActivityIndicatorViewStyleCircleLineRotate:
