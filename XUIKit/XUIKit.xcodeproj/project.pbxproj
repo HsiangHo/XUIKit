@@ -36,6 +36,10 @@
 		9854CFBF1EED212C008A3454 /* XUIResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854CFBD1EED212C008A3454 /* XUIResponder.m */; };
 		9854CFE01EED2EA4008A3454 /* XUIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9854CFDE1EED2EA4008A3454 /* XUIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9854CFE11EED2EA4008A3454 /* XUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854CFDF1EED2EA4008A3454 /* XUIView.m */; };
+		985D80D71F544133002DD7F1 /* XUIActivityIndicatorBallScaleRippleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 985D80D51F544133002DD7F1 /* XUIActivityIndicatorBallScaleRippleView.h */; };
+		985D80D81F544133002DD7F1 /* XUIActivityIndicatorBallScaleRippleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D80D61F544133002DD7F1 /* XUIActivityIndicatorBallScaleRippleView.m */; };
+		985D80DB1F544166002DD7F1 /* XUIActivityIndicatorBallScaleRippleMultipleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 985D80D91F544166002DD7F1 /* XUIActivityIndicatorBallScaleRippleMultipleView.h */; };
+		985D80DC1F544166002DD7F1 /* XUIActivityIndicatorBallScaleRippleMultipleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D80DA1F544166002DD7F1 /* XUIActivityIndicatorBallScaleRippleMultipleView.m */; };
 		9861A2371F089217003641B9 /* XUISwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 9861A2351F089217003641B9 /* XUISwitch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9861A2381F089217003641B9 /* XUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9861A2361F089217003641B9 /* XUISwitch.m */; };
 		98652A691F1E5317002D0775 /* XUITextField+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 98652A671F1E5317002D0775 /* XUITextField+Private.h */; };
@@ -128,6 +132,10 @@
 		9854CFBD1EED212C008A3454 /* XUIResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIResponder.m; sourceTree = "<group>"; };
 		9854CFDE1EED2EA4008A3454 /* XUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIView.h; sourceTree = "<group>"; };
 		9854CFDF1EED2EA4008A3454 /* XUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIView.m; sourceTree = "<group>"; };
+		985D80D51F544133002DD7F1 /* XUIActivityIndicatorBallScaleRippleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIActivityIndicatorBallScaleRippleView.h; sourceTree = "<group>"; };
+		985D80D61F544133002DD7F1 /* XUIActivityIndicatorBallScaleRippleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIActivityIndicatorBallScaleRippleView.m; sourceTree = "<group>"; };
+		985D80D91F544166002DD7F1 /* XUIActivityIndicatorBallScaleRippleMultipleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIActivityIndicatorBallScaleRippleMultipleView.h; sourceTree = "<group>"; };
+		985D80DA1F544166002DD7F1 /* XUIActivityIndicatorBallScaleRippleMultipleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIActivityIndicatorBallScaleRippleMultipleView.m; sourceTree = "<group>"; };
 		9861A2351F089217003641B9 /* XUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUISwitch.h; sourceTree = "<group>"; };
 		9861A2361F089217003641B9 /* XUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUISwitch.m; sourceTree = "<group>"; };
 		98652A671F1E5317002D0775 /* XUITextField+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XUITextField+Private.h"; sourceTree = "<group>"; };
@@ -395,6 +403,10 @@
 				984447E41F18EE75003BFD37 /* XUIActivityIndicatorBallPulseView.m */,
 				984447E71F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.h */,
 				984447E81F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.m */,
+				985D80D51F544133002DD7F1 /* XUIActivityIndicatorBallScaleRippleView.h */,
+				985D80D61F544133002DD7F1 /* XUIActivityIndicatorBallScaleRippleView.m */,
+				985D80D91F544166002DD7F1 /* XUIActivityIndicatorBallScaleRippleMultipleView.h */,
+				985D80DA1F544166002DD7F1 /* XUIActivityIndicatorBallScaleRippleMultipleView.m */,
 			);
 			name = XUIActivityIndicatorView;
 			sourceTree = "<group>";
@@ -541,6 +553,7 @@
 				98448D7C1F1F81C200CB8B17 /* NSImage+XUIAdditions.h in Headers */,
 				98AF7B0D1F0CB97C009B84F4 /* NSBezierPath+XUIAdditions.h in Headers */,
 				98E842D21F31FAC8004CF900 /* XUIAlertController.h in Headers */,
+				985D80DB1F544166002DD7F1 /* XUIActivityIndicatorBallScaleRippleMultipleView.h in Headers */,
 				98998C331F3F1F9B007258B6 /* XUILanguageManager.h in Headers */,
 				988943691F1C473700708D0F /* XUIComboBox.h in Headers */,
 				98040C951F24928800C483E7 /* XUIWindow.h in Headers */,
@@ -566,6 +579,7 @@
 				987923761EF2A53E00F2534A /* XUIControlTargetAction.h in Headers */,
 				9833B4DF1F13A039006552BD /* XUIActivityIndicatorViewProtocol.h in Headers */,
 				98CDB03C1EFC2291008C0C6C /* NSResponder+Private.h in Headers */,
+				985D80D71F544133002DD7F1 /* XUIActivityIndicatorBallScaleRippleView.h in Headers */,
 				9813E11D1EED91BB009F1495 /* XUIProperty.h in Headers */,
 				98448D771F1F797600CB8B17 /* XUISecureTextField+Private.h in Headers */,
 			);
@@ -665,6 +679,7 @@
 				98D358DD1EF7F105004D4218 /* XUIButton.m in Sources */,
 				98E3016B1F1654580015704B /* XUIActivityIndicatorBallRotateChaseView.m in Sources */,
 				9889436A1F1C473700708D0F /* XUIComboBox.m in Sources */,
+				985D80D81F544133002DD7F1 /* XUIActivityIndicatorBallScaleRippleView.m in Sources */,
 				98AF7B011F0BB1AC009B84F4 /* XUIProgressView.m in Sources */,
 				984447E21F18EE55003BFD37 /* XUIActivityIndicatorBallSpinFadeView.m in Sources */,
 				98998C341F3F1F9B007258B6 /* XUILanguageManager.m in Sources */,
@@ -676,6 +691,7 @@
 				98D358D91EF7EEB5004D4218 /* XUIImageView.m in Sources */,
 				98040C961F24928800C483E7 /* XUIWindow.m in Sources */,
 				98CDB03D1EFC2291008C0C6C /* NSResponder+Private.m in Sources */,
+				985D80DC1F544166002DD7F1 /* XUIActivityIndicatorBallScaleRippleMultipleView.m in Sources */,
 				98E842D31F31FAC8004CF900 /* XUIAlertController.m in Sources */,
 				987521EF1F0407B800A6D890 /* XUITextFieldCell.m in Sources */,
 				98652A761F1E5EE4002D0775 /* XUISecureTextFieldCell.m in Sources */,

@@ -48,7 +48,9 @@ typedef NS_ENUM(NSInteger, XUIActivityIndicatorViewStyle) {
     XUIActivityIndicatorViewStyleLineSpinFade,
     XUIActivityIndicatorViewStyleBallSpinFade,
     XUIActivityIndicatorViewStyleBallPulse,
-    XUIActivityIndicatorViewStyleLineScale
+    XUIActivityIndicatorViewStyleLineScale,
+    XUIActivityIndicatorViewStyleBallScaleRipple,
+    XUIActivityIndicatorViewStyleBallScaleRippleMultiple
 };
 
 #endif /* XUIType_h */

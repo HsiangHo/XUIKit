@@ -14,6 +14,8 @@
 #import "XUIActivityIndicatorBallSpinFadeView.h"
 #import "XUIActivityIndicatorBallPulseView.h"
 #import "XUIActivityIndicatorLineScaleView.h"
+#import "XUIActivityIndicatorBallScaleRippleView.h"
+#import "XUIActivityIndicatorBallScaleRippleMultipleView.h"
 
 @implementation XUIActivityIndicatorView{
     XUIActivityIndicatorViewStyle           _activityIndicatorViewStyle;
@@ -82,6 +84,14 @@
                
             case XUIActivityIndicatorViewStyleLineScale:
                 _currentStyleObj = [[XUIActivityIndicatorLineScaleView alloc] initWithLayer:self.layer withColor:_color withDurationTime:_durationTime];
+                break;
+                
+            case XUIActivityIndicatorViewStyleBallScaleRipple:
+                _currentStyleObj = [[XUIActivityIndicatorBallScaleRippleView alloc] initWithLayer:self.layer withColor:_color withDurationTime:_durationTime];
+                break;
+                
+            case XUIActivityIndicatorViewStyleBallScaleRippleMultiple:
+                _currentStyleObj = [[XUIActivityIndicatorBallScaleRippleMultipleView alloc] initWithLayer:self.layer withColor:_color withDurationTime:_durationTime];
                 break;
                 
             default:
