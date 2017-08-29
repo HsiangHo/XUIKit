@@ -40,6 +40,8 @@
 		985D80D81F544133002DD7F1 /* XUIActivityIndicatorBallScaleRippleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D80D61F544133002DD7F1 /* XUIActivityIndicatorBallScaleRippleView.m */; };
 		985D80DB1F544166002DD7F1 /* XUIActivityIndicatorBallScaleRippleMultipleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 985D80D91F544166002DD7F1 /* XUIActivityIndicatorBallScaleRippleMultipleView.h */; };
 		985D80DC1F544166002DD7F1 /* XUIActivityIndicatorBallScaleRippleMultipleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D80DA1F544166002DD7F1 /* XUIActivityIndicatorBallScaleRippleMultipleView.m */; };
+		985D80F41F55A4AB002DD7F1 /* XUIPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = 985D80F21F55A4AB002DD7F1 /* XUIPanel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		985D80F51F55A4AB002DD7F1 /* XUIPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 985D80F31F55A4AB002DD7F1 /* XUIPanel.m */; };
 		9861A2371F089217003641B9 /* XUISwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 9861A2351F089217003641B9 /* XUISwitch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9861A2381F089217003641B9 /* XUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 9861A2361F089217003641B9 /* XUISwitch.m */; };
 		98652A691F1E5317002D0775 /* XUITextField+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 98652A671F1E5317002D0775 /* XUITextField+Private.h */; };
@@ -136,6 +138,8 @@
 		985D80D61F544133002DD7F1 /* XUIActivityIndicatorBallScaleRippleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIActivityIndicatorBallScaleRippleView.m; sourceTree = "<group>"; };
 		985D80D91F544166002DD7F1 /* XUIActivityIndicatorBallScaleRippleMultipleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIActivityIndicatorBallScaleRippleMultipleView.h; sourceTree = "<group>"; };
 		985D80DA1F544166002DD7F1 /* XUIActivityIndicatorBallScaleRippleMultipleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIActivityIndicatorBallScaleRippleMultipleView.m; sourceTree = "<group>"; };
+		985D80F21F55A4AB002DD7F1 /* XUIPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIPanel.h; sourceTree = "<group>"; };
+		985D80F31F55A4AB002DD7F1 /* XUIPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIPanel.m; sourceTree = "<group>"; };
 		9861A2351F089217003641B9 /* XUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUISwitch.h; sourceTree = "<group>"; };
 		9861A2361F089217003641B9 /* XUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUISwitch.m; sourceTree = "<group>"; };
 		98652A671F1E5317002D0775 /* XUITextField+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XUITextField+Private.h"; sourceTree = "<group>"; };
@@ -287,6 +291,15 @@
 				9854CFDF1EED2EA4008A3454 /* XUIView.m */,
 			);
 			name = XUIView;
+			sourceTree = "<group>";
+		};
+		985D80F11F55A46F002DD7F1 /* XUIPanel */ = {
+			isa = PBXGroup;
+			children = (
+				985D80F21F55A4AB002DD7F1 /* XUIPanel.h */,
+				985D80F31F55A4AB002DD7F1 /* XUIPanel.m */,
+			);
+			name = XUIPanel;
 			sourceTree = "<group>";
 		};
 		9861A2341F088F97003641B9 /* XUISwitch */ = {
@@ -475,6 +488,7 @@
 				9854CFBB1EED2069008A3454 /* XUIResponder */,
 				9854CFDD1EED2E6D008A3454 /* XUIView */,
 				98040C921F248E5D00C483E7 /* XUIWindow */,
+				985D80F11F55A46F002DD7F1 /* XUIPanel */,
 				9881FB6B1F2F52F900274929 /* XUIHudWindow */,
 				98E914491F30CEA2002CD5FA /* XUIAlertController */,
 				98D158451EEAB252005A0434 /* Info.plist */,
@@ -555,6 +569,7 @@
 				98E842D21F31FAC8004CF900 /* XUIAlertController.h in Headers */,
 				985D80DB1F544166002DD7F1 /* XUIActivityIndicatorBallScaleRippleMultipleView.h in Headers */,
 				98998C331F3F1F9B007258B6 /* XUILanguageManager.h in Headers */,
+				985D80F41F55A4AB002DD7F1 /* XUIPanel.h in Headers */,
 				988943691F1C473700708D0F /* XUIComboBox.h in Headers */,
 				98040C951F24928800C483E7 /* XUIWindow.h in Headers */,
 				9881FB6E1F2F539400274929 /* XUIHudWindow.h in Headers */,
@@ -667,6 +682,7 @@
 				988943611F1BAADD00708D0F /* XUICheckbox.m in Sources */,
 				9854CFBF1EED212C008A3454 /* XUIResponder.m in Sources */,
 				984447E61F18EE75003BFD37 /* XUIActivityIndicatorBallPulseView.m in Sources */,
+				985D80F51F55A4AB002DD7F1 /* XUIPanel.m in Sources */,
 				984447EA1F18EE89003BFD37 /* XUIActivityIndicatorLineScaleView.m in Sources */,
 				9861A2381F089217003641B9 /* XUISwitch.m in Sources */,
 				98ED22341EF64056004BD87D /* NSTextField+XUIAdditions.m in Sources */,
