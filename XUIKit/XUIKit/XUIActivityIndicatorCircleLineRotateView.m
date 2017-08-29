@@ -77,6 +77,7 @@
     groupAnimation.duration = _durationTime;
     groupAnimation.repeatCount = INFINITY;
     groupAnimation.animations = [NSArray arrayWithObjects:headAnimation,tailAnimation,nil];
+    groupAnimation.removedOnCompletion = NO;
     return groupAnimation;
 }
 
@@ -86,6 +87,7 @@
     rotationAnimation.toValue = @(-2 * M_PI);
     rotationAnimation.duration = _durationTime;
     rotationAnimation.repeatCount = INFINITY;
+    rotationAnimation.removedOnCompletion = NO;
     return rotationAnimation;
 
 }
