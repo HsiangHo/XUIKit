@@ -27,6 +27,7 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSHeight(Frame),
 @property (nonatomic,assign) BOOL                   underLined;
 @property (nonatomic,strong) NSColor                *backgroundColor;
 @property (nonatomic,assign) CGFloat                cornerRadius;
+@property (nonatomic,strong) NSCursor               *cursor;
 
 @end
 
@@ -40,6 +41,7 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSHeight(Frame),
     BOOL                   _underLined;
     NSColor                *_backgroundColor;
     CGFloat                _cornerRadius;
+    NSCursor               *_cursor;
 }
 
 @end
@@ -143,6 +145,7 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSHeight(Frame),
     [content setFont:[NSFont fontWithName:@"Helvetica Neue Light" size:15]];
     [content setBackgroundColor:[NSColor whiteColor]];
     [content setCornerRadius:0.0f];
+    [content setCursor:[NSCursor arrowCursor]];
     
     _imageEdgeInsets = NSEdgeInsetsMake(0, 0.05, 0, 0.65);
     _titleEdgeInsets = NSEdgeInsetsMake(0, 0.35, 0, 0.1);
@@ -164,6 +167,7 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSHeight(Frame),
     [_imageView setImage:[self currentImage]];
     [self setBackgroundColor:[self currentBackgroundColor]];
     [self setCornerRadius:[self currentcornerRadius]];
+    [[self currentCursor] set];
     if (_buttonFlags.isNormalStringValue) {
         [_titleView setText:[self currentTitle]];
         [_titleView setFont:[self currentFont]];
@@ -281,6 +285,12 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSHeight(Frame),
     [self __stateDidChange];
 }
 
+-(void)setCursor:(NSCursor *)cursor forState:(XUIControlState)state{
+    [self __stateWillChange];
+    [[self __contentForState:state] setCursor:cursor];
+    [self __stateDidChange];
+}
+
 - (NSString *)titleForState:(XUIControlState)state{
     return [[self __contentForState:state] title];
 }
@@ -315,6 +325,10 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSHeight(Frame),
 
 -(CGFloat)cornerRadiusForState:(XUIControlState)state{
     return [[self __contentForState:state] cornerRadius];
+}
+
+-(NSCursor *)cursorForState:(XUIControlState)state{
+    return [[self __contentForState:state] cursor];
 }
 
 - (NSString *)currentTitle{
@@ -379,6 +393,14 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSHeight(Frame),
 
 -(CGFloat)currentcornerRadius{
     return [self cornerRadiusForState:self.controlState];
+}
+
+-(NSCursor *)currentCursor{
+    NSColor *cursor = [self cursorForState:self.controlState];
+    if(nil == cursor) {
+        cursor = [self cursorForState:XUIControlStateNormal];
+    }
+    return cursor;
 }
 
 @end
