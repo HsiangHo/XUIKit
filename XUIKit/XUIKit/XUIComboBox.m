@@ -15,6 +15,7 @@
     NSColor         *_arrowColor;
     NSColor         *_tileColor;
     NSColor         *_borderColor;
+    NSColor         *_disableColor;
 }
 
 #pragma mark - Public methods
@@ -43,6 +44,7 @@
     _arrowColor = [NSColor whiteColor];
     _tileColor =  [NSColor colorWithHex:@"#00a6ff" alpha:1.0];
     _borderColor = [NSColor colorWithHex:@"#00a6ff" alpha:1.0];
+    _disableColor = [NSColor colorWithHex:@"#b4b5bd" alpha:1.0];
 }
 
 #pragma mark - Override methods
@@ -76,13 +78,21 @@
     //Draw Border
     NSBezierPath *pathBorder = [NSBezierPath bezierPathWithRoundedRect:cellFrame xRadius:2.0 yRadius:2.0];
     [pathBorder setLineWidth:1.0];
-    [_borderColor set];
+    if(self.enabled){
+        [_borderColor set];
+    }else{
+        [_disableColor set];
+    }
     [pathBorder stroke];
     
     //Draw Tile
     NSRect bounds = NSMakeRect(cellFrame.origin.x + cellFrame.size.width - cellFrame.size.height, cellFrame.origin.y, cellFrame.size.height, cellFrame.size.height);
     NSBezierPath *pathBk = [NSBezierPath bezierPathWithRoundedRect:NSInsetRect(bounds, 0.5, 0.5) xRadius:0.0 yRadius:0.0];
-    [_tileColor set];
+    if(self.enabled){
+        [_tileColor set];
+    }else{
+        [_disableColor set];
+    }
     [pathBk fill];
     
     //Draw Arrow
