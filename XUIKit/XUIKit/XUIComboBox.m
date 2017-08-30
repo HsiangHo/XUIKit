@@ -112,7 +112,11 @@
     NSMutableAttributedString* attrString = [[NSMutableAttributedString alloc]initWithString: self.stringValue];
     [attrString beginEditing];
     
-    [attrString addAttribute:NSForegroundColorAttributeName value:self.textColor range:NSMakeRange(0, [attrString length])];
+    if(self.enabled){
+        [attrString addAttribute:NSForegroundColorAttributeName value:self.textColor range:NSMakeRange(0, [attrString length])];
+    }else{
+        [attrString addAttribute:NSForegroundColorAttributeName value:_disableColor range:NSMakeRange(0, [attrString length])];
+    }
     [attrString addAttribute:NSFontAttributeName value:self.font range:NSMakeRange(0, [attrString length])];
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     [paragraphStyle setLineBreakMode:NSLineBreakByWordWrapping];
