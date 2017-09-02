@@ -135,6 +135,7 @@
 }
 
 -(void)setBackgroundColor:(NSColor *)backgroundColor{
+    [self setWantsLayer:YES];
     [self.layer setBackgroundColor:backgroundColor.CGColor];
     [self setNeedsDisplay:YES];
 }
@@ -144,6 +145,7 @@
 }
 
 -(void)setCornerRadius:(CGFloat)cornerRadius{
+    [self setWantsLayer:YES];
     [self.layer setCornerRadius:cornerRadius];
     [self setNeedsDisplay:YES];
 }
@@ -164,7 +166,6 @@
 #pragma mark - Private Functions
 
 - (void)__initializeNSView_XUIAdditions{
-    [self setWantsLayer:YES];
     [self setUserInteractionEnabled:YES];
 }
 
