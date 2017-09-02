@@ -108,6 +108,7 @@
 #pragma mark - Private Methods
 
 -(void)__initializeXUIView{
+    [self setWantsLayer:YES];
     _drawRectBlock = nil;
     _hyperfocusBlock = nil;
 }

@@ -131,6 +131,7 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSHeight(Frame),
 #pragma mark - Private method
 
 -(void)__initializeXUIButton{
+    [self setWantsLayer:YES];
     _contentLookup = [[NSMutableDictionary alloc] init];
     _buttonFlags.buttonType = XUIButtonTypeCustom;
     _buttonFlags.dimsInBackground = YES;
