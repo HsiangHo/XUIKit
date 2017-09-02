@@ -29,6 +29,7 @@
 #pragma mark - Private Methods
 
 -(void)__initializeXUIImageView{
+    [self setWantsLayer:YES];
     [(NSImageCell *)[self cell] setImageScaling:NSImageScaleProportionallyUpOrDown];
     _shapeLayer = [CAShapeLayer layer];
     [self __setShapePath:nil];
