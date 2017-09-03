@@ -373,7 +373,7 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSHeight(Frame),
 }
 
 -(NSFont *)currentFont{
-    NSColor *font = [self FontForState:self.controlState];
+    NSFont *font = [self FontForState:self.controlState];
     if(nil == font) {
         font = [self FontForState:XUIControlStateNormal];
     }
@@ -397,7 +397,7 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSHeight(Frame),
 }
 
 -(NSCursor *)currentCursor{
-    NSColor *cursor = [self cursorForState:self.controlState];
+    NSCursor *cursor = [self cursorForState:self.controlState];
     if(nil == cursor) {
         cursor = [self cursorForState:XUIControlStateNormal];
     }

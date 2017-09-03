@@ -52,12 +52,10 @@
 #pragma mark - Property Fuctions
 
 void set_parasiteObj(NSObject *parasitifer,XUIParasiteObject *obj){
-    NSUInteger n = [parasitifer hash];
     objc_setAssociatedObject(parasitifer, kProperty, obj, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 XUIParasiteObject *get_parasiteObj(NSObject *parasitifer){
-    NSUInteger n = [parasitifer hash];
     return objc_getAssociatedObject(parasitifer, kProperty);
 }
 

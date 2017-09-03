@@ -30,6 +30,7 @@
 }
 
 -(void)__initializeXUIAlertAction{
+    __block XUIAlertAction *blockSelf = self;
     _actionButton = [[XUIButton alloc] initWithFrame:NSMakeRect(0, 0, 0, 45)];
     [_actionButton setImageEdgeInsets:NSEdgeInsetsMake(0, 0, 0, 0)];
     [_actionButton setTitleEdgeInsets:NSEdgeInsetsMake(0, 0, 0.2, 0)];
@@ -38,12 +39,12 @@
     [_actionButton setBackgroundColor:[NSColor clearColor] forState:XUIControlStateNormal];
     [_actionButton addActionForControlEvents:XUIControlEventTouchUpInside block:^{
         if (nil != _handler) {
-            _handler(self);
+            blockSelf->_handler(blockSelf);
         }
     }];
     [_actionButton addActionForControlEvents:XUIControlEventTouchUpOutside block:^{
         if (nil != _handler) {
-            _handler(self);
+            blockSelf->_handler(blockSelf);
         }
     }];
 }
@@ -141,6 +142,7 @@
 #pragma mark - Private methods
 
 - (void)__initializeXUIAlertController{
+    __block XUIAlertController *blockSelf = self;
     _actions = [[NSMutableArray alloc] init];
     _accessoryView = nil;
     
@@ -148,7 +150,7 @@
     [_presentView setCornerRadius:8.0f];
     [_presentView setBackgroundColor:[NSColor colorWithHex:@"#33334e" alpha:1.0]];
     [_presentView setDrawRectBlock:^(XUIView *view, NSRect dirtyRect) {
-        [self __updateLookup];
+        [blockSelf __updateLookup];
     }];
     
     _lbTitle = [[XUILabel alloc] initWithFrame:NSMakeRect(0, 0, 0, 35)];

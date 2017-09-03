@@ -42,12 +42,12 @@
 #pragma mark - Public Methods
 
 -(NSInteger)detaY{
-    XUICheckbox *cell = [self cell];
+    XUICheckboxCell *cell = [self cell];
     return [cell detaY];
 }
 
 -(void)setDetaY:(NSInteger)nValue{
-    XUICheckbox *cell = [self cell];
+    XUICheckboxCell *cell = [self cell];
     [cell setDetaY:nValue];
     [self setNeedsDisplay:YES];
 }

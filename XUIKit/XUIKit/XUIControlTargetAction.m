@@ -9,10 +9,10 @@
 #import "XUIControlTargetAction.h"
 
 @implementation XUIControlTargetAction{
-    id __weak target;
-    SEL action;
-    void (^block)(void);
-    XUIControlEvents controlEvents;
+    id __weak _target;
+    SEL _action;
+    void (^_block)(void);
+    XUIControlEvents _controlEvents;
 }
 
 @end

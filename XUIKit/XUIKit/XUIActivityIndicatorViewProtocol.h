@@ -8,11 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol XUIActivityIndicatorViewProtocol <NSObject>
 
-@property (nonatomic, readwrite) CGFloat    durationTime;
-@property (nonnull, readwrite, nonatomic, strong)  NSColor *color;
+-(void)setColor:(NSColor *)color;
+-(NSColor *)color;
+-(void)setDurationTime:(CGFloat)durationTime;
+-(CGFloat)durationTime;
 
 -(instancetype)initWithLayer:(CALayer *)layer withColor:(nonnull NSColor *)color withDurationTime:(CGFloat)durationTime;
 
 @end
+
+NS_ASSUME_NONNULL_END

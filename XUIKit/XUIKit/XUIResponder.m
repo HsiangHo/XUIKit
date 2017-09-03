@@ -8,6 +8,7 @@
 
 #import "XUIResponder.h"
 #import "NSResponder+Private.h"
+#import "XUIMethodsHelper.h"
 
 static __weak id currentFirstResponder;
 @implementation NSResponder (XUIAdditions)
