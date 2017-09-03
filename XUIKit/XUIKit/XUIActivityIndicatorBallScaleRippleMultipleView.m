@@ -84,9 +84,17 @@
     }
 }
 
+-(NSColor *)color{
+    return _color;
+}
+
 -(void)setDurationTime:(CGFloat)durationTime{
     _durationTime = durationTime;
     [self __updateAnimations];
+}
+
+-(CGFloat)durationTime{
+    return _durationTime;
 }
 
 @end
