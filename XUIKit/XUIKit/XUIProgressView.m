@@ -262,7 +262,6 @@ NSMakeRect(EdgeInsets.left, EdgeInsets.bottom, NSWidth(Frame) - EdgeInsets.right
     NSRect rctTrack = rctFrame;
     CGFloat defaultRadius = (NSWidth(rctTrack) - _trackLineWidth)* 0.5f;
     CGFloat radius = _trackCornerRadius < 0 ? defaultRadius: (_trackCornerRadius > defaultRadius ? defaultRadius : _trackCornerRadius);
-    rctTrack = NSInsetRect(rctTrack, _trackLineWidth, 0);
     [_trackTintLayer setFillColor:[NSColor clearColor].CGColor];
     [_trackTintLayer setStrokeColor: (nil == trackTintColor) ? DefaultTrackColor.CGColor :  trackTintColor.CGColor];
     [_trackTintLayer setOpacity:1.0f];
@@ -276,7 +275,6 @@ NSMakeRect(EdgeInsets.left, EdgeInsets.bottom, NSWidth(Frame) - EdgeInsets.right
     NSRect rctProgress = rctFrame;
     CGFloat defaultRadius2 = (NSWidth(rctProgress) - _progressLineWidth)* 0.5f;
     CGFloat radius2 = _progressCornerRadius < 0 ? defaultRadius2: (_progressCornerRadius > defaultRadius2 ? defaultRadius2 : _progressCornerRadius);
-    rctProgress = NSInsetRect(rctProgress, _progressLineWidth, 0);
     [_progressTintLayer setFillColor:[NSColor clearColor].CGColor];
     [_progressTintLayer setStrokeColor: (nil == progressTintColor) ? DefaultProgressColor.CGColor :  progressTintColor.CGColor];
     [_progressTintLayer setOpacity:1.0f];

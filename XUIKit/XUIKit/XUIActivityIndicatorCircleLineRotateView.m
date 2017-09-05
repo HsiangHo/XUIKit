@@ -37,7 +37,6 @@
     NSPoint center = NSMakePoint(NSMidX(rctProgress), NSMidY(rctProgress));
     rctProgress = NSInsetRect(rctProgress, 1.5f, 1.5f);
     CGFloat radius = NSHeight(rctProgress) > NSWidth(rctProgress) ? NSWidth(rctProgress) / 2.0 : NSHeight(rctProgress) / 2.0;
-    rctProgress = NSInsetRect(rctProgress, 3.0f, 0);
     CGFloat startAngle = 90;
     CGFloat endAngle = -270;
     [_layer setFillColor:[NSColor clearColor].CGColor];

@@ -19,7 +19,7 @@
     if (numElements > 0){
         CGMutablePathRef    path = CGPathCreateMutable();
         NSPoint             points[3];
-        BOOL                didClosePath = YES;
+//        BOOL                didClosePath = YES;
         for (i = 0; i < numElements; i++){
             switch ([self elementAtIndex:i associatedPoints:points]){
                 case NSMoveToBezierPathElement:
@@ -28,19 +28,19 @@
                     
                 case NSLineToBezierPathElement:
                     CGPathAddLineToPoint(path, NULL, points[0].x, points[0].y);
-                    didClosePath = NO;
+//                    didClosePath = NO;
                     break;
                     
                 case NSCurveToBezierPathElement:
                     CGPathAddCurveToPoint(path, NULL, points[0].x, points[0].y,
                                           points[1].x, points[1].y,
                                           points[2].x, points[2].y);
-                    didClosePath = NO;
+//                    didClosePath = NO;
                     break;
                     
                 case NSClosePathBezierPathElement:
                     CGPathCloseSubpath(path);
-                    didClosePath = YES;
+//                    didClosePath = YES;
                     break;
             }
         }

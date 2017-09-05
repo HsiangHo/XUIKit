@@ -51,8 +51,7 @@
     return (sum > 0.8);
 }
 
-- (CGColorRef)CGColor
-{
+- (CGColorRef)CGColor{
     const NSInteger numberOfComponents = [self numberOfComponents];
     CGFloat components[numberOfComponents];
     CGColorSpaceRef colorSpace = [[self colorSpace] CGColorSpace];

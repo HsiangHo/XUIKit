@@ -21,7 +21,7 @@
 }
 
 -(instancetype)init{
-    if (self == [super init]) {
+    if (self = [super init]) {
         [self __initializeXUIParasiteObject];
     }
     return self;
