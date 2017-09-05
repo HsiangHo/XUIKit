@@ -11,6 +11,7 @@
 		9854CFD11EED220B008A3454 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854CFD01EED220B008A3454 /* main.m */; };
 		9854CFD31EED220C008A3454 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9854CFD21EED220C008A3454 /* Assets.xcassets */; };
 		9854CFD61EED220C008A3454 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9854CFD41EED220C008A3454 /* MainMenu.xib */; };
+		98AF7B041F0BB5F5009B84F4 /* XUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AF7B031F0BB5F5009B84F4 /* XUIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		9854CFD21EED220C008A3454 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9854CFD51EED220C008A3454 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		9854CFD71EED220C008A3454 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98AF7B031F0BB5F5009B84F4 /* XUIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XUIKit.framework; path = ../Build/Products/Debug/XUIKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98AF7B041F0BB5F5009B84F4 /* XUIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,6 +42,7 @@
 			children = (
 				9854CFCB1EED220B008A3454 /* XUIKitExample */,
 				9854CFCA1EED220B008A3454 /* Products */,
+				98AF7B021F0BB5F5009B84F4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,6 +73,14 @@
 				9854CFD01EED220B008A3454 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		98AF7B021F0BB5F5009B84F4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				98AF7B031F0BB5F5009B84F4 /* XUIKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,8 +264,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/Output";
 				INFOPLIST_FILE = XUIKitExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SingleDogGroup.XUIKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -264,8 +278,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/Output";
 				INFOPLIST_FILE = XUIKitExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SingleDogGroup.XUIKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -290,6 +306,7 @@
 				9854CFDC1EED220C008A3454 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
