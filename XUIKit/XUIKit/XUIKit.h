@@ -43,3 +43,4 @@ FOUNDATION_EXPORT const unsigned char XUIKitVersionString[];
 #import<XUIKit/XUIPanel.h>
 #import<XUIKit/XUIAlertController.h>
 #import<XUIKit/XUILanguageManager.h>
+#import<XUIKit/XUISharingManager.h>
