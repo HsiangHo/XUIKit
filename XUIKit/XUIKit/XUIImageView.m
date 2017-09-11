@@ -32,7 +32,6 @@
     [self setWantsLayer:YES];
     [(NSImageCell *)[self cell] setImageScaling:NSImageScaleProportionallyUpOrDown];
     _shapeLayer = [CAShapeLayer layer];
-    [self __setShapePath:nil];
 }
 
 -(void)__setShapePath:(NSBezierPath *)path{
