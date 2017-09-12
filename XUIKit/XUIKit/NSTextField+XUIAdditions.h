@@ -16,4 +16,6 @@
 @property(nullable, nonatomic, copy)    NSString                *placeholder;
 @property(nullable, nonatomic, copy)    NSAttributedString      *attributedPlaceholder;
 
+-(void)shakeWithCompletion:(nullable void (^)(void))block;
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "NSTextField+XUIAdditions.h"
+#import <Quartz/Quartz.h>
 
 @implementation NSTextField (XUIAdditions)
 
@@ -48,6 +49,24 @@
 
 -(NSAttributedString *)attributedPlaceholder{
     return [[self cell] placeholderAttributedString];
+}
+
+-(void)shakeWithCompletion:(nullable void (^)(void))block{
+    [self setWantsLayer:YES];
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
+    animation.keyPath = @"position.x";
+    animation.values = @[ @0, @10, @-10, @10, @-10, @10, @0 ];
+    animation.keyTimes = @[ @0, @(1 / 6.0), @(2 / 6.0), @(3 / 6.0), @(4 / 6.0), @(5 / 6.0), @1 ];
+    animation.duration = 0.6;
+    animation.additive = YES;
+    [CATransaction begin];
+    [CATransaction setCompletionBlock:^{
+        if(NULL != block){
+            block();
+        }
+    }];
+    [self.layer addAnimation:animation forKey:@"xuikit_shake"];
+    [CATransaction commit];
 }
 
 @end
