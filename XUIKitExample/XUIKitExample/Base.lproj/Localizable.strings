@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  XUIKitExample
+
+  Created by Jovi on 9/17/17.
+  Copyright © 2017 Jovi. All rights reserved.
+*/
+
+"start" = "Start";
+"waiting_to_start" = "Waiting to start";
+"progressing" = "Progressing";
+"running" = "Running";
+"stop" = "Stop";

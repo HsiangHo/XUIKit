@@ -12,6 +12,7 @@
 		9854CFD31EED220C008A3454 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9854CFD21EED220C008A3454 /* Assets.xcassets */; };
 		9854CFD61EED220C008A3454 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9854CFD41EED220C008A3454 /* MainMenu.xib */; };
 		98AF7B041F0BB5F5009B84F4 /* XUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98AF7B031F0BB5F5009B84F4 /* XUIKit.framework */; };
+		98D90ABE1F6E996600141289 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 98D90AC01F6E996600141289 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,8 @@
 		9854CFD51EED220C008A3454 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		9854CFD71EED220C008A3454 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98AF7B031F0BB5F5009B84F4 /* XUIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XUIKit.framework; path = ../Build/Products/Debug/XUIKit.framework; sourceTree = "<group>"; };
+		98D90AC11F6E996C00141289 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		98D90AC21F6E99DB00141289 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				9854CFD01EED220B008A3454 /* main.m */,
+				98D90AC01F6E996600141289 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -125,6 +129,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 9854CFC01EED220B008A3454;
 			productRefGroup = 9854CFCA1EED220B008A3454 /* Products */;
@@ -142,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9854CFD31EED220C008A3454 /* Assets.xcassets in Resources */,
+				98D90ABE1F6E996600141289 /* Localizable.strings in Resources */,
 				9854CFD61EED220C008A3454 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,6 +175,15 @@
 			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
+		98D90AC01F6E996600141289 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				98D90AC11F6E996C00141289 /* Base */,
+				98D90AC21F6E99DB00141289 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -176,6 +191,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -223,6 +239,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
