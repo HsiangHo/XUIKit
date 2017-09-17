@@ -94,6 +94,10 @@
             [view setHidden:YES];
             _titlebarContainerView = view;
             break;
+        }else if([[view className] isEqualToString:@"_NSThemeCloseWidget"] ||
+                 [[view className] isEqualToString:@"_NSThemeZoomWidget"] ||
+                 [[view className] isEqualToString:@"_NSThemeWidget"]){
+            [view setHidden:YES];
         }
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidResize:) name:NSWindowDidResizeNotification object:nil];
