@@ -22,7 +22,11 @@
 }
 
 -(instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSWindowStyleMask)style backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag{
-    style = XUI_HUD_WINDOW_STYLE_MASK;
+    if (style & NSWindowStyleMaskClosable) {
+        style = XUI_HUD_WINDOW_STYLE_MASK | NSWindowStyleMaskClosable;
+    }else{
+        style = XUI_HUD_WINDOW_STYLE_MASK;
+    }
     if (self = [super initWithContentRect:contentRect styleMask:style backing:bufferingType defer:flag]) {
         [self __initializeXUIWindow];
     }
@@ -30,7 +34,11 @@
 }
 
 -(instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSWindowStyleMask)style backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag screen:(NSScreen *)screen{
-    style = XUI_HUD_WINDOW_STYLE_MASK;
+    if (style & NSWindowStyleMaskClosable) {
+        style = XUI_HUD_WINDOW_STYLE_MASK | NSWindowStyleMaskClosable;
+    }else{
+        style = XUI_HUD_WINDOW_STYLE_MASK;
+    }
     if (self = [super initWithContentRect:contentRect styleMask:style backing:bufferingType defer:flag screen:screen]) {
         [self __initializeXUIWindow];
     }
@@ -50,13 +58,15 @@
 -(void)__initializeXUIWindow{
     [self setTitle:@""];
     NSArray *arraySubviews = self.contentView.superview.subviews;
-    for(NSView *view in arraySubviews){
-        if([[view className] isEqualToString:@"NSTitlebarContainerView"]){
-            [view setHidden:YES];
-            break;
+    if (!(self.styleMask & NSWindowStyleMaskClosable)) {
+        for(NSView *view in arraySubviews){
+            if([[view className] isEqualToString:@"NSTitlebarContainerView"]){
+                [view setHidden:YES];
+                break;
+            }
         }
+        [self.contentView setFrame: self.contentView.superview.bounds];
     }
-    [self.contentView setFrame: self.contentView.superview.bounds];
 }
 
 @end
