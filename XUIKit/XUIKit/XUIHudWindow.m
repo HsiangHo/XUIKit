@@ -16,7 +16,7 @@
 
 -(instancetype)init{
     if (self = [super init]) {
-        [self __initializeXUIWindow];
+        [self __initializeXUIWindow:NSZeroRect];
     }
     return self;
 }
@@ -28,7 +28,7 @@
         style = XUI_HUD_WINDOW_STYLE_MASK;
     }
     if (self = [super initWithContentRect:contentRect styleMask:style backing:bufferingType defer:flag]) {
-        [self __initializeXUIWindow];
+        [self __initializeXUIWindow:contentRect];
     }
     return self;
 }
@@ -40,7 +40,7 @@
         style = XUI_HUD_WINDOW_STYLE_MASK;
     }
     if (self = [super initWithContentRect:contentRect styleMask:style backing:bufferingType defer:flag screen:screen]) {
-        [self __initializeXUIWindow];
+        [self __initializeXUIWindow:contentRect];
     }
     return self;
 }
@@ -55,7 +55,7 @@
 
 #pragma mark - Private Methods
 
--(void)__initializeXUIWindow{
+-(void)__initializeXUIWindow:(NSRect)contentRect{
     [self setTitle:@""];
     NSArray *arraySubviews = self.contentView.superview.subviews;
     if (!(self.styleMask & NSWindowStyleMaskClosable)) {
@@ -65,7 +65,8 @@
                 break;
             }
         }
-        [self.contentView setFrame: self.contentView.superview.bounds];
+        [self setFrame:contentRect display:YES];
+        [self.contentView setFrameSize:contentRect.size];
     }
 }
 
