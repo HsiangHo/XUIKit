@@ -3,7 +3,7 @@
 [![CDNJS](https://img.shields.io/badge/license-Apache%202.0-red.svg)](https://github.com/HsiangHo/XUIKit/blob/master/LICENSE)
 [![Jenkins](http://progressed.io/bar/63?title=done)](https://github.com/HsiangHo/YuYinZhong/blob/master/LICENSE)
 
-XUIKIt is a UI framework for macOS, inspired by UIKit & [TwUI](https://github.com/twitter/twui). it extends a lot of methods similar to UIKit. It is a easier way for iOS developers to make Cocoa Applications.
+XUIKIt is a UI framework for macOS, inspired by UIKit & [TwUI](https://github.com/twitter/twui). it extends a lot of methods similar to UIKit. It is a easier way for both iOS and Mac developers to make Cocoa Applications.
 
 ### Requirements
 
