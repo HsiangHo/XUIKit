@@ -2,6 +2,7 @@
 [![Travis](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/HsiangHo/XUIKit)
 [![CDNJS](https://img.shields.io/badge/license-Apache%202.0-red.svg)](https://github.com/HsiangHo/XUIKit/blob/master/LICENSE)
 [![Jenkins](http://progressed.io/bar/63?title=done)](https://github.com/HsiangHo/YuYinZhong/blob/master/LICENSE)
+[![Travis](https://img.shields.io/badge/platform-macOS-yellow.svg)]()
 
 XUIKIt is a UI framework for macOS, inspired by UIKit & [TwUI](https://github.com/twitter/twui). it extends a lot of methods similar to UIKit. It is a easier way for both iOS and macOS developers to make Cocoa Applications.
 
