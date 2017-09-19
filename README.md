@@ -1,5 +1,15 @@
 # XUIKit
-<br>[简体中文](https://github.com/HsiangHo/XUIKit/blob/master/README_zh.md)<br>
-<br><br>__XUIKit is a UI framework for MacOS (OS X 10.7 later).__ <br> 
-<br> Inspired by [UIKit](https://developer.apple.com/documentation/uikit?language=objc) &amp; [TwUI](https://github.com/twitter/twui), XUIKit provides more and more convenient interfaces based on [AppKit](https://developer.apple.com/documentation/appkit?language=objc) to improve development efficiency.<br>  
-XUIKit will support `Swift`.
+[![Travis](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/HsiangHo/XUIKit)
+[![CDNJS](https://img.shields.io/badge/license-Apache%202.0-red.svg)](https://github.com/HsiangHo/XUIKit/blob/master/LICENSE)
+[![Jenkins](http://progressed.io/bar/63?title=done)](https://github.com/HsiangHo/YuYinZhong/blob/master/LICENSE)
+
+XUIKIt is a UI framework for macOS, inspired by UIKit & TwUI. it extends a lot of methods similar to UIKit. It is a easier way for iOS developers to make Cocoa Applications.
+
+### Requirements
+
+- macOS 10.7+
+
+### Contributing
+Contributions are very welcome!
+
+If you see an issue that you'd like to see fixed, the best way to make it happen is to help out by submitting a pull request implementing it.
