@@ -13,6 +13,7 @@
 @property(nullable, nonatomic,copy)     NSString                *text;
 @property(nullable, nonatomic,copy)     NSAttributedString      *attributedText;
 @property(nonatomic, assign)            NSLineBreakMode         lineBreakMode;
+@property(nonatomic, assign)            BOOL                    usesSingleLineMode;
 @property(nullable, nonatomic, copy)    NSString                *placeholder;
 @property(nullable, nonatomic, copy)    NSAttributedString      *attributedPlaceholder;
 

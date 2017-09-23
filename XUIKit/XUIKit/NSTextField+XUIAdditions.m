@@ -19,6 +19,14 @@
     return [[self cell] lineBreakMode];
 }
 
+-(void)setUsesSingleLineMode:(BOOL)usesSingleLineMode{
+    [[self cell] setUsesSingleLineMode:usesSingleLineMode];
+}
+
+-(BOOL)usesSingleLineMode{
+    return [[self cell] usesSingleLineMode];
+}
+
 -(void)setText:(NSString *)text{
     [self setStringValue:text];
 }
