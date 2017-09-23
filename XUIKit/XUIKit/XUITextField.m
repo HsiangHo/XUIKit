@@ -12,6 +12,31 @@
 #import "XUITextFieldCell.h"
 #import "NSImage+XUIAdditions.h"
 
+#pragma mark - OnlyIntegerValueFormatter
+
+@interface OnlyIntegerValueFormatter : NSNumberFormatter
+
+@end
+
+@implementation OnlyIntegerValueFormatter
+
+- (BOOL)isPartialStringValid:(NSString*)partialString newEditingString:(NSString**)newString errorDescription:(NSString**)error
+{
+    if([partialString length] == 0) {
+        return YES;
+    }
+    NSScanner* scanner = [NSScanner scannerWithString:partialString];
+    if(!([scanner scanInt:0] && [scanner isAtEnd])) {
+        NSBeep();
+        return NO;
+    }
+    return YES;
+}
+
+@end
+
+#pragma mark - XUITextField
+
 @implementation XUITextField{
     NSImage                                 *_background;
     NSImage                                 *_disabledBackground;
@@ -118,6 +143,19 @@
 
 -(NSEdgeInsets)textEdgeInsets{
     return NSEdgeInsetsMake(0, NSMaxX([self __rectLeftView]), 0, NSWidth([self __rectClearButton]) + NSWidth([self __rectRightView]));
+}
+
+-(void)setOnlyIntegerValue:(BOOL)onlyIntegerValue{
+    if (onlyIntegerValue) {
+        [self setFormatter:[[OnlyIntegerValueFormatter alloc] init]];
+    }else{
+        [self setFormatter:nil];
+    }
+}
+
+-(BOOL)isOnlyIntegerValue{
+    NSFormatter *fm = [self formatter];
+    return [fm isKindOfClass:[OnlyIntegerValueFormatter class]];
 }
 
 #pragma mark - Override Methods

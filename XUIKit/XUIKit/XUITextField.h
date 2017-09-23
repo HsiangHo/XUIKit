@@ -28,4 +28,6 @@
 
 @property(nonatomic,assign,readonly)    NSEdgeInsets        textEdgeInsets;  // default is {0,0,0,0}
 
+@property(nonatomic,getter=isOnlyIntegerValue) BOOL         onlyIntegerValue;
+
 @end
