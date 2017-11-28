@@ -32,6 +32,8 @@
 		98448D811F1FCADC00CB8B17 /* XUIPasswordView.h in Headers */ = {isa = PBXBuildFile; fileRef = 98448D7F1F1FCADC00CB8B17 /* XUIPasswordView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98448D821F1FCADC00CB8B17 /* XUIPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 98448D801F1FCADC00CB8B17 /* XUIPasswordView.m */; };
 		98514C5C1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98514C5A1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		985170BC1FCDA6B700E7B843 /* XUIVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 985170BA1FCDA6B700E7B843 /* XUIVersion.h */; };
+		985170BD1FCDA6B700E7B843 /* XUIVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 985170BB1FCDA6B700E7B843 /* XUIVersion.m */; };
 		9854CFBE1EED212C008A3454 /* XUIResponder.h in Headers */ = {isa = PBXBuildFile; fileRef = 9854CFBC1EED212C008A3454 /* XUIResponder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9854CFBF1EED212C008A3454 /* XUIResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854CFBD1EED212C008A3454 /* XUIResponder.m */; };
 		9854CFE01EED2EA4008A3454 /* XUIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9854CFDE1EED2EA4008A3454 /* XUIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -132,6 +134,8 @@
 		98448D801F1FCADC00CB8B17 /* XUIPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIPasswordView.m; sourceTree = "<group>"; };
 		98514C5A1EEEDCC20001B8A6 /* NSColor+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+XUIAdditions.h"; sourceTree = "<group>"; };
 		98514C5B1EEEDCC20001B8A6 /* NSColor+XUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+XUIAdditions.m"; sourceTree = "<group>"; };
+		985170BA1FCDA6B700E7B843 /* XUIVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XUIVersion.h; sourceTree = "<group>"; };
+		985170BB1FCDA6B700E7B843 /* XUIVersion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XUIVersion.m; sourceTree = "<group>"; };
 		9854CFBC1EED212C008A3454 /* XUIResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIResponder.h; sourceTree = "<group>"; };
 		9854CFBD1EED212C008A3454 /* XUIResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XUIResponder.m; sourceTree = "<group>"; };
 		9854CFDE1EED2EA4008A3454 /* XUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XUIView.h; sourceTree = "<group>"; };
@@ -273,6 +277,15 @@
 				98514C5B1EEEDCC20001B8A6 /* NSColor+XUIAdditions.m */,
 			);
 			name = XUIColor;
+			sourceTree = "<group>";
+		};
+		985170B91FCDA69800E7B843 /* XUIVersion */ = {
+			isa = PBXGroup;
+			children = (
+				985170BA1FCDA6B700E7B843 /* XUIVersion.h */,
+				985170BB1FCDA6B700E7B843 /* XUIVersion.m */,
+			);
+			name = XUIVersion;
 			sourceTree = "<group>";
 		};
 		9854CFBB1EED2069008A3454 /* XUIResponder */ = {
@@ -480,6 +493,7 @@
 				98D158441EEAB252005A0434 /* XUIKit.h */,
 				987923791EF2B68200F2534A /* XUIBase */,
 				9879230E1EF1484C00F2534A /* XUIHelper */,
+				985170B91FCDA69800E7B843 /* XUIVersion */,
 				9813E11A1EED82F3009F1495 /* XUIProperty */,
 				98998C301F3F1F85007258B6 /* XUILanguageManager */,
 				98A490101F603BBF00208A0B /* XUISharingManager */,
@@ -610,6 +624,7 @@
 				9833B4DF1F13A039006552BD /* XUIActivityIndicatorViewProtocol.h in Headers */,
 				98CDB03C1EFC2291008C0C6C /* NSResponder+Private.h in Headers */,
 				985D80D71F544133002DD7F1 /* XUIActivityIndicatorBallScaleRippleView.h in Headers */,
+				985170BC1FCDA6B700E7B843 /* XUIVersion.h in Headers */,
 				9813E11D1EED91BB009F1495 /* XUIProperty.h in Headers */,
 				98448D771F1F797600CB8B17 /* XUISecureTextField+Private.h in Headers */,
 			);
@@ -705,6 +720,7 @@
 				98AF7B0E1F0CB97C009B84F4 /* NSBezierPath+XUIAdditions.m in Sources */,
 				98BB7B021F0133240089E4D0 /* XUILabelCell.m in Sources */,
 				987923471EF1854100F2534A /* NSView+XUIAdditions.m in Sources */,
+				985170BD1FCDA6B700E7B843 /* XUIVersion.m in Sources */,
 				98448D821F1FCADC00CB8B17 /* XUIPasswordView.m in Sources */,
 				98AF7B091F0C7CB1009B84F4 /* XUIActivityIndicatorView.m in Sources */,
 				98D358DD1EF7F105004D4218 /* XUIButton.m in Sources */,
