@@ -9,7 +9,7 @@
 #import "XUILabel.h"
 #import "NSView+XUIAdditions.h"
 #import "XUILabelCell.h"
-
+#import "XUIVersion.h"
 
 @implementation XUILabel{
     NSAttributedString              *_attributedString;
@@ -115,7 +115,9 @@
 
 -(void)setLineBreakMode:(NSLineBreakMode)lineBreakMode{
     [[self cell] setLineBreakMode:lineBreakMode];
-    [super setAttributedStringValue:[self __createLookUpAttributeString]];
+    if (![XUIVersion versionEqualTo:@"10.11.6"]) {
+        [super setAttributedStringValue:[self __createLookUpAttributeString]];
+    }
 }
 
 -(NSLineBreakMode)lineBreakMode{
