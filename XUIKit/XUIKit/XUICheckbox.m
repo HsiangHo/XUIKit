@@ -131,7 +131,7 @@
     [attrString addAttribute:NSForegroundColorAttributeName value:stringColor range:NSMakeRange(0, nLen)];
     [attrString addAttribute:NSFontAttributeName value:self.font range:NSMakeRange(0, nLen)];
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle setLineBreakMode:self.lineBreakMode];
+    [paragraphStyle setLineBreakMode:self.cell.lineBreakMode];
     [paragraphStyle setAlignment:self.alignment];
     if (nil != paragraphStyle) {
         [attrString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0,nLen)];
