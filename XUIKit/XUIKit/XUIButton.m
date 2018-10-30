@@ -215,7 +215,7 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSHeight(Frame),
     NSImage *img = [self currentBackgroundImage];
     if (nil != img) {
         NSRect rctImage = NSMakeRect((int)((NSWidth(self.bounds) - img.size.width) / 2), ((int)(NSHeight(self.bounds) - img.size.height) / 2), img.size.width, img.size.height);
-        [img drawInRect:rctImage];
+        [img drawInRect:rctImage fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
     }
     [self __updateLookup];
 }
