@@ -295,11 +295,11 @@
     //Draw background
     if(self.enabled){
         if(nil != _background){
-            [_background drawInRect:self.bounds];
+            [_background drawInRect:self.bounds fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
         }
     }else{
         if(nil != _disabledBackground){
-            [_disabledBackground drawInRect:self.bounds];
+            [_disabledBackground drawInRect:self.bounds fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
         }
     }
     [_leftView setFrame:[self __rectLeftView]];
