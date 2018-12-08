@@ -84,7 +84,6 @@
 
 - (void)addArcWithCenter:(CGPoint)center radius:(CGFloat)radius startAngle:(CGFloat)startAngle endAngle:(CGFloat)endAngle clockwise:(BOOL)clockwise{
     [self appendBezierPathWithArcWithCenter:center radius:radius startAngle:XUI_RADIANS_TO_DEGREES(startAngle) endAngle:XUI_RADIANS_TO_DEGREES(endAngle) clockwise:clockwise];
-
 }
 
 @end
