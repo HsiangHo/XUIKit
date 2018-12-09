@@ -155,12 +155,12 @@
 }
 
 - (void)setAlpha:(CGFloat)alpha{
-    [[self layer] setOpacity:alpha];
+    [self setAlphaValue:alpha];
     [self setNeedsDisplay:YES];
 }
 
 - (CGFloat)alpha{
-    return [[self layer] opacity];
+    return self.alphaValue;
 }
 
 -(CGAffineTransform)transform{
