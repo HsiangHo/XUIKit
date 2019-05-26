@@ -72,6 +72,12 @@ typedef void(^XUIViewLayoutSubview)(NSView *view);
 /*
  default is 0.
  */
+-(void)setBorderWidth:(CGFloat)borderWidth;
+-(CGFloat)borderWidth;
+
+/*
+ default is 0.
+ */
 -(void)setCornerRadius:(CGFloat)cornerRadius;
 -(CGFloat)cornerRadius;
 

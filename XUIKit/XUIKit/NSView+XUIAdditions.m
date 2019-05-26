@@ -153,6 +153,16 @@
     return [NSColor colorWithCGColor:self.layer.borderColor];
 }
 
+-(void)setBorderWidth:(CGFloat)borderWidth{
+    [self setWantsLayer:YES];
+    [self.layer setBorderWidth:borderWidth];
+    [self setNeedsDisplay:YES];
+}
+
+-(CGFloat)borderWidth{
+    return self.layer.borderWidth;
+}
+
 -(void)setCornerRadius:(CGFloat)cornerRadius{
     [self setWantsLayer:YES];
     [self.layer setCornerRadius:cornerRadius];
