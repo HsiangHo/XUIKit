@@ -64,6 +64,12 @@ typedef void(^XUIViewLayoutSubview)(NSView *view);
 -(NSColor *)backgroundColor;
 
 /*
+ default is nil.
+ */
+-(void)setBorderColor:(NSColor *)borderColor;
+-(NSColor *)borderColor;
+
+/*
  default is 0.
  */
 -(void)setCornerRadius:(CGFloat)cornerRadius;
