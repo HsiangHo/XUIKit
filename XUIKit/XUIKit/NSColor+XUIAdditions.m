@@ -72,7 +72,7 @@
     [[NSScanner scannerWithString:[strHex substringWithRange:range]]scanHexInt:&green];
     range.location =5;
     [[NSScanner scannerWithString:[strHex substringWithRange:range]]scanHexInt:&blue];
-    return [NSColor colorWithCalibratedRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:alpha];
+    return [NSColor colorWithDeviceRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:alpha];
 }
 
 + (NSColor *)colorWithCGColor:(CGColorRef)CGColor{
