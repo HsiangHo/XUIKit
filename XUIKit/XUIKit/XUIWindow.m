@@ -131,7 +131,7 @@
     [_headerView setFrame:rctHeaderView];
     
     _titleFrame.size.height = _windowTitle.heightOfText;
-    _titleFrame.size.width = _windowTitle.widthOfText * 1.2;
+    _titleFrame.size.width = _windowTitle.widthOfText * 2;
     _titleFrame.origin.x = (int)((NSWidth(rctContent) - NSWidth(_titleFrame)) / 2);
     [_windowTitle setFrame:_titleFrame];
     
