@@ -12,7 +12,7 @@
 
 @implementation XUIActivityIndicatorCircleLineRotateView{
     CALayer                         *_parentLayer;
-    CAShapeLayer                    *_layer;
+    CAShapeLayer                    *_shapelayer;
     CGFloat                         _durationTime;
     NSColor                         *_color;
 }
@@ -30,32 +30,32 @@
 #pragma mark - Private methods
 
 -(void)__initializeXUIActivityIndicatorCircleLineRotateView{
-    _layer = [CAShapeLayer layer];
+    _shapelayer = [CAShapeLayer layer];
     NSRect rctProgress = _parentLayer.bounds;
-    [_parentLayer addSublayer:_layer];
-    [_layer setFrame:rctProgress];
+    [_parentLayer addSublayer:_shapelayer];
+    [_shapelayer setFrame:rctProgress];
     NSPoint center = NSMakePoint(NSMidX(rctProgress), NSMidY(rctProgress));
     rctProgress = NSInsetRect(rctProgress, 1.5f, 1.5f);
     CGFloat radius = NSHeight(rctProgress) > NSWidth(rctProgress) ? NSWidth(rctProgress) / 2.0 : NSHeight(rctProgress) / 2.0;
     CGFloat startAngle = 90;
     CGFloat endAngle = -270;
-    [_layer setFillColor:[NSColor clearColor].CGColor];
-    [_layer setStrokeColor: _color.CGColor];
-    [_layer setOpacity:1.0f];
-    [_layer setLineWidth:3.0f];
-    [_layer setLineCap:kCALineCapRound];
+    [_shapelayer setFillColor:[NSColor clearColor].CGColor];
+    [_shapelayer setStrokeColor: _color.CGColor];
+    [_shapelayer setOpacity:1.0f];
+    [_shapelayer setLineWidth:3.0f];
+    [_shapelayer setLineCap:kCALineCapRound];
     NSBezierPath *path = [NSBezierPath bezierPath];
     [path appendBezierPathWithArcWithCenter:center radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
     CGPathRef pathRef = [path quartzPath];
-    _layer.path = pathRef;
+    _shapelayer.path = pathRef;
     CGPathRelease(pathRef);
     
     [self __updateAnimations];
 }
 
 -(void)__updateAnimations{
-    [_layer addAnimation:[self __strokeAnimation] forKey:@"strokeLineAnimation"];
-    [_layer addAnimation:[self __rotationAnimation] forKey:@"rotationAnimation"];
+    [_shapelayer addAnimation:[self __strokeAnimation] forKey:@"strokeLineAnimation"];
+    [_shapelayer addAnimation:[self __rotationAnimation] forKey:@"rotationAnimation"];
 }
 
 -(CAAnimation *)__strokeAnimation{
@@ -95,7 +95,7 @@
 
 -(void)setColor:(NSColor *)color{
     _color = color;
-    [_layer setStrokeColor:_color.CGColor];
+    [_shapelayer setStrokeColor:_color.CGColor];
 }
 
 -(NSColor *)color{
