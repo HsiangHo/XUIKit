@@ -102,18 +102,18 @@
 }
 
 -(void)__pauseLayer{
-    CFTimeInterval pausedTime = [_layer convertTime:CACurrentMediaTime() fromLayer:nil];
-    _layer.speed = 0.0;
-    _layer.timeOffset = pausedTime;
+    CFTimeInterval pausedTime = [self.layer convertTime:CACurrentMediaTime() fromLayer:nil];
+    self.layer.speed = 0.0;
+    self.layer.timeOffset = pausedTime;
 }
 
 -(void)__resumeLayer{
-    CFTimeInterval pausedTime = [_layer timeOffset];
-    _layer.speed = 1.0;
-    _layer.timeOffset = 0.0;
-    _layer.beginTime = 0.0;
-    CFTimeInterval timeSincePause = [_layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
-    _layer.beginTime = timeSincePause;
+    CFTimeInterval pausedTime = [self.layer timeOffset];
+    self.layer.speed = 1.0;
+    self.layer.timeOffset = 0.0;
+    self.layer.beginTime = 0.0;
+    CFTimeInterval timeSincePause = [self.layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
+    self.layer.beginTime = timeSincePause;
 }
 
 #pragma mark - Public methods
