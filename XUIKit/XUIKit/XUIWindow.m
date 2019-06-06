@@ -64,9 +64,13 @@
 }
 
 -(void)setTitle:(NSString *)title{
-    [super setTitle:title];
+//    [super setTitle:title];
     [_windowTitle setText:title];
     [self __adjustContentViewLayout];
+}
+
+-(NSString *)title{
+    return [_windowTitle text];
 }
 
 -(NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize{
