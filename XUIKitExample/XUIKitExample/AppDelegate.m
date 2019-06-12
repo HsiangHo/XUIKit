@@ -34,6 +34,7 @@
     NSArray                     *_arrayLanguagesCode;
     XUICheckbox                 *_checkbox;
     XUISwitch                   *_switch;
+    XUITextField                *_tfNum;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -87,15 +88,15 @@
     [_button setTitleColor:BUTTON_TITLE_COLOR forState:XUIControlStateNormal];
     [_button setFont:[NSFont fontWithName:@"Helvetica Neue" size:21] forState:XUIControlStateNormal];
     [_button setCornerRadius:nRadius forState:XUIControlStateNormal];
-    [_button setCornerRadius:nRadius forState:XUIControlStateHovered];
-    [_button setCornerRadius:nRadius forState:XUIControlStateDown];
-    [_button setCornerRadius:nRadius forState:XUIControlStateUp];
-    [_button setCornerRadius:nRadius forState:XUIControlStateFocused];
+    [_button setUnderLined:YES forState:XUIControlStateNormal];
     [_button setCursor:[NSCursor pointingHandCursor] forState:XUIControlStateHovered];
     [_button setCursor:[NSCursor pointingHandCursor] forState:XUIControlStateDown];
     [_button setCursor:[NSCursor pointingHandCursor] forState:XUIControlStateUp];
     [_button setCursor:[NSCursor pointingHandCursor] forState:XUIControlStateFocused];
     [_buttonView addSubview:_button];
+    [_button addActionForControlEvents:XUIControlEventTouchUpInside block:^{
+        NSLog(@"TouchUpInside");
+    }];
     
     _lbTip = [[XUILabel alloc] initWithFrame:NSMakeRect(0, 200, 200, 20)];
     [_lbTip setAlignment:NSCenterTextAlignment];
@@ -123,6 +124,10 @@
     _switch = [[XUISwitch alloc] initWithFrame:NSMakeRect(100, 250, 40, 25)];
     [_switch setOn:YES];
     [_wnd1.mainView addSubview:_switch];
+
+    _tfNum = [[XUITextField alloc] initWithFrame:NSMakeRect(100, 280, 200, 23)];
+    [_tfNum setText:@"This is a TextField"];
+    [_wnd1.mainView addSubview:_tfNum];
     
     [[XUILanguageManager sharedManager] addLanguageChangedBlock:^{
         [self __localizeString];
