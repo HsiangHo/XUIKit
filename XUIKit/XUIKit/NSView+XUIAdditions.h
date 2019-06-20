@@ -88,9 +88,30 @@ typedef void(^XUIViewLayoutSubview)(NSView *view);
 - (CGFloat)alpha;
 
 /*
+ default is CGAffineTransformIdentity. animatable
+ */
+-(CGAffineTransform)transform;
+-(void)setTransform:(CGAffineTransform)transform;
+
+/*
  default is nil.
  */
 -(void)setLayoutSubviewBlock:(XUIViewLayoutSubview)block;
 -(XUIViewLayoutSubview)layoutSubviewBlock;
+
+-(NSPoint)center;
+-(void)setCenter:(NSPoint)apoint;
+
+/*
+ Animation function
+ */
++ (void)animations:(void (^)(void))animationBlock;
++ (void)animations:(void (^)(void))animationBlock
+       completion:(void (^)(void))completionBlock;
++ (void)animateWithDuration:(NSTimeInterval)duration
+                  animations:(void (^)(void))animationBlock;
++ (void)animateWithDuration:(NSTimeInterval)duration
+                  animations:(void (^)(void))animationBlock
+                 completion:(void (^)(void))completionBlock;
 
 @end

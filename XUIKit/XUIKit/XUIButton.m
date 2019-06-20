@@ -24,7 +24,7 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSHeight(Frame),
 @property (nonatomic,strong) NSImage                *backgroundImage;
 @property (nonatomic,strong) NSImage                *image;
 @property (nonatomic,strong) NSFont                 *font;
-@property (nonatomic,assign) BOOL                   underLined;
+@property (nonatomic,assign) NSInteger              underLined;
 @property (nonatomic,strong) NSColor                *backgroundColor;
 @property (nonatomic,assign) CGFloat                cornerRadius;
 @property (nonatomic,strong) NSCursor               *cursor;
@@ -38,10 +38,18 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSHeight(Frame),
     NSImage                *_backgroundImage;
     NSImage                *_image;
     NSFont                 *_font;
-    BOOL                   _underLined;
+    NSInteger              _underLinedFlag;
     NSColor                *_backgroundColor;
     CGFloat                _cornerRadius;
     NSCursor               *_cursor;
+}
+
+-(instancetype)init{
+    if (self = [super init]) {
+        _underLined = -1;
+        _cornerRadius = -1;
+    }
+    return self;
 }
 
 @end
@@ -317,7 +325,11 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSHeight(Frame),
 }
 
 - (BOOL)isUnderlinedForState:(XUIControlState)state{
-    return [[self __contentForState:state] underLined];
+    NSInteger rslt = [[self __contentForState:state] underLined];
+    if(0 > rslt){
+        rslt = [[self __contentForState:XUIControlStateNormal] underLined];
+    }
+    return rslt > 0;
 }
 
 - (NSColor *)backgroundColorForState:(XUIControlState)state{
@@ -325,7 +337,15 @@ NSMakeRect(EdgeInsets.left * NSWidth(Frame),EdgeInsets.bottom * NSHeight(Frame),
 }
 
 -(CGFloat)cornerRadiusForState:(XUIControlState)state{
-    return [[self __contentForState:state] cornerRadius];
+    CGFloat radius = [[self __contentForState:state] cornerRadius];
+    if(0 > radius){
+        radius = [[self __contentForState:XUIControlStateNormal] cornerRadius];
+    }
+    
+    if(0 > radius){
+        radius = 0;
+    }
+    return radius;
 }
 
 -(NSCursor *)cursorForState:(XUIControlState)state{

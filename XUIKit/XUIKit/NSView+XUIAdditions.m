@@ -174,12 +174,64 @@
 }
 
 - (void)setAlpha:(CGFloat)alpha{
-    [[self layer] setOpacity:alpha];
+    [self setAlphaValue:alpha];
     [self setNeedsDisplay:YES];
 }
 
 - (CGFloat)alpha{
-    return [[self layer] opacity];
+    return self.alphaValue;
+}
+
+-(CGAffineTransform)transform{
+    return [[self layer] affineTransform];
+}
+
+-(void)setTransform:(CGAffineTransform)transform{
+    [[self layer] setAffineTransform:transform];
+    [self setNeedsDisplay:YES];
+}
+
+-(NSPoint)center{
+    NSRect frame = self.frame;
+    return NSMakePoint(NSMidX(frame), NSMidY(frame));
+}
+
+-(void)setCenter:(NSPoint)aPoint {
+    NSRect frame = self.frame;
+    frame.origin = NSMakePoint(aPoint.x - NSWidth(frame)/2, aPoint.y - NSHeight(frame)/2);
+    [self setFrame:frame];
+}
+
++ (void)animations:(void (^)(void))animationBlock{
+    [self animateWithDuration:0.25 animations:animationBlock];
+}
+
++ (void)animations:(void (^)(void))animationBlock
+       completion:(void (^)(void))completionBlock{
+    [self animateWithDuration:0.25 animations:animationBlock completion:completionBlock];
+}
+
++ (void)animateWithDuration:(NSTimeInterval)duration
+                  animations:(void (^)(void))animationBlock{
+    [self animateWithDuration:duration animations:animationBlock completion:nil];
+}
+
++ (void)animateWithDuration:(NSTimeInterval)duration
+                  animations:(void (^)(void))animationBlock
+                 completion:(void (^)(void))completionBlock{
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:duration];
+    animationBlock();
+    [NSAnimationContext endGrouping];
+    
+    if(completionBlock){
+        void(^completionBlockCopy)(void) = [completionBlock copy];
+        double delayInSeconds = duration;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            completionBlockCopy();
+        });
+    }
 }
 
 #pragma mark - Private Functions
