@@ -30,14 +30,112 @@ typedef struct _xui_stateFlags{
 @implementation NSControl (XUIAdditions)
 
 +(void)load{
+    //SwizzleMethods
+    RSSwizzleInstanceMethod([NSControl class], @selector(mouseDown:), RSSWReturnType(void), RSSWArguments(NSEvent *event), RSSWReplacement({
+        [self __stateWillChange];
+        xui_stateFlags flags = [self __currentStateFlags];
+        flags.down = 1;
+        flags.inside = 1;
+        flags.tracking = 0;
+        [self __setCurrentStateFlags:flags];
+        [self __stateDidChange];
+        [self setNeedsDisplay];
+
+        if(!((NSButton *)self).enabled){
+            RSSWCallOriginal(event);
+        }else{
+            if([event clickCount] < 2) {
+                [self sendActionsForControlEvents:XUIControlEventTouchDown];
+            } else {
+                [self sendActionsForControlEvents:XUIControlEventTouchDownRepeat];
+            }
+            RSSWCallOriginal(event);
+            [self mouseUp:event];
+        }
+    }), RSSwizzleModeAlways, NULL);
+
+    RSSwizzleInstanceMethod([NSControl class], @selector(mouseUp:), RSSWReturnType(void), RSSWArguments(NSEvent *event), RSSWReplacement({
+        [self __stateWillChange];
+        xui_stateFlags flags = [self __currentStateFlags];
+        flags.down = 0;
+        flags.tracking = 0;
+        [self __setCurrentStateFlags:flags];
+        [self __stateDidChange];
+        [self setNeedsDisplay];
+
+        if(((NSButton *)self).enabled){
+            if([self eventInside:event]) {
+                [self sendActionsForControlEvents:XUIControlEventTouchUpInside];
+            }else{
+                [self sendActionsForControlEvents:XUIControlEventTouchUpOutside];
+            }
+        }
+        RSSWCallOriginal(event);
+    }), RSSwizzleModeAlways, NULL);
+
+    RSSwizzleInstanceMethod([NSControl class], @selector(mouseEntered:), RSSWReturnType(void), RSSWArguments(NSEvent *event), RSSWReplacement({
+        RSSWCallOriginal(event);
+        if([self __isPointInEffectiveArea:event.locationInWindow]){
+            [self __stateWillChange];
+            xui_stateFlags flags = [self __currentStateFlags];
+            flags.tracking = 1;
+            flags.inside = 1;
+            [self __setCurrentStateFlags:flags];
+            [self __stateDidChange];
+            [self setNeedsDisplay];
+        }
+    }), RSSwizzleModeAlways, NULL);
+
+    RSSwizzleInstanceMethod([NSControl class], @selector(mouseExited:), RSSWReturnType(void), RSSWArguments(NSEvent *event), RSSWReplacement({
+        RSSWCallOriginal(event);
+        [self __stateWillChange];
+        xui_stateFlags flags = [self __currentStateFlags];
+        flags.tracking = 0;
+        flags.inside = 0;
+        [self __setCurrentStateFlags:flags];
+        [self __stateDidChange];
+        [self setNeedsDisplay];
+    }), RSSwizzleModeAlways, NULL);
+
+    RSSwizzleInstanceMethod([NSControl class], @selector(mouseMoved:), RSSWReturnType(void), RSSWArguments(NSEvent *event), RSSWReplacement({
+        RSSWCallOriginal(event);
+        [self __stateWillChange];
+        xui_stateFlags flags = [self __currentStateFlags];
+        if([self __isPointInEffectiveArea:event.locationInWindow]){
+            flags.tracking = 1;
+            flags.inside = 1;
+        }else{
+            flags.tracking = 0;
+            flags.inside = 0;
+        }
+        [self __setCurrentStateFlags:flags];
+        [self __stateDidChange];
+
+        [self setNeedsDisplay];
+    }), RSSwizzleModeAlways, NULL);
+
+    RSSwizzleInstanceMethod([NSControl class], @selector(hitTest:), RSSWReturnType(NSView *), RSSWArguments(NSPoint point), RSSWReplacement({
+        NSView *view = nil;
+        if ([self isUserInteractionEnabled]) {
+            view = RSSWCallOriginal(point);
+            if (nil != view && ![self __isPointInEffectiveArea:point]){
+                view = nil;
+            }
+        }
+        return view;
+    }), RSSwizzleModeAlways, NULL);
+
+    RSSwizzleInstanceMethod([NSControl class], @selector(setEnabled:), RSSWReturnType(void), RSSWArguments(BOOL enabled), RSSWReplacement({
+        if (enabled != [self isEnabled]) {
+            [self __stateWillChange];
+            RSSWCallOriginal(enabled);
+            [self __stateDidChange];
+        }else{
+            RSSWCallOriginal(enabled);
+        }
+    }), RSSwizzleModeAlways, NULL);
+
     Class cls = [NSControl class];
-    XUISwizzleMethod(cls, '-', @selector(xui_mouseDown:),@selector(mouseDown:));
-    XUISwizzleMethod(cls, '-', @selector(xui_mouseUp:),@selector(mouseUp:));
-    XUISwizzleMethod(cls, '-', @selector(xui_mouseEntered:),@selector(mouseEntered:));
-    XUISwizzleMethod(cls, '-', @selector(xui_mouseExited:),@selector(mouseExited:));
-    XUISwizzleMethod(cls, '-', @selector(xui_mouseMoved:),@selector(mouseMoved:));
-    XUISwizzleMethod(cls, '-', @selector(xui_hitTest:),@selector(hitTest:));
-    XUISwizzleMethod(cls, '-', @selector(xui_setEnabled:),@selector(setEnabled:));
     XUISwizzleMethod(cls, '-', @selector(xui_becomeFirstResponder),@selector(becomeFirstResponder));
 }
 
@@ -136,112 +234,6 @@ typedef struct _xui_stateFlags{
     BOOL bRtn = [self xui_becomeFirstResponder];
     [super becomeFirstResponder];
     return bRtn;
-}
-
-- (void)xui_mouseDown:(NSEvent *)event{
-    [self __stateWillChange];
-    xui_stateFlags flags = [self __currentStateFlags];
-    flags.down = 1;
-    flags.inside = 1;
-    flags.tracking = 0;
-    [self __setCurrentStateFlags:flags];
-    [self __stateDidChange];
-    [self setNeedsDisplay];
-    
-    if(!self.enabled){
-        [self xui_mouseDown:event];
-    }else{
-        if([event clickCount] < 2) {
-            [self sendActionsForControlEvents:XUIControlEventTouchDown];
-        } else {
-            [self sendActionsForControlEvents:XUIControlEventTouchDownRepeat];
-        }
-        [self xui_mouseDown:event];
-        [self mouseUp:event];
-    }
-}
-
-- (void)xui_mouseUp:(NSEvent *)event{
-    [self __stateWillChange];
-    xui_stateFlags flags = [self __currentStateFlags];
-    flags.down = 0;
-    flags.tracking = 0;
-    [self __setCurrentStateFlags:flags];
-    [self __stateDidChange];
-    [self setNeedsDisplay];
-    
-    if(self.enabled){
-        if([self eventInside:event]) {
-            [self sendActionsForControlEvents:XUIControlEventTouchUpInside];
-        }else{
-            [self sendActionsForControlEvents:XUIControlEventTouchUpOutside];
-        }
-    }
-    [self xui_mouseUp:event];
-}
-
--(void)xui_mouseMoved:(NSEvent *)event{
-    [self xui_mouseMoved:event];
-    
-    [self __stateWillChange];
-    xui_stateFlags flags = [self __currentStateFlags];
-    if([self __isPointInEffectiveArea:event.locationInWindow]){
-        flags.tracking = 1;
-        flags.inside = 1;
-    }else{
-        flags.tracking = 0;
-        flags.inside = 0;
-    }
-    [self __setCurrentStateFlags:flags];
-    [self __stateDidChange];
-    
-    [self setNeedsDisplay];
-}
-
-- (void)xui_mouseEntered:(NSEvent *)event{
-    [self xui_mouseEntered:event];
-    if([self __isPointInEffectiveArea:event.locationInWindow]){
-        [self __stateWillChange];
-        xui_stateFlags flags = [self __currentStateFlags];
-        flags.tracking = 1;
-        flags.inside = 1;
-        [self __setCurrentStateFlags:flags];
-        [self __stateDidChange];
-        [self setNeedsDisplay];
-    }
-}
-
-- (void)xui_mouseExited:(NSEvent *)event{
-    [self xui_mouseExited:event];
-    
-    [self __stateWillChange];
-    xui_stateFlags flags = [self __currentStateFlags];
-    flags.tracking = 0;
-    flags.inside = 0;
-    [self __setCurrentStateFlags:flags];
-    [self __stateDidChange];
-    [self setNeedsDisplay];
-}
-
--(NSView *)xui_hitTest:(NSPoint)point{
-    NSView *view = nil;
-    if ([self isUserInteractionEnabled]) {
-        view = [self xui_hitTest:point];
-        if (nil != view && ![self __isPointInEffectiveArea:point]){
-            view = nil;
-        }
-    }
-    return view;
-}
-
--(void)xui_setEnabled:(BOOL)enabled{
-    if (enabled != [self isEnabled]) {
-        [self __stateWillChange];
-        [self xui_setEnabled:enabled];
-        [self __stateDidChange];
-    }else{
-        [self xui_setEnabled:enabled];
-    }
 }
 
 #pragma mark - Private Action
