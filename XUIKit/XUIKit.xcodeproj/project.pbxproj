@@ -87,6 +87,8 @@
 		98BB7B021F0133240089E4D0 /* XUILabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BB7B001F0133240089E4D0 /* XUILabelCell.m */; };
 		98C409121EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 98C409101EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98C409161EF014FE00F0A4F6 /* NSControl+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 98C409141EF014FE00F0A4F6 /* NSControl+Private.h */; };
+		98CACC3E22EF581800E4B1B0 /* XUIPopUpButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 98CACC3C22EF581800E4B1B0 /* XUIPopUpButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		98CACC3F22EF581800E4B1B0 /* XUIPopUpButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CACC3D22EF581800E4B1B0 /* XUIPopUpButton.m */; };
 		98CDB03C1EFC2291008C0C6C /* NSResponder+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 98CDB03A1EFC2291008C0C6C /* NSResponder+Private.h */; };
 		98CDB03D1EFC2291008C0C6C /* NSResponder+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 98CDB03B1EFC2291008C0C6C /* NSResponder+Private.m */; };
 		98D158461EEAB252005A0434 /* XUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 98D158441EEAB252005A0434 /* XUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -189,6 +191,8 @@
 		98C409101EEFF9B300F0A4F6 /* NSControl+XUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSControl+XUIAdditions.h"; sourceTree = "<group>"; };
 		98C409111EEFF9B300F0A4F6 /* NSControl+XUIAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSControl+XUIAdditions.m"; sourceTree = "<group>"; };
 		98C409141EF014FE00F0A4F6 /* NSControl+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSControl+Private.h"; sourceTree = "<group>"; };
+		98CACC3C22EF581800E4B1B0 /* XUIPopUpButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XUIPopUpButton.h; sourceTree = "<group>"; };
+		98CACC3D22EF581800E4B1B0 /* XUIPopUpButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XUIPopUpButton.m; sourceTree = "<group>"; };
 		98CDB03A1EFC2291008C0C6C /* NSResponder+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSResponder+Private.h"; sourceTree = "<group>"; };
 		98CDB03B1EFC2291008C0C6C /* NSResponder+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSResponder+Private.m"; sourceTree = "<group>"; };
 		98D158411EEAB252005A0434 /* XUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -471,6 +475,15 @@
 			name = XUIControl;
 			sourceTree = "<group>";
 		};
+		98CACC3B22EF57DB00E4B1B0 /* XUIPopupButton */ = {
+			isa = PBXGroup;
+			children = (
+				98CACC3C22EF581800E4B1B0 /* XUIPopUpButton.h */,
+				98CACC3D22EF581800E4B1B0 /* XUIPopUpButton.m */,
+			);
+			name = XUIPopupButton;
+			sourceTree = "<group>";
+		};
 		98D158371EEAB252005A0434 = {
 			isa = PBXGroup;
 			children = (
@@ -491,6 +504,7 @@
 			isa = PBXGroup;
 			children = (
 				98D158441EEAB252005A0434 /* XUIKit.h */,
+				98CACC3B22EF57DB00E4B1B0 /* XUIPopupButton */,
 				987923791EF2B68200F2534A /* XUIBase */,
 				9879230E1EF1484C00F2534A /* XUIHelper */,
 				985170B91FCDA69800E7B843 /* XUIVersion */,
@@ -602,6 +616,7 @@
 				98040C951F24928800C483E7 /* XUIWindow.h in Headers */,
 				9881FB6E1F2F539400274929 /* XUIHudWindow.h in Headers */,
 				98A490131F603BDE00208A0B /* XUISharingManager.h in Headers */,
+				98CACC3E22EF581800E4B1B0 /* XUIPopUpButton.h in Headers */,
 				98448D811F1FCADC00CB8B17 /* XUIPasswordView.h in Headers */,
 				98E3016A1F1654580015704B /* XUIActivityIndicatorBallRotateChaseView.h in Headers */,
 				98AF7B081F0C7CB1009B84F4 /* XUIActivityIndicatorView.h in Headers */,
@@ -671,6 +686,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 98D158371EEAB252005A0434;
@@ -707,6 +723,7 @@
 				98ED223B1EF6506D004BD87D /* XUITextField.m in Sources */,
 				9833B4E31F13A0C3006552BD /* XUIActivityIndicatorCircleLineRotateView.m in Sources */,
 				9813E11E1EED91BB009F1495 /* XUIProperty.m in Sources */,
+				98CACC3F22EF581800E4B1B0 /* XUIPopUpButton.m in Sources */,
 				987923771EF2A53E00F2534A /* XUIControlTargetAction.m in Sources */,
 				9854CFE11EED2EA4008A3454 /* XUIView.m in Sources */,
 				988943611F1BAADD00708D0F /* XUICheckbox.m in Sources */,
