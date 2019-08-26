@@ -119,7 +119,7 @@
 #pragma mark - Public methods
 
 - (void)startAnimating{
-    if(nil != [self __currentStyleObject]){
+    if(nil != [self __currentStyleObject] && self.isHidden){
         [self __resumeLayer];
         [self setHidden:NO];
         _animating = YES;
