@@ -66,7 +66,7 @@
 }
 
 - (void)setLeftViewMode:(XUITextFieldViewMode)leftViewMode{
-    _textfieldFlags.leftViewMode = leftViewMode;
+    _textfieldFlags.leftViewMode = (unsigned int)leftViewMode;
     [self setNeedsDisplay:YES];
 }
 
@@ -75,7 +75,7 @@
 }
 
 - (void)setRightViewMode:(XUITextFieldViewMode)rightViewMode{
-    _textfieldFlags.rightViewMode = rightViewMode;
+    _textfieldFlags.rightViewMode = (unsigned int)rightViewMode;
     [self setNeedsDisplay:YES];
 }
 
@@ -84,7 +84,7 @@
 }
 
 - (void)setClearButtonMode:(XUITextFieldViewMode)clearButtonMode{
-    _textfieldFlags.clearButtonMode = clearButtonMode;
+    _textfieldFlags.clearButtonMode = (unsigned int)clearButtonMode;
     [self setNeedsDisplay:YES];
 }
 
