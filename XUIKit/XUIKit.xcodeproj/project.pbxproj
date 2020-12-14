@@ -677,6 +677,7 @@
 				TargetAttributes = {
 					98D158401EEAB252005A0434 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9P895LY647;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -862,10 +863,11 @@
 		98D1584A1EEAB252005A0434 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/Output";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 9P895LY647;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -883,10 +885,11 @@
 		98D1584B1EEAB252005A0434 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/Output";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 9P895LY647;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
