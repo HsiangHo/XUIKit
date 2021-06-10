@@ -46,8 +46,11 @@
 }
 
 -(NSImage *)__drawStatusImage:(NSSize)size {
-    size.height -= 4;
-    size.width -= 4;
+    if (@available(macOS 11, *)) {
+    } else {
+        size.height -= 4;
+        size.width -= 4;
+    }
     NSImage *image = [[NSImage alloc] initWithSize:size];
     NSRect rctBorder = NSMakeRect(0, 0, image.size.width,image.size.height);
     NSRect rctTile= NSInsetRect(rctBorder, 2.0, 2.0);
