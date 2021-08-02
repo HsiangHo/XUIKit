@@ -72,7 +72,7 @@
     cellFrame.size.height = XUI_COMBOBOX_FIXED_HEIGHT;
     cellFrame.origin.x = 0;
     cellFrame = NSInsetRect(cellFrame, 0.5, 0.5);
-    [[NSColor whiteColor] set];
+    [self.backgroundColor set];
     NSRectFill(cellFrame);
     
     //Draw Border
